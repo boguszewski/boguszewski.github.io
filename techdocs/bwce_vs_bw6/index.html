@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html
+   prefix="dct: http://purl.org/dc/terms/
+   		   foaf: http://xmlns.com/foaf/0.1/
+   		   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+   		   xf: http://www.w3.org/2002/xforms
+           xsd: http://www.w3.org/2001/XMLSchema
+           xsi: http://www.w3.org/2001/XMLSchema-instance
+           cc: http://creativecommons.org/ns#"
+   lang="de-de"
+>
+    <title> Vergleich TIBCO BWCE mit BW6 &middot; Alexander von Boguszewski </title>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Alexander von Boguszewski">
+<meta name="robots" content="index,follow">
+<meta name="revisit-after" content="5 days">
+<meta name="description" content="">
+<meta property="og:url" content="http://alexander.vonboguszewski.name/techdocs/bwce_vs_bw6/">
+<meta property="og:title" content="Vergleich TIBCO BWCE mit BW6">
+<meta property="og:description" content="">
+
+<link rel="stylesheet" href="http://alexander.vonboguszewski.name/css/general.css">
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+	
+	function enc(text) {
+		  var map =  "!\"#$%&'()*+,-";
+			map += "./0123456789:;<=>?";
+			var R = new String()
+			map += "@ABCDEFGHIJKLMNOPQRSTU";
+			map += "VWXYZ[\\]^_`abcdefghijklm";
+			var i, j, c, len;
+			map += "nopqrstuvwxyz{|}~";
+		  	len = map.length;
+		  	for(i = 0; i < text.length; i++) {
+		  	  c = text.charAt(i)
+		  	  j = map.indexOf(c)
+		  	  if (j >= 0) {
+		  	    c = map.charAt((j + len / 2) % len)
+		  	  }
+		  	  R = R + c
+		  	}
+		  	return R;
+		}
+
+		function toggleMe(a,b){
+		  var onDiv=document.getElementById(a);
+			var onLink=document.getElementById(a+"_link");
+			var offDiv=document.getElementById(b);
+			var offLink=document.getElementById(b+"_link");
+		 	if(!onDiv || !offDiv){
+				return true;
+			} else {
+
+			$(offDiv).fadeOut(1500);
+			offLink.style.fontWeight="normal";
+			$(onDiv).fadeIn(1500);
+			onLink.style.fontWeight="bold";
+
+		  	return true;
+			}
+		}
+</script>
+
+ 
+	<script type="application/ld+json">
+		{
+		  "@context": "http://schema.org",
+		  "@type": "BlogPosting",
+  		   "headline": "Vergleich TIBCO BWCE mit BW6",
+ 			"url" : "http://alexander.vonboguszewski.name/techdocs/bwce_vs_bw6/",
+  			"author": {
+    			"@type": "Person",
+  				"name" : "Alexander von Boguszewski", 
+  				"url" : "http://alexander.vonboguszewski.name/"
+  			  },
+  			  "publisher": {
+    			"@type": "Organization",
+  				"name" : "Alexander von Boguszewski Personal Webpage" ,
+  				"logo": {
+     				 "@type": "ImageObject",
+      				 "url": "http://alexander.vonboguszewski.name//images/bg.png"
+   				 }
+  			  },
+  			  "mainEntityOfPage": {
+        		 "@type": "WebPage",
+       			 "@id": "http://alexander.vonboguszewski.name/"
+    		  }
+  			
+  			, "dateModified": "2017-01-27T00:00:00&#43;00:00"
+  			, "datePublished": "2017-01-27T00:00:00&#43;00:00"
+  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+		}
+		</script>
+
+		        
+    </head>
+	<body class="avb-light">
+		
+		<nav class="avb-sidebar avb-bar-block avb-small avb-hide-small avb-center">
+		  
+		  <br>
+	      <img src="http://alexander.vonboguszewski.name//images/bg.png" alt="Alexander von Boguszewski" style="width:100%">
+		  <a href="http://alexander.vonboguszewski.name/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;&lt;HOME</p>
+		  </a>
+		  <a href="http://alexander.vonboguszewski.name//techdocs/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;TechDocs</p>
+		  </a>
+		</nav>
+		
+		<div class="avb-top avb-hide-large avb-hide-medium" id="myNavbar">
+		  <div class="avb-bar avb-light avb-opacity avb-hover-opacity-off avb-center avb-small">
+		  	  
+		    <a href="http://alexander.vonboguszewski.name/" class="avb-bar-item avb-button" style="width:25% !important">&lt;&lt;HOME</a>
+		    <a href="http://alexander.vonboguszewski.name//techdocs/" class="avb-bar-item avb-button" style="width:25% !important">&lt;TechDocs</a>
+		  </div>
+		</div>
+		
+		<div class="avb-padding-large" id="main">
+		  
+		  <header class="avb-container avb-padding-medium avb-center avb-light" id="home">
+		  		<br>
+	  			<p class="avb-large font-weight: bold;">Alexander von Boguszewski</p>
+		  		<h1 class="avb-jumbo font-weight: bold;">Vergleich TIBCO BWCE mit BW6</h1>
+		    	<p class="avb-text-normal"></p>
+		    </header>
+	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
+	  			<span class="post-date">Jan 27, 2017 </span>
+	  			<hr style="width:200px" class="avb-opacity">
+                
+
+<p>Ein Enterprise Service Bus (ESB) wird in vielen Unternehmen als strategische Integrationsplattform zwischen verschiedenen Anwendungen, kommerzieller Standardsoftware, Legacy-Anwendungen, Datenbanken und Cloud Services eingesetzt. In geschäftskritischen Einsätzen bei Banken, Einzelhändlern, Fluggesellschaften, Telekommunikationsunternehmen und anderen Unternehmen könnte ein zentrales ESB mit hoher Performance, hoher Verfügbarkeit und Fehlertoleranz auch in Zukunft eine gute Wahl sein.</p>
+
+<p>Andererseits ist ein ESB eine komplexe Angelegenheit und schwergewichtiges Biest. Diese Komplexität ist auch einer der Gründe, warum viele SOA-Projekte  gescheitert sind. Aber im Allgemeinen ist ein ESB mittlerweile eine ausgereifte, stabile und einfach zu bedienende Komponente. Ein ESB integriert in der Regel:</p>
+
+<ul>
+<li>Integration Patterns</li>
+<li>Orchestrierung und Choreographie</li>
+<li>Clustermanagement</li>
+<li>APIs und Business Services</li>
+<li>Nachrichtenübermittlung</li>
+<li>Skalierbarkeit und Failover</li>
+<li>Unabhängige Deployments</li>
+<li>Automatisierung</li>
+</ul>
+
+<p>Mit Microservices und Containerisierung ist ein neues hersteller- bzw. technologieunabhängig Architekturkonzept zur Service-orientierte Architektur (SOA) entstanden. Daher ist keine eindeutige Standarddefinition oder Spezifikation verfügbar.</p>
+
+<p>Dies ist sehr ähnlich wie bei einem On-Premise ESB und wird für die Implementierung von &ldquo;Core Services&rdquo;, d.h. zentralen, oft komplexen und geschäftskritischen Diensten, verwendet. Der Hauptunterschied besteht jedoch darin, dass die Lösung anstatt auf einem Integrierten System auf Container und Microservices basiert. Mit dieser Art von Integrationsmiddleware können Integrationsanwendunge nativ auf einer PaaS-Plattform wie Cloud Foundry oder OpenShift eingesetzt werden. TIBCO BusinessWorks Container Edition ist ein herstellerunabhängiges Beispiel, das CloudFoundry, Docker, Kubernetes, AWS ECS, etc. unterstützt. JBoss Middleware Services ermöglicht die Bereitstellung seiner Middleware-Anwendungen (einschließlich JBoss Fuse und A-MQ) auf OpenShift.</p>
+
+<p>Während die Diskussion über Mikroservice-Architekturen durch Martin Fowler schon im Jahr 2014 begonnen wurde, entstanden die ersten Implementierung erst später. Getrieben wurde dieser Ansatz insbesondere von  Netflix. Das Unternehmen hat eine Vielzahl von Frameworks für die Implementierung von Mikroservices zur Verfügung gestellt.
+Im Gegensatz zu Microservices gibt es mehrere spezifische Implementierungen von Container-Software. Der größte Teil der Dynamik dieser Tage steckt hinter Docker. Sein Ökosystem wächst täglich. Diese wird sich in den nächsten Jahren definitiv wieder festigen, aber auch deutlich reifer werden als heute. Weitere Beispiele für Containertechnologien sind CoreOS&rsquo; rkt (Rocket) oder Cloud Foundry&rsquo;s Garden / Warden. All diese Container-Konzepte nichts Neues sind, sondern seit Jahren in UNIX-Systemen zum Einsatz kommen, z.B. bei Solaris Zones oder BSD Jails. Microservices und Container sind das Fundament einer Cloud-Native-Architektur. Viele integrierten Features eines on-premise ESB, wie Orchestrierung, Skalierbarkeit oder Failover werden über herstellerunabhängige Komponenten gelöst. Für die Orchestrierung der Container kann beispielsweise Docker Swarm oder Kubernetes eingesetzt werden. Load Balancing ist mit Microservices und Containern wesentlich anspruchsvoller (und damit komplexer) als On-Premis. Eine reine Lastverteilung auf Basis bekannter IP-Adressen und Hosts reicht nicht mehr aus. Konzepte wie der gewichtete Lastausgleich, der auf mehreren Faktoren wie Verkehr, Ressourcenverbrauch oder Fehlerbedingungen basiert, sorgen aber für mehr Flexibilität.</p>
+
+<h2 id="vergleich-bw6-und-bwce">Vergleich BW6 und BWCE</h2>
+
+<p>Beide Produkte, BW6 und BWCE, haben ihre Stärken. BW6 glänzt mit dem Monitoring- und Management-Dashboard von TIBCO TEA. BWCE glänzt durch seine Fähigkeit, sich nativ in das Container/Cloud Ökosystem einzufügen. Wenn wir eine Container-basierte Plattformen aufbauen, können wir die Integrationsschicht mit BWCE als Runtime gut hierin einbinden.</p>
+
+<h3 id="tibco-activematrix-businessworks-bw6">TIBCO ActiveMatrix BusinessWorks (BW6)</h3>
+
+<p>BW6 ist die Weiterentwicklung der Integrations- und Service-Delivery-Plattform von TIBCO.
+Die Plattform kann eine hohe Performance, Hochverfügbarkeit, Fehlertoleranz und garantierte Transaktionsabwicklung gewährleisten. Ausgelegt ist BW6 als integriertes System zum Betrieb im eigenen Rechenzentrum. Wir können die Software selbstverständlich auch in der Cloud deployen, aber das ist mehr &ldquo;cloud-washed&rdquo;! Alle Konzepte zur Skalierung und Fault Tolerance sind für den betrieb auf dezidierten Servern ausgelegt, sodass wir die Vorteile der Cloud nicht/kaum nutzen können.</p>
+
+<h3 id="tibco-businessworks-container-edition-bwce">TIBCO BusinessWorks Container Edition (BWCE)</h3>
+
+<p>BWCE liefert eine Laufzeitumgebung für Cloud-Integrationsprojekte, die verschiedene PaaS- und Container-Plattformen wie Cloud Foundry, Docker, Kubernetes oder AWS ECS unterstützt.
+Die BWCE Services laufen nativ in diesen PaaS-Umgebungen und profitieren somit von den Tools dieser Plattformen. Das heißt, das PaaS kümmert sich um die Bereitstellung der Infrastruktur und kümmert sich um Service Discovery, Load Balancing, Skalierbarkeit, Cluster Management oder Failover out-of-the-box. Dies ermöglicht eine agilere Entwicklung, um neue Funktionen schnell und effizient umzusetzen. Auf der anderen Seite muss die Anwendungsentwicklung und -architektur an Cloud-basierte Konzepte angepasst werden.
+Der Betrieb erfolgt mit den Mitteln der PAAS</p>
+
+<h2 id="funktionen">Funktionen</h2>
+
+<table>
+<thead>
+<tr>
+<th>Palette</th>
+<th>BWCE</th>
+<th>BW6</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Binding</td>
+<td>REST Binding, SOAP Binding</td>
+<td>REST Binding, SOAP Binding</td>
+</tr>
+
+<tr>
+<td>Basic Activities Palette</td>
+<td>Constructor, Compensate, Critical Section, Empty, End, Exit, For Each, Get Context, Invoke, Iterate, Local Transaction, Set Context, Start, Rethrow, Reply, Repeat on Error , Repeat, Receive, Scope, Set EPR, Throw, While</td>
+<td>Critical Section, Local Transaction, For Each, Iterate, Repeat, Repeat on Error, Scope, While, Constructor, Compensate, Empty, Exit, Get Context, Invoke, Rethrow, Receive, Reply, Set Context, Set EPR, Throw, Start, End</td>
+</tr>
+
+<tr>
+<td>File Palette</td>
+<td>Copy File, Create File, File Poller, List Files, Read File, Remove File, Rename File, Write File (only for Docker base Container)</td>
+<td>Copy File, Remove File, Create File, File Poller, List Files, Read File, Rename File, Wait for File Change, Write File</td>
+</tr>
+
+<tr>
+<td>FTL Palette</td>
+<td>FTL Publisher, FTL Reply, FTL Request Reply, FTL Subscriber</td>
+<td>FTL Publisher, FTL Reply, FTL Request Reply, FTL Subscriber</td>
+</tr>
+
+<tr>
+<td>FTP Palette</td>
+<td>FTP Change Default Directory, FTP Delete File, FTP Dir, FTP Get, FTP Get Default Directory, FTP Make Remote Directory, FTP Put, FTP Quote,  FTP Remove Remote Directory, FTP Rename File, FTP SYS Type</td>
+<td>FTP Change Default Directory, FTP Delete File, FTP Dir, FTP Get, FTP Get Default Directory, FTP Make Remote Directory, FTP Put, FTP Quote, FTP Remove Remote Directory, FTP Rename File, FTP SYS Type</td>
+</tr>
+
+<tr>
+<td>General Activities</td>
+<td>Assign, Confirm, Call Process, Get Shared Variable, Inspector, Log, Mapper, Notify, On Notification Timeout, Receive Notification, Set Shared Variable, Sleep, Timer, Wait for Notification</td>
+<td>Assign, Call Process, Checkpoint, Checkpoints and Confirm Activity, Confirm, External Command, Get Shared Variable, Inspector, Log, Mapper, Notify, Set Shared Variable, Sleep, Timer, Wait for Notification, On Notification Timeout, Receive Notification</td>
+</tr>
+
+<tr>
+<td>HTTP Palette</td>
+<td>HTTP Receiver, Send HTTP Request, Sending Data in the HTTP Request, Send HTTP Response</td>
+<td>HTTP Receiver, Send HTTP Request, Wait for HTTP Request, Sending Data in the HTTP Request, Send HTTP Response</td>
+</tr>
+
+<tr>
+<td>JAVA Palette</td>
+<td>Adding Java Nature to a Project, Converting JAVA Class to XML Schema, Creating Custom XPath Functions, Using Custom XPath Function at Design Time and Run Time, Deleting Custom XPath Functions, Java To XML, Java Invoke, XML To Java, Java Process Starter</td>
+<td>Configuring JAVA in BusinessWorks Application Module, Converting JAVA Class to XML Schema, Creating Custom XPath Functions, Using Custom XPath Function at Design Time and Run Time, Deleting Custom XPath Functions, Java Invoke, Java Process Starter, Java To XML, XML To Java</td>
+</tr>
+
+<tr>
+<td>JDBC Palette</td>
+<td>JDBC Call Procedure, JDBC Query, JDBC Update, SQL Direct</td>
+<td>JDBC Call Procedure, JDBC Query, JDBC Update, SQL Direct</td>
+</tr>
+
+<tr>
+<td>JMS Palette</td>
+<td>Get JMS Queue Message, JMS Receive Message, JMS Request Reply, JMS Send Message, Reply to JMS Message</td>
+<td>Get JMS Queue Message, JMS Receive Message, JMS Request Reply, JMS Send Message, Reply to JMS Message, Wait for JMS Request</td>
+</tr>
+
+<tr>
+<td>Mail Palette</td>
+<td>Receive Mail, Send Mail</td>
+<td>Receive Mail, Send Mail</td>
+</tr>
+
+<tr>
+<td>Parse Palette</td>
+<td>Parsing a Large Number of Records, MimeParser, Parse Data, Render Data</td>
+<td>MimeParser, Parse Data, Render Data</td>
+</tr>
+
+<tr>
+<td>REST and JSON</td>
+<td>BW JSON Utils, Invoke REST API, Restrictions on XML Schema, Parse JSON, Render JSON</td>
+<td>BW JSON Utils, Invoke REST API, Restrictions on XML Schema, Parse JSON, Render JSON</td>
+</tr>
+
+<tr>
+<td>XML Activities Palette</td>
+<td>Parse XML, Render XML, Transform XML</td>
+<td>Parse XML, Render XML, Transform XML</td>
+</tr>
+
+<tr>
+<td>Shared Resources</td>
+<td>Data Format, FTL Realm Server Connection, FTP Connection, HTTP Client, HTTP Connector, Identity Provider, JDBC Connection, JMS Connection, JNDI Configuration, Java Global Instance, Keystore Provider, Notify Configuration, Proxy Configuration, SMTP Resource,  SSL Client Configuration, Thread Pool</td>
+<td>Data Format, FTL Realm Server Connection, FTP Connection, HTTP Client, Persistent Connections. HTTP Connector. Identity Provider. JDBC Connection. JMS Connection. JNDI Configuration. Java Global Instance, Keystore Provider, LDAP Authentication, Proxy Configuration, Rendezvous Transport, SMTP Resource, SSL Server Configuration, SSL Client Configuration, Subject Provider, TCP Connection, Trust Provider, WSS Authentication, XML Authentication, Notify Configuration</td>
+</tr>
+
+<tr>
+<td>TCP Palette</td>
+<td>-</td>
+<td>Read TCP Data, TCP Close Connection, TCP Open Connection, TCP Receiver, Wait for TCP Request, Write TCP Data</td>
+</tr>
+
+<tr>
+<td>Thread Pool</td>
+<td>-</td>
+<td>Thread Pool</td>
+</tr>
+
+<tr>
+<td>Rendezvous Palette</td>
+<td>-</td>
+<td>Rendezvous Publisher, Rendezvous Reply To Request, Rendezvous Subscriber, Rendezvous Request Reply, Wait for Rendezvous Message</td>
+</tr>
+
+<tr>
+<td>Policy Resources</td>
+<td>-</td>
+<td>Basic Authentication, Basic Credential Mapping, WSS Consumer, WSS Provider</td>
+</tr>
+</tbody>
+</table>
+
+<p>..</p>
+
+            </div>
+            <hr style="width:200px" class="avb-opacity">
+        	<div id="footer" style="font-size:small;">
+<span property="dct:title"><a property="cc:attributionName" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Lizensiert unter einer Creative Commons Lizent - Weitergabe unter gleichen Bedingungen</a></span>
+| <a href="/imprint/">Impressum</a>
+</div>
+        </div>
+	</body>
+</html>

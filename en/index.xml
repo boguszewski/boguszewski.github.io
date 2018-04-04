@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About on Alexander von Boguszewski</title>
+    <link>http://alexander.vonboguszewski.name/en/</link>
+    <description>Recent content in About on Alexander von Boguszewski</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 01 Jan 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://alexander.vonboguszewski.name/en/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Saxess Software Design</title>
+      <link>http://alexander.vonboguszewski.name/en/resume/saxess/</link>
+      <pubDate>Thu, 01 Jun 2006 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/en/resume/saxess/</guid>
+      <description>At Saxess I developed complex data transformations with Java and XSLT 2.0 to enable access to different databases, catalogs and web services via a single API gateway.</description>
+    </item>
+    
+    <item>
+      <title>Fraunhofer IAIS</title>
+      <link>http://alexander.vonboguszewski.name/en/resume/fraunhofer/</link>
+      <pubDate>Tue, 01 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/en/resume/fraunhofer/</guid>
+      <description>I worked as Project member in the multinational EU research project IRRIIS - Integrated Risk Reduction of Information-based Infrastructure Systems - on an event based simulation of conected critical infrastructures. Within the project I worked in a Team which implements the simulation environment in Java.</description>
+    </item>
+    
+    <item>
+      <title>Bonn-Rhein-Sieg University</title>
+      <link>http://alexander.vonboguszewski.name/en/resume/hsbrs/</link>
+      <pubDate>Thu, 17 Dec 2009 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/en/resume/hsbrs/</guid>
+      <description>I have finished study Computer Science at the Bonn-Rhein-Sieg University of Applied Sciences as a Master of Science in Computer Science.</description>
+    </item>
+    
+    <item>
+      <title>NTT Data</title>
+      <link>http://alexander.vonboguszewski.name/en/resume/nttdata/</link>
+      <pubDate>Thu, 01 Apr 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/en/resume/nttdata/</guid>
+      <description>At NTT DATA I acting as Leading Developer in several application and process integration projects at customeres in the finance sector. I act as a Software Developer with open source technologies like Apache Camel or JBoss Drools. Among other things, I worked in the DevOps team on the development of an open source integration environment for an investment company, supported a leading securities settlement service provider in a digitization project as a coach or designed the processes in a BPM project for one of the leading derivatives exchanges as a software architect.</description>
+    </item>
+    
+    <item>
+      <title>Scrum Master</title>
+      <link>http://alexander.vonboguszewski.name/en/resume/scrum/</link>
+      <pubDate>Fri, 17 May 2013 11:59:05 -0500</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/en/resume/scrum/</guid>
+      <description>I got a Scrum Master Certificate in May 2013.</description>
+    </item>
+    
+    <item>
+      <title>Koblenz University</title>
+      <link>http://alexander.vonboguszewski.name/en/resume/mba/</link>
+      <pubDate>Wed, 30 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/en/resume/mba/</guid>
+      <description>In addition to my duties as a consultant at NTT Data, I have been studying business administration in distance learning.</description>
+    </item>
+    
+    <item>
+      <title>TIBCO </title>
+      <link>http://alexander.vonboguszewski.name/en/resume/tibco/</link>
+      <pubDate>Sat, 01 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/en/resume/tibco/</guid>
+      <description>As an IT architect at TIBCO, I was the direct customer contact at a German railway company and responsible for technical questions regarding the further development and operation of the TIBCO Enterprise Integration Platform, regular agreements on deadlines, project status and risks. I was also involved in coordinating the onsite team and monitoring the status of the individual subprojects. Later, as Delivery Manager, I was responsible for the management of Professional Services for several major customers in Germany and Eastern Europe.</description>
+    </item>
+    
+    <item>
+      <title>Talend </title>
+      <link>http://alexander.vonboguszewski.name/en/resume/talend/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/en/resume/talend/</guid>
+      <description>At Talend, I help our clients process their data more effectively by helping them choose the right tools, build the necessary infrastructure and provide the expertise for that. As a Delivery Manager, I am responsible for setting up, managing and completing our Professional Service projects for various customers. My current focus is to reconcile the wishes and requirements of Talend&amp;rsquo;s customers, project managers and local consultants and PS organization and to successfully complete my customer projects on time, within budget and to the highest quality.</description>
+    </item>
+    
+  </channel>
+</rss>

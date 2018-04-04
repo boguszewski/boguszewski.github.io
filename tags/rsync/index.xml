@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rsync on Alexander von Boguszewski</title>
+    <link>http://alexander.vonboguszewski.name/tags/rsync/</link>
+    <description>Recent content in Rsync on Alexander von Boguszewski</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-de</language>
+    <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://alexander.vonboguszewski.name/tags/rsync/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Automatisches Backup Linux mit rsync</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/rsync_backup/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/rsync_backup/</guid>
+      <description>Automatisches Backup Linux mit rsync
+Unter Linux kann man mit RSYNC, CRON und einem Bash Script ein Time Machine artiges Backupsystem aufsetzen.
+Verteiltes Backup mit einen Backupserver. In diesem Fall wird das Script auf dem Backupserver via CRON gestartet. Auf dem zu sichernden System muss ein SSH Server laufen.
+ Automatisches SSH Login vom BackupServer (Target) auf den BackupClient (Source) einrichten Auf dem BackupServer muss ein Public/Private Key Paar ohne Passwort erzeugt werden und der Public Key auf dem BackupClient registriert werden.</description>
+    </item>
+    
+  </channel>
+</rss>
