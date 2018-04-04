@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html
+   prefix="dct: http://purl.org/dc/terms/
+   		   foaf: http://xmlns.com/foaf/0.1/
+   		   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+   		   xf: http://www.w3.org/2002/xforms
+           xsd: http://www.w3.org/2001/XMLSchema
+           xsi: http://www.w3.org/2001/XMLSchema-instance
+           cc: http://creativecommons.org/ns#"
+   lang="de-de"
+>
+    <title> TIBCO BW5 Hawk Alerts verarbeiten &middot; Alexander von Boguszewski </title>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Alexander von Boguszewski">
+<meta name="robots" content="index,follow">
+<meta name="revisit-after" content="5 days">
+<meta name="description" content="">
+<meta property="og:url" content="http://alexander.vonboguszewski.name/techdocs/bw5_hawk_messages/">
+<meta property="og:title" content="TIBCO BW5 Hawk Alerts verarbeiten">
+<meta property="og:description" content="">
+
+<link rel="stylesheet" href="http://alexander.vonboguszewski.name/css/general.css">
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+	
+	function enc(text) {
+		  var map =  "!\"#$%&'()*+,-";
+			map += "./0123456789:;<=>?";
+			var R = new String()
+			map += "@ABCDEFGHIJKLMNOPQRSTU";
+			map += "VWXYZ[\\]^_`abcdefghijklm";
+			var i, j, c, len;
+			map += "nopqrstuvwxyz{|}~";
+		  	len = map.length;
+		  	for(i = 0; i < text.length; i++) {
+		  	  c = text.charAt(i)
+		  	  j = map.indexOf(c)
+		  	  if (j >= 0) {
+		  	    c = map.charAt((j + len / 2) % len)
+		  	  }
+		  	  R = R + c
+		  	}
+		  	return R;
+		}
+
+		function toggleMe(a,b){
+		  var onDiv=document.getElementById(a);
+			var onLink=document.getElementById(a+"_link");
+			var offDiv=document.getElementById(b);
+			var offLink=document.getElementById(b+"_link");
+		 	if(!onDiv || !offDiv){
+				return true;
+			} else {
+
+			$(offDiv).fadeOut(1500);
+			offLink.style.fontWeight="normal";
+			$(onDiv).fadeIn(1500);
+			onLink.style.fontWeight="bold";
+
+		  	return true;
+			}
+		}
+</script>
+
+ 
+	<script type="application/ld+json">
+		{
+		  "@context": "http://schema.org",
+		  "@type": "BlogPosting",
+  		   "headline": "TIBCO BW5 Hawk Alerts verarbeiten",
+ 			"url" : "http://alexander.vonboguszewski.name/techdocs/bw5_hawk_messages/",
+  			"author": {
+    			"@type": "Person",
+  				"name" : "Alexander von Boguszewski", 
+  				"url" : "http://alexander.vonboguszewski.name/"
+  			  },
+  			  "publisher": {
+    			"@type": "Organization",
+  				"name" : "Alexander von Boguszewski Personal Webpage" ,
+  				"logo": {
+     				 "@type": "ImageObject",
+      				 "url": "http://alexander.vonboguszewski.name//images/bg.png"
+   				 }
+  			  },
+  			  "mainEntityOfPage": {
+        		 "@type": "WebPage",
+       			 "@id": "http://alexander.vonboguszewski.name/"
+    		  }
+  			
+  			, "dateModified": "2017-01-12T00:00:00&#43;00:00"
+  			, "datePublished": "2017-01-12T00:00:00&#43;00:00"
+  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+		}
+		</script>
+
+		        
+    </head>
+	<body class="avb-light">
+		
+		<nav class="avb-sidebar avb-bar-block avb-small avb-hide-small avb-center">
+		  
+		  <br>
+	      <img src="http://alexander.vonboguszewski.name//images/bg.png" alt="Alexander von Boguszewski" style="width:100%">
+		  <a href="http://alexander.vonboguszewski.name/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;&lt;HOME</p>
+		  </a>
+		  <a href="http://alexander.vonboguszewski.name//techdocs/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;TechDocs</p>
+		  </a>
+		</nav>
+		
+		<div class="avb-top avb-hide-large avb-hide-medium" id="myNavbar">
+		  <div class="avb-bar avb-light avb-opacity avb-hover-opacity-off avb-center avb-small">
+		  	  
+		    <a href="http://alexander.vonboguszewski.name/" class="avb-bar-item avb-button" style="width:25% !important">&lt;&lt;HOME</a>
+		    <a href="http://alexander.vonboguszewski.name//techdocs/" class="avb-bar-item avb-button" style="width:25% !important">&lt;TechDocs</a>
+		  </div>
+		</div>
+		
+		<div class="avb-padding-large" id="main">
+		  
+		  <header class="avb-container avb-padding-medium avb-center avb-light" id="home">
+		  		<br>
+	  			<p class="avb-large font-weight: bold;">Alexander von Boguszewski</p>
+		  		<h1 class="avb-jumbo font-weight: bold;">TIBCO BW5 Hawk Alerts verarbeiten</h1>
+		    	<p class="avb-text-normal"></p>
+		    </header>
+	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
+	  			<span class="post-date">Jan 12, 2017 </span>
+	  			<hr style="width:200px" class="avb-opacity">
+                <p>Leider gibt es keine vorkonfigurierte Palette mit denen Hawk Alerts und Notifications
+in einem Tibco BW Prozess eingelesen werden können.
+Mit einem Java Process Starter und der Hawk Console API kann man die Alerts
+trotzdem recht leicht abgreifen.
+Für eine HAWK Domain mit EMS als Data Transport habe ich ein kleines Beispiel
+erstellt. Wichtig ist es die HAWK, EMS und RV Bibliotheken im Classpath vorhanden
+sind. Ich habe das JAR tibrvj.jar noch in der TRA Konfiguration manuell aufnehmen müssen.</p>
+
+<p>Der wichtigste Code Teil ist in der INIT Methode des Java Process Starters</p>
+
+<pre><code>public void init() throws Exception {
+
+
+		Properties prop = new Properties();
+		prop.setProperty(HawkConstants.HAWK_DOMAIN, “myDomain”);
+		prop.setProperty(HawkConstants.HAWK_TRANSPORT, HawkConstants.HAWK_TRANSPORT_TIBEMS);
+		prop.setProperty(HawkConstants.HAWK_EMS_URL, &quot;tcp://localhost:7222&quot;);
+		prop.setProperty(HawkConstants.HAWK_EMS_USERNAME, &quot;admin&quot;);
+		prop.setProperty(HawkConstants.HAWK_EMS_PWD, “xxx”);
+
+		hawkConsole = TIBHawkConsoleFactory.getInstance().createHawkConsole(prop);
+		hawkMonitor = hawkConsole.getAgentMonitor();
+
+		hawkMonitor.addAlertMonitorListener(new AlertMonitorListener() {
+
+			@Override
+			public void onRetransmittedAlert(AlertMonitorEvent e) {
+				Map&lt;String, Object&gt; messageMap = new HashMap&lt;String, Object&gt;();
+				messageMap.put(&quot;AlertID&quot;, e.getAlertID());
+				messageMap.put(&quot;TimeGenerated&quot;, e.getTimeGenerated());
+				messageMap.put(&quot;RuleBaseName&quot;, e.getRuleBaseStatus().getName());
+			
+				if (e instanceof PostAlertEvent) {
+					PostAlertEvent ae = (PostAlertEvent) e;
+					messageMap.put(&quot;AlertText&quot;, ae.getAlertText());						
+
+				} else if (e instanceof ClearAlertEvent) {
+					ClearAlertEvent ce = (ClearAlertEvent) e;
+					messageMap.put(&quot;AlertText&quot;, ce.getReasonClearedText());
+				}
+				onEvent(message);
+
+			}
+
+			@Override
+			public void onAlertMonitorEvent(AlertMonitorEvent e) {
+				if (e instanceof PostAlertEvent) {
+					PostAlertEvent ae = (PostAlertEvent) e;
+					messageMap.put(&quot;AlertText&quot;, ae.getAlertText());						
+
+				} else if (e instanceof ClearAlertEvent) {
+					ClearAlertEvent ce = (ClearAlertEvent) e;
+					messageMap.put(&quot;AlertText&quot;, ce.getReasonClearedText());
+				}
+				onEvent(message);
+			}
+		});
+
+	}
+
+	@Override
+	public void onStart() throws Exception {
+		hawkMonitor.initialize();
+	}
+
+
+	@Override
+	public void onStop() throws Exception {
+		hawkMonitor.shutdown();
+	}
+</code></pre>
+
+<p>Hier wird die Verbindung zur Hawk Domain aufgebaut und die Listener auf die Alerts definiert.
+Um den Alert Meldung im BW Prozess zu verwenden muss ein Mapping durchgeführt werden.
+Der Einfachheit halber speichere ich die Daten des Alerts, wie Text und Level in einer Map.
+In einem zweiten Schritt, einer Java Code Activity, lese ich die Map aus und kopiere die Werte
+in die Ausgabe der Activity. Wenn man den Java Code in eine eigene JAR auslagert kann man
+ein eigenes DTO verwenden und dies nach XML parsen.</p>
+
+            </div>
+            <hr style="width:200px" class="avb-opacity">
+        	<div id="footer" style="font-size:small;">
+<span property="dct:title"><a property="cc:attributionName" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Lizensiert unter einer Creative Commons Lizent - Weitergabe unter gleichen Bedingungen</a></span>
+| <a href="/imprint/">Impressum</a>
+</div>
+        </div>
+	</body>
+</html>

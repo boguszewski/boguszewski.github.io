@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html
+   prefix="dct: http://purl.org/dc/terms/
+   		   foaf: http://xmlns.com/foaf/0.1/
+   		   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+   		   xf: http://www.w3.org/2002/xforms
+           xsd: http://www.w3.org/2001/XMLSchema
+           xsi: http://www.w3.org/2001/XMLSchema-instance
+           cc: http://creativecommons.org/ns#"
+   lang="de-de"
+>
+    <title>  &middot; Alexander von Boguszewski </title>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Alexander von Boguszewski">
+<meta name="robots" content="index,follow">
+<meta name="revisit-after" content="5 days">
+<meta name="description" content="">
+<meta property="og:url" content="http://alexander.vonboguszewski.name/techdocs/talend_di_hello/">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+
+<link rel="stylesheet" href="http://alexander.vonboguszewski.name/css/general.css">
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+	
+	function enc(text) {
+		  var map =  "!\"#$%&'()*+,-";
+			map += "./0123456789:;<=>?";
+			var R = new String()
+			map += "@ABCDEFGHIJKLMNOPQRSTU";
+			map += "VWXYZ[\\]^_`abcdefghijklm";
+			var i, j, c, len;
+			map += "nopqrstuvwxyz{|}~";
+		  	len = map.length;
+		  	for(i = 0; i < text.length; i++) {
+		  	  c = text.charAt(i)
+		  	  j = map.indexOf(c)
+		  	  if (j >= 0) {
+		  	    c = map.charAt((j + len / 2) % len)
+		  	  }
+		  	  R = R + c
+		  	}
+		  	return R;
+		}
+
+		function toggleMe(a,b){
+		  var onDiv=document.getElementById(a);
+			var onLink=document.getElementById(a+"_link");
+			var offDiv=document.getElementById(b);
+			var offLink=document.getElementById(b+"_link");
+		 	if(!onDiv || !offDiv){
+				return true;
+			} else {
+
+			$(offDiv).fadeOut(1500);
+			offLink.style.fontWeight="normal";
+			$(onDiv).fadeIn(1500);
+			onLink.style.fontWeight="bold";
+
+		  	return true;
+			}
+		}
+</script>
+
+ 
+	<script type="application/ld+json">
+		{
+		  "@context": "http://schema.org",
+		  "@type": "BlogPosting",
+  		   "headline": "",
+ 			"url" : "http://alexander.vonboguszewski.name/techdocs/talend_di_hello/",
+  			"author": {
+    			"@type": "Person",
+  				"name" : "Alexander von Boguszewski", 
+  				"url" : "http://alexander.vonboguszewski.name/"
+  			  },
+  			  "publisher": {
+    			"@type": "Organization",
+  				"name" : "Alexander von Boguszewski Personal Webpage" ,
+  				"logo": {
+     				 "@type": "ImageObject",
+      				 "url": "http://alexander.vonboguszewski.name//images/bg.png"
+   				 }
+  			  },
+  			  "mainEntityOfPage": {
+        		 "@type": "WebPage",
+       			 "@id": "http://alexander.vonboguszewski.name/"
+    		  }
+  			
+  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+		}
+		</script>
+
+		        
+    </head>
+	<body class="avb-light">
+		
+		<nav class="avb-sidebar avb-bar-block avb-small avb-hide-small avb-center">
+		  
+		  <br>
+	      <img src="http://alexander.vonboguszewski.name//images/bg.png" alt="Alexander von Boguszewski" style="width:100%">
+		  <a href="http://alexander.vonboguszewski.name/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;&lt;HOME</p>
+		  </a>
+		  <a href="http://alexander.vonboguszewski.name//techdocs/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;TechDocs</p>
+		  </a>
+		</nav>
+		
+		<div class="avb-top avb-hide-large avb-hide-medium" id="myNavbar">
+		  <div class="avb-bar avb-light avb-opacity avb-hover-opacity-off avb-center avb-small">
+		  	  
+		    <a href="http://alexander.vonboguszewski.name/" class="avb-bar-item avb-button" style="width:25% !important">&lt;&lt;HOME</a>
+		    <a href="http://alexander.vonboguszewski.name//techdocs/" class="avb-bar-item avb-button" style="width:25% !important">&lt;TechDocs</a>
+		  </div>
+		</div>
+		
+		<div class="avb-padding-large" id="main">
+		  
+		  <header class="avb-container avb-padding-medium avb-center avb-light" id="home">
+		  		<br>
+	  			<p class="avb-large font-weight: bold;">Alexander von Boguszewski</p>
+		  		<h1 class="avb-jumbo font-weight: bold;"></h1>
+		    	<p class="avb-text-normal"></p>
+		    </header>
+	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
+	  			<span class="post-date">Jan 1, 0001 </span>
+	  			<hr style="width:200px" class="avb-opacity">
+                <ol>
+<li>Create a new Job by right-clicking on Repository &gt; Job Designs, then selecting Create Standard Job.</li>
+<li>Enter HelloWorld for the Name, then populate the Purpose and Description. Click Finish when done.
+
+<br /></li>
+</ol>
+
+<p>3 Start adding a component to the Job by clicking anywhere in the left-hand portion of the Designer. Begin typing the name of the component, in this case tFixedFlowInput, and a list of matching components will appear. Search the list for the tFixedFlowInput component. Notice the suffix Misc. This indicates the folder within the Palette in which the component can also be found.</p>
+
+<ol>
+<li>ADD THE COMPONENT
+Double-click the tFixedFlowInput component in the list to plant the component at the selected spot in the Designer.</li>
+</ol>
+
+<p>The component is now added to the Job. This &ldquo;click and type&rdquo; method represents a quick and easy way to add components to your Jobs. In the next step, you will add a second component using an alternate method.</p>
+
+<ol>
+<li>ADD THE COMPONENT
+In the Palette view, begin typing the name of another component, in this case tLogRow, into the Find Component box and then click the Search button (). You can also press the Enter key.</li>
+</ol>
+
+<p>The component has been found under the Logs &amp; Errors folder.
+Select the tLogRow component in the Palette view, then click on a spot to the right of tFixedFLowInput_1 in the Designer to place the new component.</p>
+
+<p>The component is now added to the Job. This approach represents another way you can browse components and add them to your Job. Note that it is also possible to simply drag and drop the component from the Palette to your Job&rsquo;s design space.</p>
+
+<ol>
+<li>CONNECT THE COMPONENTS
+Right-click on the tFixedFlowInput component, then select Row &gt; Main.</li>
+</ol>
+
+<p>Move the mouse over top of tLogRow_1 component and click on it.</p>
+
+<p>The link will be created and displayed. A row (or link) allows data to flow from one component to another. The arrow indicates the direction of the flow.</p>
+
+<ol>
+<li>Configure Components
+Double-click tFixedFlowInput_1 to open the Component view, which is located in the lower portion of the main window.</li>
+</ol>
+
+<p>Then click on the [&hellip;] button near Edit schema to configure the schema.</p>
+
+<p>Click the Add button () to add a new column. Change the Column name to Message, then click OK.</p>
+
+<p>Answer Yes when asked if you would like to propagate changes.</p>
+
+<ol>
+<li>PROVIDE A MESSAGE
+Notice that the Message column is added to the schema. Now, set the Value of the Message Column to &ldquo;Hello World&rdquo;.</li>
+</ol>
+
+<p>Be sure to include the opening and closing quotation marks.</p>
+
+<ol>
+<li>SAVE THE JOB
+Note there is an asterisk (*) preceding the name of your Job in the Designer tab. This means the Job has changes which have not been saved yet. Click the Save button in the main toolbar () and the * disappears.</li>
+</ol>
+
+<p>You can also press Ctrl + S to save the Job.</p>
+
+<ol>
+<li>OPEN THE RUN VIEW
+To run the Job, open the Run view (near the Component tab in the lower portion of the window) and click Run.</li>
+</ol>
+
+<p>You can also use the Run icon () in the main toolbar to run the Job.
+ REVIEW JOB OUTPUT
+Talend Studio saves the Job, builds it, and then runs it. This may take a few moments. Once complete, the Job runs and finishes quickly, displaying messages in the Run view.</p>
+
+<p>You can see the Hello World message is then displayed in the execution console.</p>
+
+<hr />
+
+<p>ADD A COMPONENT TO READ A CSV FILE
+In the Palette, click File &gt; Input, then scroll down until you locate the component called tFileInputDelimited.</p>
+
+<p>Components in the Palette are grouped by function. This particular component reads input from a delimited file.
+Select tFileInputDelimited in the Palette, and then click in the Designer to place the component.
+Click the button marked with an ellipsis [&hellip;] next to the File Name / Stream field to browse for the input file.</p>
+
+<p>Beispiel Datei von Open-Data-Portal der Deutsche Bahn
+<a href="http://data.deutschebahn.com">http://data.deutschebahn.com</a></p>
+
+<p>Übersicht Bahnhöfe RNI (Stand 01/2018)
+URL: <a href="http://download-data.deutschebahn.com/static/datasets/stationsdaten_regio/DBRNI-Uebersicht_Bahnhoefe-Stand2018-01.csv">http://download-data.deutschebahn.com/static/datasets/stationsdaten_regio/DBRNI-Uebersicht_Bahnhoefe-Stand2018-01.csv</a></p>
+
+<p>CONFIGURE FIELD SEPARATOR AND HEADER PROPERTIES
+Still in the Component view, change the value in the Field Separator box to &ldquo;,&rdquo; to indicate that a comma separates column values in the file, rather than the default semicolon.</p>
+
+<p>Then, change the value in the Header box to 1 to specify that the first row of the input file contains column names.</p>
+
+<p>OPEN THE SCHEMA EDITOR
+Click the Basic settings tab. Near the bottom of the Component view, click the Edit schema button marked with an ellipsis [&hellip;].
+The Schema window appears, where you specify the format of the data from the input file.
+Click the Add button () to add a new column to the schema. Enter
+Bundesland;Regionalbereich;Bf. Nr.;Station;Bf DS 100 Abk.;Kategorie Vst;StraÃŸe;PLZ;Ort;AufgabentrÃ¤ger;VerkehrsverbÃ¼nde;Fernverkehr;Nahverkehr
+Bundesland: Bundesland, z. B. Hessen.
+Regionalbereich: Bahnhofsmanagement, z. B. Kurhessenbahn (KHB).
+Bf.Nr.: Eindeutige Nr. des Bahnhofs, z. B. 8263.
+Station: Name der Station, z. B. Ahnatal-Casselbreite.
+Bf DS 100 Abk.: Verweis auf Betriebsstelle, z. B. FATC.
+Kat. Vst.: Bahnhofskategorie, z. B. 6.
+Straße: Postalische Adressinfo.
+PLZ: Postalische Adressinfo.
+Ort: Postalische Adressinfo.
+Aufgabenträger: Name des Aufgabenträgers, z. B. Nordhessischer Verkehrsverbund.
+Verkehrsverb.: Abk. des Aufgabenträgers, z.B. RMV.
+Fernverkehr: Fernverkehrszug hält an dieser Station: ja/nein.
+Nahverkehr: Nahverkehrszug hält an dieser Station: ja/nein.</p>
+
+<p>IND THE tMap COMPONENT
+Click anywhere in the Designer to the right of CustomersFile. Begin typing the name of the component you wish to add, in this case tMap, and a list of matching components will appear. Search the list for the component.</p>
+
+<p>PLACE AND CONNECT THE COMPONENT
+Now, right-click Customers File and select Row &gt; Main, then click tMap_1. This creates a connection between the two components.</p>
+
+<p>A list of components are then suggested. Start typing the name of the desired output component, in this case tFileOutputDelimited, into the search box. As its name implies, a tFileOutputDelimited component writes rows to a file in delimited format.</p>
+
+<p>OPEN THE MAPPING EDITOR
+Double-click tMap_1 to open the mapping editor.</p>
+
+<p>The tMap component provides so much functionality, so this window has many elements. Notice the table on the left, labeled row2, and the table on the right labeled CappedOut. Those tables represent the schema of the input and output connections, with names that match the rows. The schema for row2 is copied from the input component and should look familiar. The schema for the new row CappedOut is not defined yet.</p>
+
+<p>The goal of this Job is to pass all the data from row1 to CappedOut, while capitalizing the values in the State column.</p>
+
+<p>COPY ALL INPUT ROWS
+In row2, click on the top row and then shift-click on the bottom row, to select all the rows. Then, drag the selected rows from row2 onto CappedOut.</p>
+
+<p>Notice the arrows indicating the mapping of columns from one schema to the other. In the CappedOut table, notice the Expression, which defines the data content, as well as the column names. At this point, the data and column names are an exact match to those in row1 (the expression row1.<name> specifies the data in the name column of row2).</p>
+
+<p>Double-click tMap_1 to open the mapping editor.</p>
+
+<p>The tMap component provides so much functionality, so this window has many elements. Notice the table on the left, labeled row2, and the table on the right labeled CappedOut. Those tables represent the schema of the input and output connections, with names that match the rows. The schema for row1 is copied from the input component and should look familiar. The schema for the new row CappedOut is not defined yet.</p>
+
+<p>The goal of this Job is to pass all the data from row1 to CappedOut, while capitalizing the values in the State column.</p>
+
+<p>COPY ALL INPUT ROWS
+In row2, click on the top row and then shift-click on the bottom row, to select all the rows. Then, drag the selected rows from row1 onto CappedOut.</p>
+
+<p>Notice the arrows indicating the mapping of columns from one schema to the other. In the CappedOut table, notice the Expression, which defines the data content, as well as the column names. At this point, the data and column names are an exact match to those in row1 (the expression row2.<name> specifies the data in the name column of row2).</p>
+
+<p>SELECT THE OUTPUT YOU WISH TO MODIFY
+The goal is to convert the State column data to uppercase, so click row1.State in the CappedOut output table, and then click the button marked with an ellipsis [&hellip;] that appears.</p>
+
+<p>The Expression Builder opens. This window allows you to construct expressions in Java syntax. You can enter the expression as text yourself, or you can take advantage of the tool to simplify the building of such expressions.</p>
+
+<p>BUILD AN EXPRESSION TO CONVERT DATA TO UPPERCASE
+Select Categories &gt; StringHandling, then scroll down in the Functions list until you find UPCASE. Select it. Notice the text that appears in the Help area.</p>
+
+<p>INSERT THE FUNCTION INVOCATION INTO THE EXPRESSION
+Double-click UPCASE to insert the function into the expression at the insertion point.
+StringHandling.UPCASE(row2.Bundesland)</p>
+
+<p>Notice the format of the expression that is inserted. As a default example, the function contains the literal string &ldquo;Hello&rdquo;. You want to reconfigure this to convert the contents of the State column.</p>
+
+<p>Fernverkehr &amp; Nahverkehr typ von String auf boolean wechsen
+StringHandling.UPCASE(row2.Fernverkehr).equals(&ldquo;JA&rdquo;)?true:false</p>
+
+<p>tFileOutputXML_1 &ndash;&gt; change dateiname /PathToYourDesktop/out.csv</p>
+
+<p>lick the Run tab under the design space to expose the Run view. Click the Run button.</p>
+
+<p>Note that statistics about the Job execution display in the design workspace.</p>
+
+<p>Locate and open the output file /PathToYourDesktop/out.csv. Notice that all state abbreviations are now in uppercase.</p>
+
+<p>&lt;?xml version=&ldquo;1.0&rdquo; encoding=&ldquo;ISO-8859-15&rdquo;?&gt;
+<root>
+<row>
+<Bundesland>HESSEN</Bundesland>
+<Regionalbereich>KURHESSENBAHN (KHB)</Regionalbereich>
+<Bahnhofsnummer>8263</Bahnhofsnummer>
+<Stationsname>AHNATAL-CASSELBREITE</Stationsname>
+<Betriebsstelle>FATC</Betriebsstelle>
+<Bahnhofskategorie>KHB 1</Bahnhofskategorie>
+<Strasse>CASSELBREITE</Strasse>
+<PLZ>34292</PLZ>
+<Ort>AHNATAL</Ort>
+<Verkehrsverb>NORDHESSISCHER VERKEHRSVERBUND</Verkehrsverb>
+<VerkehrsverbAbk>NORDHESSISCHER VERKEHRSVERBUND</VerkehrsverbAbk>
+<Fernverkehr>false</Fernverkehr>
+<Nahverkehr>true</Nahverkehr>
+</row>
+<row>
+<Bundesland>HESSEN</Bundesland>
+<Regionalbereich>KURHESSENBAHN (KHB)</Regionalbereich>
+<Bahnhofsnummer>2616</Bahnhofsnummer>
+<Stationsname>AHNATAL-HECKERSHAUSEN</Stationsname>
+<Betriebsstelle>FHEH</Betriebsstelle>
+<Bahnhofskategorie>KHB 1</Bahnhofskategorie>
+<Strasse>BAHNHOFSTRAÃŴE</Strasse>
+<PLZ>34292</PLZ>
+<Ort>AHNATAL</Ort>
+<Verkehrsverb>NORDHESSISCHER VERKEHRSVERBUND</Verkehrsverb>
+<VerkehrsverbAbk>NORDHESSISCHER VERKEHRSVERBUND</VerkehrsverbAbk>
+<Fernverkehr>false</Fernverkehr>
+<Nahverkehr>true</Nahverkehr>
+</row>
+&hellip;..
+</root></p>
+
+            </div>
+            <hr style="width:200px" class="avb-opacity">
+        	<div id="footer" style="font-size:small;">
+<span property="dct:title"><a property="cc:attributionName" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Lizensiert unter einer Creative Commons Lizent - Weitergabe unter gleichen Bedingungen</a></span>
+| <a href="/imprint/">Impressum</a>
+</div>
+        </div>
+	</body>
+</html>

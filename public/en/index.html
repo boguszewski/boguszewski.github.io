@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html 
+   prefix="dct: http://purl.org/dc/terms/
+   		   foaf: http://xmlns.com/foaf/0.1/
+   		   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+   		   xf: http://www.w3.org/2002/xforms
+           xsd: http://www.w3.org/2001/XMLSchema
+           xsi: http://www.w3.org/2001/XMLSchema-instance
+           cc: http://creativecommons.org/ns#"
+   lang="en-us"
+>
+<title> Alexander von Boguszewski </title> 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Alexander von Boguszewski">
+<meta name="robots" content="index,follow">
+<meta name="revisit-after" content="5 days">
+<meta name="description" content="">
+<meta property="og:url" content="http://alexander.vonboguszewski.name/en/">
+<meta property="og:title" content="About">
+<meta property="og:description" content="Alexander von Boguszewski's personal site!">
+
+<link rel="stylesheet" href="http://alexander.vonboguszewski.name/css/general.css">
+<link rel="stylesheet" href="http://alexander.vonboguszewski.name/css/personalhomepage.css">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+	
+	function enc(text) {
+		  var map =  "!\"#$%&'()*+,-";
+			map += "./0123456789:;<=>?";
+			var R = new String()
+			map += "@ABCDEFGHIJKLMNOPQRSTU";
+			map += "VWXYZ[\\]^_`abcdefghijklm";
+			var i, j, c, len;
+			map += "nopqrstuvwxyz{|}~";
+		  	len = map.length;
+		  	for(i = 0; i < text.length; i++) {
+		  	  c = text.charAt(i)
+		  	  j = map.indexOf(c)
+		  	  if (j >= 0) {
+		  	    c = map.charAt((j + len / 2) % len)
+		  	  }
+		  	  R = R + c
+		  	}
+		  	return R;
+		}
+
+		function toggleMe(a,b){
+		  var onDiv=document.getElementById(a);
+			var onLink=document.getElementById(a+"_link");
+			var offDiv=document.getElementById(b);
+			var offLink=document.getElementById(b+"_link");
+		 	if(!onDiv || !offDiv){
+				return true;
+			} else {
+
+			$(offDiv).fadeOut(1500);
+			offLink.style.fontWeight="normal";
+			$(onDiv).fadeIn(1500);
+			onLink.style.fontWeight="bold";
+
+		  	return true;
+			}
+		}
+</script>
+
+<script type="application/ld+json">
+	{
+	  "@context": "http://schema.org",
+	  "@type": "WebSite",
+	  "name": "Alexander von Boguszewski",
+	  "alternateName": "Alexander von Boguszewski's personal site",
+	  "url": "http://alexander.vonboguszewski.name",
+	  "logo": "http://alexander.vonboguszewski.name//images/bg.png"
+	}
+</script>
+<script type="application/ld+json">
+			{
+  			"@context" : "http://schema.org/",
+  			"@type" : "Person",
+  			"name" : "Alexander von Boguszewski", 
+  			"gender": "http://schema.org/Male",
+  			"birthDate" : "1983",
+  			"url" : "http://alexander.vonboguszewski.name/",
+    		"sameAs": [
+    		    "http://alexander.vonboguszewski.name/"
+    			
+    			,"https://www.xing.com/profile/Alexander_vonBoguszewski"
+				,"https://github.com/boguszewski"
+				,"https://github.com/AvonBoguszewski"
+  			],
+  			
+  			"worksFor" :
+  				 {
+  					"@context" : "http://schema.org/",
+ 					"@type" : "Corporation",
+ 					"name" : "Talend Software",
+					"url" : "http://talend.com"  
+				 },
+  				"jobTitle" : "Delivery Manager"
+  				},
+  			
+  			"alumniOf" : [  
+             	{
+        	 	 "@type": "Corporation",	
+             	 "name":  "Saxess Software Design",
+             	 "url": "https://www.saxess.de"
+            	 },  
+             	{
+        	 	 "@type": "Corporation",	
+             	 "name":  "Fraunhofer IAIS",
+             	 "url": "https://www.iais.fraunhofer.de"
+            	 },  
+             	{
+        	 	 "@type": "Corporation",	
+             	 "name":  "NTT DATA",
+             	 "url": "http://nttdata.de"
+            	 },  
+             	{
+        	 	 "@type": "Corporation",	
+             	 "name":  "TIBCO Software",
+             	 "url": "http://tibco.com"
+            	 },  
+             	{
+        	 	 "@type": "Corporation",	
+             	 "name":  "Talend Software",
+             	 "url": "http://talend.com"
+            	 }, 
+             	{
+        	 	 "@type": "EducationalOrganization",	
+             	 "name":  "Bonn-Rhein-Sieg University of Applied Sciences",
+             	 "url": "https://www.h-brs.de"
+            	 },  
+             	{
+        	 	 "@type": "EducationalOrganization",	
+             	 "name":  "Koblenz University of Applied Sciences",
+             	 "url": "https://www.hs-koblenz.de"
+            	 } 
+  				]
+ 			}
+ 		</script>
+		<script type="application/ld+json">
+		{
+  			"@context": "http://schema.org",
+  			"@type": "BreadcrumbList",
+  			"itemListElement": [{
+        	"@type": "ListItem",
+        	"position": 0,
+        	"item": {
+          	"@id": "TechDocs",
+         	 "name": "/techdocs"
+       		 }
+    		}]
+		}
+		</script>
+ 		
+
+
+<body class="avb-light">
+
+<nav class="avb-sidebar avb-bar-block avb-small avb-hide-small avb-center">
+  <br>
+  <a href="http://alexander.vonboguszewski.name/en/" class="avb-button avb-hover-ambient">en</a>|<a href="http://alexander.vonboguszewski.name/" class="avb-button avb-hover-ambient">de</a>
+  <a href="#" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+    <p>HOME</p>
+  </a>
+  <a href="#resume" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+    <p>RESUME</p>
+  </a>
+  <a href="#contact" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+    <p>CONTACT</p>
+  </a>
+  
+  <a href="/techdocs" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">&gt; TechDocs</a>		
+  
+</nav>
+
+
+<div class="avb-top avb-hide-large avb-hide-medium" id="myNavbar">
+  <div class="avb-bar avb-light avb-opacity avb-hover-opacity-off avb-center avb-small">
+    <a href="#" class="avb-bar-item avb-button" style="width:25% !important">HOME</a>
+    <a href="#resume" class="avb-bar-item avb-button" style="width:25% !important">RESUME</a>
+    <a href="#contact" class="avb-bar-item avb-button" style="width:25% !important">CONTACT</a>
+    
+    <a href="/techdocs" class="avb-bar-item avb-button" style="width:25% !important">TechDocs</a>		
+    
+ 	 <div class="avb-bar avb-light avb-opacity avb-hover-opacity-off avb-right avb-tiny">
+  	  <a href="http://alexander.vonboguszewski.name/en/" class="avb-bar-item avb-button">en</a><a href="http://alexander.vonboguszewski.name/" class="avb-bar-item avb-button">de</a>
+  	</div>
+  </div>
+</div>
+
+
+<div class="avb-padding-large" id="main">
+  
+  <header class="avb-container avb-padding-medium avb-center avb-light" id="home">
+    <h1 class="avb-jumbo font-weight: bold;">Alexander von Boguszewski</h1>
+    <p></p>
+    <img src="http://alexander.vonboguszewski.name//images/bg.png" alt="the guy" class="avb-image" width="992" height="1108">
+  </header>  
+  
+  <div class="avb-content avb-text-normal avb-padding-large" id="about">
+      <h2 class="avb-text-normal">About me</h2>
+      <hr style="width:200px" class="avb-opacity">
+      <p>It is an interesting world I find myself in, acting between business and IT. I have been engrossed in digital technology since the beginning of the millennium.
+After my studies in computer science and economics, I worked as a consultant in areas across the tech sphere, mostly in data integration and process digitalisation.
+In the IT we are all too well aware that we are stuck with technology, but the only thing we want is just something that works.
+I beliefe that the most the problems in the IT causes in complexity.  But if you look at it right, you find a very simple answer for 80% of all problems during creating the most complex IT ecosystems.</p>
+
+  
+  </div>  
+  
+  <div class="avb-content avb-text-normal avb-padding-large" id="resume">
+    <h3 class="avb-padding-small avb-text-normal">Resume</h3>
+    <hr style="width:200px" class="avb-opacity">
+    <div class="avb-row avb-left-align avb-padding-small avb-section avb-light-ambient">
+      <div class="avb-half avb-section">
+        	<h3 class="avb-padding-small avb-text-normal">Work</h3>		
+        	<hr style="width:200px" class="avb-opacity">						 
+			            				
+            <div id="93f54c8af16a280c4a45b3f75b05d876" class="modalDialog avb-padding-small">
+				<div class="avb-container avb-padding-small">
+					<a href="#close" title="Close" class="close">X</a>
+					<h4>06/2006 - 07/2008 Saxess Software Design : Developer (part time) </h4>
+					<p>At Saxess I developed complex data transformations with Java and XSLT 2.0 to enable access to different databases, catalogs and web services via a single API gateway.</p>
+
+				</div>
+			</div> 
+                        				
+            <div id="7ab63517b0b0f30fbfd0cb8f780e0d12" class="modalDialog avb-padding-small">
+				<div class="avb-container avb-padding-small">
+					<a href="#close" title="Close" class="close">X</a>
+					<h4>07/2008 - 12/2009 Fraunhofer IAIS : Developer (part time) </h4>
+					<p>I worked as Project member in the multinational EU research project IRRIIS - Integrated Risk Reduction of Information-based Infrastructure Systems -  on an event based simulation of conected critical infrastructures.
+Within the project I worked in a Team which implements the simulation environment in Java.</p>
+
+				</div>
+			</div> 
+                        				
+            <div id="f4ea6bfbd5b151a741578a08a60859aa" class="modalDialog avb-padding-small">
+				<div class="avb-container avb-padding-small">
+					<a href="#close" title="Close" class="close">X</a>
+					<h4>04/2010 - 07/2015 NTT DATA : Senior Technical Consultant </h4>
+					<p>At NTT DATA I acting as Leading Developer in several application and process integration projects at customeres in the finance sector.
+I act as a Software Developer with open source technologies like Apache Camel or JBoss Drools. Among other things, I worked in the DevOps team on the  development of an open source integration environment for an investment company,
+supported a leading securities settlement service provider in a digitization project as a coach or designed the processes in a BPM project for one of the leading derivatives exchanges as a software architect.</p>
+
+				</div>
+			</div> 
+                        				
+            <div id="42003f661f3b4d5a4ae95096a29e57b2" class="modalDialog avb-padding-small">
+				<div class="avb-container avb-padding-small">
+					<a href="#close" title="Close" class="close">X</a>
+					<h4>08/2015 - 02/2018 TIBCO Software : Practice Manager Delivery </h4>
+					<p>As an IT architect at TIBCO, I was the direct customer contact at a German railway company and responsible for
+technical questions regarding the further development and operation of the TIBCO Enterprise Integration Platform, regular agreements on deadlines, project status and risks.
+I was also involved in coordinating the onsite team and monitoring the status of the individual subprojects.
+Later, as Delivery Manager, I was responsible for the management of Professional Services for several major customers in Germany and Eastern Europe.</p>
+
+				</div>
+			</div> 
+                        				
+            <div id="1a382018239b250ca2e02bd1b08d2093" class="modalDialog avb-padding-small">
+				<div class="avb-container avb-padding-small">
+					<a href="#close" title="Close" class="close">X</a>
+					<h4>02/2018 -  Talend Software : Delivery Manager </h4>
+					<p>At Talend, I help our clients process their data more effectively by helping them choose the right tools, build the necessary infrastructure and provide the  expertise for that.
+As a Delivery Manager, I am responsible for setting up, managing and  completing our Professional Service projects for various customers.
+My current focus is to reconcile the wishes and requirements of Talend&rsquo;s customers, project managers and local consultants and PS organization and to successfully complete my customer projects on time, within budget and to the highest quality.</p>
+
+				</div>
+			</div> 
+            	
+            <ul class="resumeList avb-ul"><li class="avb-ul"><a href="#93f54c8af16a280c4a45b3f75b05d876">06/2006 - 07/2008 Saxess Software Design</a></li><li class="avb-ul"><a href="#7ab63517b0b0f30fbfd0cb8f780e0d12">07/2008 - 12/2009 Fraunhofer IAIS</a></li><li class="avb-ul"><a href="#f4ea6bfbd5b151a741578a08a60859aa">04/2010 - 07/2015 NTT Data</a></li><li class="avb-ul"><a href="#42003f661f3b4d5a4ae95096a29e57b2">08/2015 - 02/2018 TIBCO </a></li><li class="avb-ul"><a href="#1a382018239b250ca2e02bd1b08d2093">02/2018 -  Talend </a></li></ul>	  	 
+      </div>
+      <div class="avb-half avb-section">
+        	<h3 class="avb-padding-small avb-text-normal">Education</h3>	
+        	<hr style="width:200px" class="avb-opacity">
+			          				
+            <div id="a0ffb88886de604f2a444bfcb950f52e" class="modalDialog avb-padding-small">
+				<div class="avb-container avb-padding-small">
+					<a href="#close" title="Close" class="close">X</a>
+					<h4>09/2007 - 12/2009 Bonn-Rhein-Sieg University of Applied Sciences : Computer Science </h4>
+					<p>I have finished study Computer Science at the Bonn-Rhein-Sieg University of Applied Sciences as a  Master of Science in Computer Science.</p>
+
+				</div>
+			</div> 
+                      				
+            <div id="c53f4a49068dade10e57ed35a0e797e3" class="modalDialog avb-padding-small">
+				<div class="avb-container avb-padding-small">
+					<a href="#close" title="Close" class="close">X</a>
+					<h4>09/2012 - 04/2014 Koblenz University of Applied Sciences : Business Administration </h4>
+					<p>In addition to my duties as a consultant at NTT Data, I have been studying business administration in distance learning.</p>
+
+				</div>
+			</div> 
+            		
+            <ul class="resumeList avb-ul"><li class="avb-ul"><a href="#a0ffb88886de604f2a444bfcb950f52e" class="resumeList">09/2007 - 12/2009 Bonn-Rhein-Sieg University</a><li> <li class="avb-ul"><a href="#c53f4a49068dade10e57ed35a0e797e3" class="resumeList">09/2012 - 04/2014 Koblenz University</a><li> </ul>
+      </div>
+    </div>
+  
+  </div>
+  
+  <div class="avb-padding-large avb-content avb-text-normal" id="contact">
+    <h2 class="avb-text-normal">Contact Me</h2>
+    <hr style="width:200px" class="avb-opacity">
+        <div class="avb-light-ambient" id="social">
+  	
+	
+	<p><i style="font-family: 'zocial', sans-serif;  text-decoration:none;">n</i>    |    Germany</p>
+	 
+	
+	
+	<p><i>
+	<script>
+		var parentNode = document.getElementById('social');
+		var node = document.createElement("a");
+		var text = enc(">2:=E@i");
+		node.style.fontFamily = "zocial, sans-serif";
+		node.style.textDecoration = "none";
+		text += enc("2=6I2?56CoG@?3@8FDK6HD\u003c:]?2\u003e6");
+		node.href = text;
+		node.appendChild(document.createTextNode("m"));				
+		parentNode.appendChild(node);
+	</script>
+	<script>
+		var parentNode = document.getElementById('social');
+		var node = document.createElement("a");
+		var text = "    |    "+enc("2=6I2?56CoG@?3@8FDK6HD\u003c:]?2\u003e6");
+		node.style.textDecoration = "none";
+		node.href = text;
+		node.appendChild(document.createTextNode(text));				
+		parentNode.appendChild(node);
+	</script>
+	</i></p>
+	
+	
+	<p>
+		<i>
+			<a href="https://www.xing.com/profile/Alexander_vonBoguszewski" target="_blank" style="font-family: 'zocial', sans-serif;  text-decoration:none;">X   </a>
+		</i>
+		<a href="https://www.xing.com/profile/Alexander_vonBoguszewski" target="_blank" style="text-decoration:none;">    |    www.xing.com/profile/Alexander_vonBoguszewski</a>
+	</p>
+	 
+	
+	<p>
+		<i>
+			<a href="https://github.com/boguszewski" target="_blank" style="font-family: 'zocial', sans-serif; text-decoration:none;">g   </a>
+		</i>
+		<a href="https://github.com/boguszewski" target="_blank" style="text-decoration:none;">    |    github.com/boguszewski</a>
+
+	</p>
+	
+	
+	<p><i>
+		<a href="https://twitter.com/AvonBoguszewski" target="_blank" style="font-family: 'zocial', sans-serif; text-decoration:none;">T   </a>
+		</i>
+		<a href="https://twitter.com/AvonBoguszewski" target="_blank" style="text-decoration:none;">    |    twitter.com/AvonBoguszewski</a>
+	</p>
+	
+</div>
+	  
+  
+  </div>     
+    
+  <footer class="avb-content avb-padding-large avb-text-ambient avb-xlarge">
+ 	<div id="footer" style="font-size:small;">
+<span property="dct:title"><a property="cc:attributionName" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Lizensiert unter einer Creative Commons Lizent - Weitergabe unter gleichen Bedingungen</a></span>
+| <a href="/imprint/">Impressum</a>
+</div>	  
+ 	
+  </footer>
+
+</div>
+</body>
+</html>
+

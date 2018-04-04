@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html
+   prefix="dct: http://purl.org/dc/terms/
+   		   foaf: http://xmlns.com/foaf/0.1/
+   		   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+   		   xf: http://www.w3.org/2002/xforms
+           xsd: http://www.w3.org/2001/XMLSchema
+           xsi: http://www.w3.org/2001/XMLSchema-instance
+           cc: http://creativecommons.org/ns#"
+   lang="de-de"
+>
+    <title> JDBC Tester &middot; Alexander von Boguszewski </title>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Alexander von Boguszewski">
+<meta name="robots" content="index,follow">
+<meta name="revisit-after" content="5 days">
+<meta name="description" content="">
+<meta property="og:url" content="http://alexander.vonboguszewski.name/techdocs/java_oracle_jdbc_tester/">
+<meta property="og:title" content="JDBC Tester">
+<meta property="og:description" content="">
+
+<link rel="stylesheet" href="http://alexander.vonboguszewski.name/css/general.css">
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+	
+	function enc(text) {
+		  var map =  "!\"#$%&'()*+,-";
+			map += "./0123456789:;<=>?";
+			var R = new String()
+			map += "@ABCDEFGHIJKLMNOPQRSTU";
+			map += "VWXYZ[\\]^_`abcdefghijklm";
+			var i, j, c, len;
+			map += "nopqrstuvwxyz{|}~";
+		  	len = map.length;
+		  	for(i = 0; i < text.length; i++) {
+		  	  c = text.charAt(i)
+		  	  j = map.indexOf(c)
+		  	  if (j >= 0) {
+		  	    c = map.charAt((j + len / 2) % len)
+		  	  }
+		  	  R = R + c
+		  	}
+		  	return R;
+		}
+
+		function toggleMe(a,b){
+		  var onDiv=document.getElementById(a);
+			var onLink=document.getElementById(a+"_link");
+			var offDiv=document.getElementById(b);
+			var offLink=document.getElementById(b+"_link");
+		 	if(!onDiv || !offDiv){
+				return true;
+			} else {
+
+			$(offDiv).fadeOut(1500);
+			offLink.style.fontWeight="normal";
+			$(onDiv).fadeIn(1500);
+			onLink.style.fontWeight="bold";
+
+		  	return true;
+			}
+		}
+</script>
+
+ 
+	<script type="application/ld+json">
+		{
+		  "@context": "http://schema.org",
+		  "@type": "BlogPosting",
+  		   "headline": "JDBC Tester",
+ 			"url" : "http://alexander.vonboguszewski.name/techdocs/java_oracle_jdbc_tester/",
+  			"author": {
+    			"@type": "Person",
+  				"name" : "Alexander von Boguszewski", 
+  				"url" : "http://alexander.vonboguszewski.name/"
+  			  },
+  			  "publisher": {
+    			"@type": "Organization",
+  				"name" : "Alexander von Boguszewski Personal Webpage" ,
+  				"logo": {
+     				 "@type": "ImageObject",
+      				 "url": "http://alexander.vonboguszewski.name//images/bg.png"
+   				 }
+  			  },
+  			  "mainEntityOfPage": {
+        		 "@type": "WebPage",
+       			 "@id": "http://alexander.vonboguszewski.name/"
+    		  }
+  			
+  			, "dateModified": "2016-12-29T00:00:00&#43;00:00"
+  			, "datePublished": "2016-12-29T00:00:00&#43;00:00"
+  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+		}
+		</script>
+
+		        
+    </head>
+	<body class="avb-light">
+		
+		<nav class="avb-sidebar avb-bar-block avb-small avb-hide-small avb-center">
+		  
+		  <br>
+	      <img src="http://alexander.vonboguszewski.name//images/bg.png" alt="Alexander von Boguszewski" style="width:100%">
+		  <a href="http://alexander.vonboguszewski.name/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;&lt;HOME</p>
+		  </a>
+		  <a href="http://alexander.vonboguszewski.name//techdocs/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;TechDocs</p>
+		  </a>
+		</nav>
+		
+		<div class="avb-top avb-hide-large avb-hide-medium" id="myNavbar">
+		  <div class="avb-bar avb-light avb-opacity avb-hover-opacity-off avb-center avb-small">
+		  	  
+		    <a href="http://alexander.vonboguszewski.name/" class="avb-bar-item avb-button" style="width:25% !important">&lt;&lt;HOME</a>
+		    <a href="http://alexander.vonboguszewski.name//techdocs/" class="avb-bar-item avb-button" style="width:25% !important">&lt;TechDocs</a>
+		  </div>
+		</div>
+		
+		<div class="avb-padding-large" id="main">
+		  
+		  <header class="avb-container avb-padding-medium avb-center avb-light" id="home">
+		  		<br>
+	  			<p class="avb-large font-weight: bold;">Alexander von Boguszewski</p>
+		  		<h1 class="avb-jumbo font-weight: bold;">JDBC Tester</h1>
+		    	<p class="avb-text-normal"></p>
+		    </header>
+	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
+	  			<span class="post-date">Dec 29, 2016 </span>
+	  			<hr style="width:200px" class="avb-opacity">
+                <p>JDBC Verbindungen, insbesondere die Connection URLS sind nicht immer einfach zu testen.
+Für Oracle habe ich ein kleines Beispiel zusammengestellt.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.sql.DriverManager<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.sql.Connection<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.sql.SQLException<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.sql.Statement<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.sql.ResultSet<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.io.Console<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JDBCTester</span> <span style="color:#f92672">{</span>
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String ORACLE_DRIVER <span style="color:#f92672">=</span><span style="color:#e6db74">&#34;oracle.jdbc.driver.OracleDriver&#34;</span><span style="color:#f92672">;</span>
+
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String driverClassName<span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String jdbcURL<span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String username<span style="color:#f92672">;</span>
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String password<span style="color:#f92672">;</span>
+	
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">		Simple Test Program for JDBC Connections
+</span><span style="color:#75715e">		
+</span><span style="color:#75715e">		
+</span><span style="color:#75715e">		EXIT CODES (for further processing in bash/console)
+</span><span style="color:#75715e">		0 = Everything OK
+</span><span style="color:#75715e">		1 = No Connection to Database
+</span><span style="color:#75715e">		2 = No Statement from Connection
+</span><span style="color:#75715e">		3 = No Result from Test Statement
+</span><span style="color:#75715e">		-1 = Can not close Database Connection
+</span><span style="color:#75715e">		-2 = No Database Driver
+</span><span style="color:#75715e">		-3 = No Database URL
+</span><span style="color:#75715e">		-4 = No Console Instance for User/Password Input
+</span><span style="color:#75715e">		
+</span><span style="color:#75715e">		@author Alexander von Boguszewski
+</span><span style="color:#75715e">	**/</span>
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+		System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;\n------------------------------------------------------------------------&#34;</span> <span style="color:#f92672">);</span>
+	
+		parseArgs <span style="color:#f92672">(</span> args <span style="color:#f92672">);</span>
+		validateParams <span style="color:#f92672">();</span>
+
+		System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;\n------------------------------------------------------------------------&#34;</span> <span style="color:#f92672">);</span>
+		System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;Driver Class ................. &#34;</span> <span style="color:#f92672">+</span> driverClassName <span style="color:#f92672">);</span>
+		System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;JDBC URL     ................. &#34;</span> <span style="color:#f92672">+</span> jdbcURL <span style="color:#f92672">);</span>
+		System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;DB User      ................. &#34;</span> <span style="color:#f92672">+</span> username <span style="color:#f92672">);</span>
+		System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;------------------------------------------------------------------------\n\n&#34;</span> <span style="color:#f92672">);</span>
+		
+		Connection connection <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+		<span style="color:#66d9ef">try</span><span style="color:#f92672">{</span>
+			<span style="color:#75715e">/* *****************************************			
+</span><span style="color:#75715e">			   *** TEST Connection with given params ***
+</span><span style="color:#75715e">			   *****************************************/</span>
+			<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+				Class<span style="color:#f92672">.</span><span style="color:#a6e22e">forName</span><span style="color:#f92672">(</span>driverClassName<span style="color:#f92672">);</span>		
+			
+				System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Try connect to database...&#34;</span><span style="color:#f92672">);</span>
+				connection <span style="color:#f92672">=</span> DriverManager<span style="color:#f92672">.</span><span style="color:#a6e22e">getConnection</span><span style="color:#f92672">(</span>
+							jdbcURL<span style="color:#f92672">,</span> username<span style="color:#f92672">,</span>
+							password<span style="color:#f92672">);</span>
+				<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>connection <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+					System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;got Connection to database&#34;</span><span style="color:#f92672">);</span>
+				<span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+					System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ERROR: No connection to database!&#34;</span><span style="color:#f92672">);</span>
+					<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>connection <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>    
+						<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>    
+							connection<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>  
+							System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Close Connection to database&#34;</span><span style="color:#f92672">);</span>
+							connection <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+						<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>SQLException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>  
+							connection <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>				
+							System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ERROR can&#39;t close Connection to database normally&#34;</span><span style="color:#f92672">);</span>
+							e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+							System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span> <span style="color:#f92672">(</span> <span style="color:#f92672">-</span>1 <span style="color:#f92672">);</span>
+						<span style="color:#f92672">}</span>						
+					<span style="color:#f92672">}</span>
+					System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span> <span style="color:#f92672">(</span> 1 <span style="color:#f92672">);</span>
+				<span style="color:#f92672">}</span>			
+			<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>SQLException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				printSQLException<span style="color:#f92672">(</span>e<span style="color:#f92672">);</span>
+				<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>connection <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>    
+					<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>    
+						connection<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>  
+						System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Close Connection to database&#34;</span><span style="color:#f92672">);</span>
+						connection <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+					<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>SQLException e2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>  
+						connection <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>				
+						System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ERROR can&#39;t close Connection to database normally&#34;</span><span style="color:#f92672">);</span>
+						e2<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+						System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span> <span style="color:#f92672">(</span> <span style="color:#f92672">-</span>1 <span style="color:#f92672">);</span>
+					<span style="color:#f92672">}</span>
+				<span style="color:#f92672">}</span>
+				System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span> <span style="color:#f92672">(</span> 1 <span style="color:#f92672">);</span>
+
+			<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ClassNotFoundException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ERROR could not find the JDBC Driver, check classpath and drivername&#34;</span><span style="color:#f92672">);</span>
+				usage <span style="color:#f92672">();</span>	
+				System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span> <span style="color:#f92672">(</span> <span style="color:#f92672">-</span>2 <span style="color:#f92672">);</span>				
+			<span style="color:#f92672">}</span>
+			
+			<span style="color:#75715e">/* *****************************************			
+</span><span style="color:#75715e">			   *** TEST perform select statement *******
+</span><span style="color:#75715e">			   *****************************************/</span>
+			System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Try to perform select Statement...&#34;</span><span style="color:#f92672">);</span>   
+			<span style="color:#66d9ef">try</span><span style="color:#f92672">{</span>
+				<span style="color:#66d9ef">switch</span><span style="color:#f92672">(</span>driverClassName<span style="color:#f92672">)</span>
+				<span style="color:#f92672">{</span>
+					<span style="color:#66d9ef">case</span> ORACLE_DRIVER <span style="color:#f92672">:</span> 
+										String query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT 1 FROM DUAL&#34;</span><span style="color:#f92672">;</span>
+										Statement stmt <span style="color:#f92672">=</span> connection<span style="color:#f92672">.</span><span style="color:#a6e22e">createStatement</span><span style="color:#f92672">();</span>
+										<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>stmt <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+											ResultSet rs <span style="color:#f92672">=</span> stmt<span style="color:#f92672">.</span><span style="color:#a6e22e">executeQuery</span><span style="color:#f92672">(</span>query<span style="color:#f92672">);</span>	
+											<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>rs <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> rs<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">()){</span>
+												<span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> rs<span style="color:#f92672">.</span><span style="color:#a6e22e">getInt</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
+												System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;got Result &#34;</span><span style="color:#f92672">+</span>result<span style="color:#f92672">+</span><span style="color:#e6db74">&#34; from Statement &#34;</span><span style="color:#f92672">+</span>query<span style="color:#f92672">);</span>
+											<span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+												System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ERROR: Get no ResultSet from Query &#34;</span> <span style="color:#f92672">+</span> query<span style="color:#f92672">);</span>
+												System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span> <span style="color:#f92672">(</span> 3 <span style="color:#f92672">);</span>
+											<span style="color:#f92672">}</span>
+										<span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+											System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ERROR: Can not create Statement form Connection&#34;</span><span style="color:#f92672">);</span>
+											System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span> <span style="color:#f92672">(</span> 2 <span style="color:#f92672">);</span>
+										<span style="color:#f92672">}</span>
+										
+										<span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+										
+					default: System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;NO SELECT Tests for &#34;</span> <span style="color:#f92672">+</span> driverClassName<span style="color:#f92672">);</span>
+				<span style="color:#f92672">}</span>
+			<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>SQLException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				printSQLException<span style="color:#f92672">(</span>e<span style="color:#f92672">);</span>
+				<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>connection <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>    
+					<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>    
+						connection<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>  
+						System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Close Connection to database&#34;</span><span style="color:#f92672">);</span>
+						connection <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+					<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>SQLException e2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>  
+						connection <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>				
+						System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ERROR can&#39;t close Connection to database normally&#34;</span><span style="color:#f92672">);</span>
+						e2<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+						System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span> <span style="color:#f92672">(</span> <span style="color:#f92672">-</span>1 <span style="color:#f92672">);</span>
+					<span style="color:#f92672">}</span>
+				<span style="color:#f92672">}</span>
+				System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span> <span style="color:#f92672">(</span> 1 <span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span>
+		
+			System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;End Tests&#34;</span><span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span><span style="color:#f92672">{</span>
+			 <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>connection <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>    
+				<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>    
+					connection<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>  
+					System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Close Connection to database&#34;</span><span style="color:#f92672">);</span>
+					connection <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+				<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>SQLException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>  
+					connection <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>				
+					System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ERROR can&#39;t close Connection to database normally&#34;</span><span style="color:#f92672">);</span>
+					e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+					System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span> <span style="color:#f92672">(</span> <span style="color:#f92672">-</span>1 <span style="color:#f92672">);</span>
+				<span style="color:#f92672">}</span> 
+		<span style="color:#f92672">}</span>
+		System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span> <span style="color:#f92672">(</span> 0 <span style="color:#f92672">);</span>
+
+	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+  <span style="color:#75715e">/**
+</span><span style="color:#75715e">  * Reads argiments from commandline
+</span><span style="color:#75715e">  **/</span>  
+  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">parseArgs</span> <span style="color:#f92672">(</span> String<span style="color:#f92672">[]</span> args <span style="color:#f92672">)</span>
+  <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span> i <span style="color:#f92672">&lt;</span> args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">)</span>
+    <span style="color:#f92672">{</span>
+         <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span> args<span style="color:#f92672">[</span>i<span style="color:#f92672">].</span><span style="color:#a6e22e">compareTo</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;-help&#34;</span> <span style="color:#f92672">)</span> <span style="color:#f92672">==</span> 0 <span style="color:#f92672">)</span>
+        <span style="color:#f92672">{</span>
+            usage<span style="color:#f92672">();</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span> <span style="color:#f92672">(</span> 0 <span style="color:#f92672">);</span>
+            
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span> args<span style="color:#f92672">[</span>i<span style="color:#f92672">].</span><span style="color:#a6e22e">compareTo</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;-driver&#34;</span> <span style="color:#f92672">)</span> <span style="color:#f92672">==</span> 0 <span style="color:#f92672">)</span>
+      <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span> <span style="color:#f92672">(</span>i<span style="color:#f92672">+</span>1<span style="color:#f92672">)</span> <span style="color:#f92672">&gt;=</span> args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">)</span> usage <span style="color:#f92672">();</span>
+        driverClassName <span style="color:#f92672">=</span> args<span style="color:#f92672">[</span>i<span style="color:#f92672">+</span>1<span style="color:#f92672">];</span>
+
+        i <span style="color:#f92672">+=</span> 2<span style="color:#f92672">;</span>
+		
+      <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span> args<span style="color:#f92672">[</span>i<span style="color:#f92672">].</span><span style="color:#a6e22e">compareTo</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;-url&#34;</span> <span style="color:#f92672">)</span> <span style="color:#f92672">==</span> 0 <span style="color:#f92672">)</span>
+      <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span> <span style="color:#f92672">(</span>i<span style="color:#f92672">+</span>1<span style="color:#f92672">)</span> <span style="color:#f92672">&gt;=</span> args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">)</span> usage <span style="color:#f92672">();</span>
+        jdbcURL <span style="color:#f92672">=</span> args<span style="color:#f92672">[</span>i<span style="color:#f92672">+</span>1<span style="color:#f92672">];</span>
+
+        i <span style="color:#f92672">+=</span> 2<span style="color:#f92672">;</span>
+		
+      <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span> args<span style="color:#f92672">[</span>i<span style="color:#f92672">].</span><span style="color:#a6e22e">compareTo</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;-user&#34;</span> <span style="color:#f92672">)</span> <span style="color:#f92672">==</span> 0 <span style="color:#f92672">)</span>
+      <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span> <span style="color:#f92672">(</span>i<span style="color:#f92672">+</span>1<span style="color:#f92672">)</span> <span style="color:#f92672">&gt;=</span> args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">)</span> usage <span style="color:#f92672">();</span>
+        username <span style="color:#f92672">=</span> args<span style="color:#f92672">[</span>i<span style="color:#f92672">+</span>1<span style="color:#f92672">];</span>
+
+        i <span style="color:#f92672">+=</span> 2<span style="color:#f92672">;</span>
+		
+      <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span> args<span style="color:#f92672">[</span>i<span style="color:#f92672">].</span><span style="color:#a6e22e">compareTo</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;-pw&#34;</span> <span style="color:#f92672">)</span> <span style="color:#f92672">==</span> 0 <span style="color:#f92672">)</span>
+      <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span> <span style="color:#f92672">(</span>i<span style="color:#f92672">+</span>1<span style="color:#f92672">)</span> <span style="color:#f92672">&gt;=</span> args<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">)</span> usage <span style="color:#f92672">();</span>
+        password <span style="color:#f92672">=</span> args<span style="color:#f92672">[</span>i<span style="color:#f92672">+</span>1<span style="color:#f92672">];</span>
+
+        i <span style="color:#f92672">+=</span> 2<span style="color:#f92672">;</span>
+		
+      <span style="color:#f92672">}</span>
+        
+	  
+	  <span style="color:#75715e">/**
+</span><span style="color:#75715e">	  else if ( args[i].compareTo ( &#34;-port&#34; ) == 0 )
+</span><span style="color:#75715e">      {
+</span><span style="color:#75715e">        if ( (i+1) &gt;= args.length ) usage ();
+</span><span style="color:#75715e">        String tmp = args[i+1];
+</span><span style="color:#75715e">        try
+</span><span style="color:#75715e">        {
+</span><span style="color:#75715e">            port = Integer.parseInt ( tmp );
+</span><span style="color:#75715e">        }
+</span><span style="color:#75715e">        catch ( NumberFormatException nfe )
+</span><span style="color:#75715e">        {
+</span><span style="color:#75715e">            usage ();
+</span><span style="color:#75715e">        }
+</span><span style="color:#75715e">        i += 2;
+</span><span style="color:#75715e">      }
+</span><span style="color:#75715e">	  **/</span>
+	<span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+  
+  <span style="color:#75715e">/**
+</span><span style="color:#75715e">  *	Set DEFAULTS to driverClassName and jdbcURL if no parameter given.
+</span><span style="color:#75715e">  * Ask for Username and Password if no parameter given
+</span><span style="color:#75715e">  **/</span>
+  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">validateParams</span> <span style="color:#f92672">(){</span>
+	<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>driverClassName<span style="color:#f92672">==</span><span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+		driverClassName<span style="color:#f92672">=</span>ORACLE_DRIVER<span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+	<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>jdbcURL<span style="color:#f92672">==</span><span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+		System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ERROR no JDBC URL given. Try something like \&#34;jdbc:oracle:thin:@localhost:1521:XE\&#34;&#34;</span><span style="color:#f92672">);</span>
+		System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span><span style="color:#f92672">(-</span>3<span style="color:#f92672">);</span>
+	<span style="color:#f92672">}</span>
+	<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>username<span style="color:#f92672">==</span><span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+		<span style="color:#66d9ef">do</span><span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">try</span><span style="color:#f92672">{</span>
+				Console console <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">console</span><span style="color:#f92672">();</span>
+				<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>console <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+					console<span style="color:#f92672">.</span><span style="color:#a6e22e">printf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Enter DB user name: &#34;</span><span style="color:#f92672">);</span>
+					username <span style="color:#f92672">=</span> console<span style="color:#f92672">.</span><span style="color:#a6e22e">readLine</span><span style="color:#f92672">();</span>
+				<span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+					System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Couldn&#39;t get Console instance, use console instead of eclipse. Otherwise set user as param&#34;</span><span style="color:#f92672">);</span>
+					System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span><span style="color:#f92672">(-</span>4<span style="color:#f92672">);</span>		
+				<span style="color:#f92672">}</span>
+			<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">){</span>
+				System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;Cant read username, try again&#34;</span> <span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span>
+		<span style="color:#f92672">}</span> <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>username<span style="color:#f92672">==</span><span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+	<span style="color:#f92672">}</span>
+	<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>password<span style="color:#f92672">==</span><span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+		<span style="color:#66d9ef">do</span><span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">try</span><span style="color:#f92672">{</span>
+				Console console <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">console</span><span style="color:#f92672">();</span>
+				<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>console <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+					<span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> passwordChars <span style="color:#f92672">=</span> console<span style="color:#f92672">.</span><span style="color:#a6e22e">readPassword</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Enter DB user password (hidden): &#34;</span><span style="color:#f92672">);</span>
+					password <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span>passwordChars<span style="color:#f92672">);</span>
+				<span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+					System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Couldn&#39;t get Console instance, use console instead of eclipse. Otherwise set password as param&#34;</span><span style="color:#f92672">);</span>
+					System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span><span style="color:#f92672">(-</span>4<span style="color:#f92672">);</span>		
+				<span style="color:#f92672">}</span>
+			<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">){</span>
+				System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;Cant read password, try again&#34;</span> <span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span>
+		<span style="color:#f92672">}</span> <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>password<span style="color:#f92672">==</span><span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>			
+	<span style="color:#f92672">}</span>
+
+  <span style="color:#f92672">}</span>
+  
+  <span style="color:#75715e">/**
+</span><span style="color:#75715e">  * Prints Usage Information to comandline in case the programm is called with wrong parameters
+</span><span style="color:#75715e">  **/</span>
+  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">usage</span> <span style="color:#f92672">()</span>
+  <span style="color:#f92672">{</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;\nUsage: java -cp ojdbc6.jar;. JDBCTester [options]&#34;</span> <span style="color:#f92672">);</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;\nwhere options are:&#34;</span> <span style="color:#f92672">);</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">);</span>
+	System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34; -driver  &lt;driver class name&gt;    - default is oracle.jdbc.driver.OracleDriver&#34;</span> <span style="color:#f92672">);</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34; -url   &lt;jdbc url&gt; - JDBC URL for the connection (escape this with \&#34;...\&#34;), example \&#34;jdbc:oracle:thin:@localhost:1521:XE\&#34;&#34;</span> <span style="color:#f92672">);</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34; -user  &lt;user name&gt;    - user name, if param not present you will be ask for this&#34;</span> <span style="color:#f92672">);</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34; -pw    &lt;password&gt;     - password, if param not present you will be ask for this&#34;</span> <span style="color:#f92672">);</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34; -help    print this&#34;</span> <span style="color:#f92672">);</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#75715e">/**
+</span><span style="color:#75715e">  * Generic SQLException printout
+</span><span style="color:#75715e">  **/</span>
+  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printSQLException</span><span style="color:#f92672">(</span>SQLException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Throwable e <span style="color:#f92672">:</span> ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>		
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>e <span style="color:#66d9ef">instanceof</span> SQLException<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span> <span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;\nSQL EXCEPTION&#34;</span> <span style="color:#f92672">);</span>
+			SQLException sqlEx <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SQLException<span style="color:#f92672">)</span> e<span style="color:#f92672">;</span>
+
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;SQLState: &#34;</span> <span style="color:#f92672">+</span>
+                    sqlEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getSQLState</span><span style="color:#f92672">());</span>
+
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Error Code: &#34;</span> <span style="color:#f92672">+</span>
+                    sqlEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getErrorCode</span><span style="color:#f92672">());</span>
+
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">err</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Message: &#34;</span> <span style="color:#f92672">+</span> sqlEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+
+            Throwable t <span style="color:#f92672">=</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">getCause</span><span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>t <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Cause: &#34;</span> <span style="color:#f92672">+</span> t<span style="color:#f92672">);</span>
+                t <span style="color:#f92672">=</span> t<span style="color:#f92672">.</span><span style="color:#a6e22e">getCause</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+
+<span style="color:#f92672">}</span></code></pre></div>
+
+<p>Der Oracle JDBC Treiber muss heruntergeladen werden (<a href="http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html">http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html</a>)
+Die Tester Klasse und der Treiber kopieren wir in unseren Arbeitsordner.
+Anschließend kann der Tester kompiliert und ausgeführt werden:</p>
+
+<pre><code>javac JDBCTester.java
+
+java -cp ojdbc6.jar;. JDBCTester
+</code></pre>
+
+<p>Um den Aufruf etwas zu vereinfachen kann noch ein Shell Script um
+den Java Aufruf gebaut werden.</p>
+
+<p><code>vi test_DBXZY.sh</code>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;jdbc:oracle:thin:@localhost:1521:XE&#34;</span>
+USER<span style="color:#f92672">=</span>“avonbo”
+PW<span style="color:#f92672">=</span>“avonboPW”
+
+java -cp ojdbc6.jar;. JDBCTester -url $URL -user $USER -pw $PW</code></pre></div></p>
+
+            </div>
+            <hr style="width:200px" class="avb-opacity">
+        	<div id="footer" style="font-size:small;">
+<span property="dct:title"><a property="cc:attributionName" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Lizensiert unter einer Creative Commons Lizent - Weitergabe unter gleichen Bedingungen</a></span>
+| <a href="/imprint/">Impressum</a>
+</div>
+        </div>
+	</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html
+   prefix="dct: http://purl.org/dc/terms/
+   		   foaf: http://xmlns.com/foaf/0.1/
+   		   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+   		   xf: http://www.w3.org/2002/xforms
+           xsd: http://www.w3.org/2001/XMLSchema
+           xsi: http://www.w3.org/2001/XMLSchema-instance
+           cc: http://creativecommons.org/ns#"
+   lang="de-de"
+>
+    <title> TIBCO BW5 Fault Tolerant Deployment von BW 5 Prozessen &middot; Alexander von Boguszewski </title>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Alexander von Boguszewski">
+<meta name="robots" content="index,follow">
+<meta name="revisit-after" content="5 days">
+<meta name="description" content="">
+<meta property="og:url" content="http://alexander.vonboguszewski.name/techdocs/bw5_fault_tolerance/">
+<meta property="og:title" content="TIBCO BW5 Fault Tolerant Deployment von BW 5 Prozessen">
+<meta property="og:description" content="">
+
+<link rel="stylesheet" href="http://alexander.vonboguszewski.name/css/general.css">
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+	
+	function enc(text) {
+		  var map =  "!\"#$%&'()*+,-";
+			map += "./0123456789:;<=>?";
+			var R = new String()
+			map += "@ABCDEFGHIJKLMNOPQRSTU";
+			map += "VWXYZ[\\]^_`abcdefghijklm";
+			var i, j, c, len;
+			map += "nopqrstuvwxyz{|}~";
+		  	len = map.length;
+		  	for(i = 0; i < text.length; i++) {
+		  	  c = text.charAt(i)
+		  	  j = map.indexOf(c)
+		  	  if (j >= 0) {
+		  	    c = map.charAt((j + len / 2) % len)
+		  	  }
+		  	  R = R + c
+		  	}
+		  	return R;
+		}
+
+		function toggleMe(a,b){
+		  var onDiv=document.getElementById(a);
+			var onLink=document.getElementById(a+"_link");
+			var offDiv=document.getElementById(b);
+			var offLink=document.getElementById(b+"_link");
+		 	if(!onDiv || !offDiv){
+				return true;
+			} else {
+
+			$(offDiv).fadeOut(1500);
+			offLink.style.fontWeight="normal";
+			$(onDiv).fadeIn(1500);
+			onLink.style.fontWeight="bold";
+
+		  	return true;
+			}
+		}
+</script>
+
+ 
+	<script type="application/ld+json">
+		{
+		  "@context": "http://schema.org",
+		  "@type": "BlogPosting",
+  		   "headline": "TIBCO BW5 Fault Tolerant Deployment von BW 5 Prozessen",
+ 			"url" : "http://alexander.vonboguszewski.name/techdocs/bw5_fault_tolerance/",
+  			"author": {
+    			"@type": "Person",
+  				"name" : "Alexander von Boguszewski", 
+  				"url" : "http://alexander.vonboguszewski.name/"
+  			  },
+  			  "publisher": {
+    			"@type": "Organization",
+  				"name" : "Alexander von Boguszewski Personal Webpage" ,
+  				"logo": {
+     				 "@type": "ImageObject",
+      				 "url": "http://alexander.vonboguszewski.name//images/bg.png"
+   				 }
+  			  },
+  			  "mainEntityOfPage": {
+        		 "@type": "WebPage",
+       			 "@id": "http://alexander.vonboguszewski.name/"
+    		  }
+  			
+  			, "dateModified": "2016-04-08T00:00:00&#43;00:00"
+  			, "datePublished": "2016-04-08T00:00:00&#43;00:00"
+  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+		}
+		</script>
+
+		        
+    </head>
+	<body class="avb-light">
+		
+		<nav class="avb-sidebar avb-bar-block avb-small avb-hide-small avb-center">
+		  
+		  <br>
+	      <img src="http://alexander.vonboguszewski.name//images/bg.png" alt="Alexander von Boguszewski" style="width:100%">
+		  <a href="http://alexander.vonboguszewski.name/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;&lt;HOME</p>
+		  </a>
+		  <a href="http://alexander.vonboguszewski.name//techdocs/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;TechDocs</p>
+		  </a>
+		</nav>
+		
+		<div class="avb-top avb-hide-large avb-hide-medium" id="myNavbar">
+		  <div class="avb-bar avb-light avb-opacity avb-hover-opacity-off avb-center avb-small">
+		  	  
+		    <a href="http://alexander.vonboguszewski.name/" class="avb-bar-item avb-button" style="width:25% !important">&lt;&lt;HOME</a>
+		    <a href="http://alexander.vonboguszewski.name//techdocs/" class="avb-bar-item avb-button" style="width:25% !important">&lt;TechDocs</a>
+		  </div>
+		</div>
+		
+		<div class="avb-padding-large" id="main">
+		  
+		  <header class="avb-container avb-padding-medium avb-center avb-light" id="home">
+		  		<br>
+	  			<p class="avb-large font-weight: bold;">Alexander von Boguszewski</p>
+		  		<h1 class="avb-jumbo font-weight: bold;">TIBCO BW5 Fault Tolerant Deployment von BW 5 Prozessen</h1>
+		    	<p class="avb-text-normal"></p>
+		    </header>
+	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
+	  			<span class="post-date">Apr 8, 2016 </span>
+	  			<hr style="width:200px" class="avb-opacity">
+                <p>Innerhalb einer TIBCO Domain kann dieFehlertoleranz durch die Verwendung mehrerer BW Engines erhöht werden.
+Im Falle eines Ausfalls einer Engine, kann eine andere Engine die Anwendung und die zugehörigen Prozesse neu starten.
+Dies ist aber nicht bei allen Prozess-Startern möglich. Beispielsweise wartet der HTTP-Starter auf Anfragen an einen bestimmten Port auf der Maschine auf der die Prozess-Engine gestartet wurde. Wenn eine sekundäre Engine den
+Prozess für eine Master-Engine übernimmt werden die HTTP Anfragen auf dem neuen Host entgegengenommen. HTTP-Anfragen gehen immer an einen definierten Host, dass heist, dass  eingehende HTTP-Anforderungen nicht automatisch umgeleitet. Hier ist zusätzlich noch ein Load Balancer nötig.
+
+<figure >
+    
+        <img src="/techdocs/bw5_fault_tolerance/before_failover.png" />
+    
+    
+    <figcaption>
+        <h4>Domain vor dem Failover</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<figure >
+    
+        <img src="/techdocs/bw5_fault_tolerance/after_failover.png" />
+    
+    
+    <figcaption>
+        <h4>Domain nach dem Failover</h4>
+        
+    </figcaption>
+    
+</figure>
+</p>
+
+<p>Um die Fault Tolerance einzurichten, muss die Applikation auf mindestens zwei Hosts deployed sein. Um die Applikation auf einen zweiten Host zu deployen, muss unter
+<code>Application Management–&gt;Application Name–&gt;Configuration–&gt;Process-Archive.par–&gt;General-&gt;Add additional Machines</code>
+ein zweiter Host hinzugefügt werden. Nach dem Hinzufügen des zweiten Hosts muss die Fault Tolerant konfiguriert werden. Die Option “FT Group Setting” muss hierzu aktiviert werden.
+Mit dem Heartbeat Interval wird die Häufigkeit angegeben mit der der Master die Sekundären Hosts über seine Verfügbarkeit informiert. Über den Activation Interval wird angegeben nach
+welcher Zeitspanne der Sekundäre Host gestartet wird.
+
+<figure >
+    
+        <img src="/techdocs/bw5_fault_tolerance/FT_Configuration.png" alt="Anlegen einer neuen Fault Tolerance Configuration" />
+    
+    
+</figure>
+
+Wenn mehrere Hosts in der FT Gruppe konfiguriert sind, kann über FT Weight konfiguriert werden, welcher Sekundärer Host vom Master im Falle eines Ausfalls übernimmt. Wenn alle Engines gleichberechtigt sind,
+übernimmt bei einem Ausfall eine Engine den Prozess und behält die Verarbeitung, bis auch sie ausfällt. Bei einer Master/Slave Konfiguration wird der Prozess bei der Wiederherstellung des Masters auf dem Slave gestoppt und an den Master übergeben.<br />
+Wenn eine Datenbank zur Speicherung der Prozessdaten einer Prozessinstanz verwendet wird (wird beim Einrichten der Domain konfiguriert), kann im Failover die Prozessinstanz mit den Zustand des letzten Checkpoints neu gestartet werden.
+Im Falle eines Ausfalls sind nur Datenänderungen, die nach dem Checkpoint ausgeführt wurden, verloren.
+Dazu kann unter <code>Application Management–&gt;Application Name–&gt;Configuration–&gt;Process-Archive.par–Advanced-&gt; Checkpoint Data Repository</code> eine JDBC Connection Resource ausgewählt werden.</p>
+
+<p>Über AppManage kann die FT Konfiguration auch automatisiert angelegt werden.
+Eine Beispiel XML Konfiguration hierfür ist:</p>
+
+<pre><code>vi sampleProj.xml
+&lt;services&gt;
+        &lt;bw name=&quot;ProcessArchive.par&quot;&gt;
+            &lt;enabled&gt;true&lt;/enabled&gt;
+            &lt;bindings&gt;
+                &lt;binding name=&quot;ProcessArchive&quot;&gt;
+                    &lt;machine&gt;eai2&lt;/machine&gt;
+                    &lt;product&gt;
+                        &lt;type&gt;BW&lt;/type&gt;
+                        &lt;version&gt;5.12&lt;/version&gt;
+                        &lt;location&gt;/opt/tibco/soa/bw/5.12&lt;/location&gt;
+                    &lt;/product&gt;
+                    &lt;setting&gt;
+                    &lt;/setting&gt;
+                    &lt;ftWeight&gt;200&lt;/ftWeight&gt;
+                    &lt;shutdown&gt;
+                        &lt;checkpoint&gt;false&lt;/checkpoint&gt;
+                        &lt;timeout&gt;0&lt;/timeout&gt;
+                    &lt;/shutdown&gt;
+                &lt;/binding&gt;
+                &lt;binding name=&quot;ProcessArchive-2&quot;&gt;
+                    &lt;machine&gt;localhost&lt;/machine&gt;
+                    &lt;product&gt;
+                        &lt;type&gt;BW&lt;/type&gt;
+                        &lt;version&gt;5.12&lt;/version&gt;
+                        &lt;location&gt;/opt/tibco/soa/bw/5.12&lt;/location&gt;
+                    &lt;/product&gt;
+                    &lt;setting&gt;
+                     &lt;/setting&gt;
+                    &lt;ftWeight&gt;200&lt;/ftWeight&gt;
+                    &lt;shutdown&gt;
+                        &lt;checkpoint&gt;false&lt;/checkpoint&gt;
+                        &lt;timeout&gt;0&lt;/timeout&gt;
+                    &lt;/shutdown&gt;
+                &lt;/binding&gt;
+            &lt;/bindings&gt;
+&lt;/services&gt;
+
+./AppManage -deploy -ear /home/tibco/ProcessArchive.par -deployConfig /home/tibco/sampleProj.xml -domain test_avb -user admin -pw admin 
+</code></pre>
+
+            </div>
+            <hr style="width:200px" class="avb-opacity">
+        	<div id="footer" style="font-size:small;">
+<span property="dct:title"><a property="cc:attributionName" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Lizensiert unter einer Creative Commons Lizent - Weitergabe unter gleichen Bedingungen</a></span>
+| <a href="/imprint/">Impressum</a>
+</div>
+        </div>
+	</body>
+</html>

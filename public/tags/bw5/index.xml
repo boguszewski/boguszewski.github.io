@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bw5 on Alexander von Boguszewski</title>
+    <link>http://alexander.vonboguszewski.name/tags/bw5/</link>
+    <description>Recent content in Bw5 on Alexander von Boguszewski</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-de</language>
+    <lastBuildDate>Thu, 12 Jan 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://alexander.vonboguszewski.name/tags/bw5/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TIBCO BW5 Hawk Alerts verarbeiten</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/bw5_hawk_messages/</link>
+      <pubDate>Thu, 12 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/bw5_hawk_messages/</guid>
+      <description>Leider gibt es keine vorkonfigurierte Palette mit denen Hawk Alerts und Notifications in einem Tibco BW Prozess eingelesen werden können. Mit einem Java Process Starter und der Hawk Console API kann man die Alerts trotzdem recht leicht abgreifen. Für eine HAWK Domain mit EMS als Data Transport habe ich ein kleines Beispiel erstellt. Wichtig ist es die HAWK, EMS und RV Bibliotheken im Classpath vorhanden sind. Ich habe das JAR tibrvj.</description>
+    </item>
+    
+    <item>
+      <title>TIBCO BW5 Oracle XE Datenbank Rechte für TIBCO Admin Domain</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/bw5_prepare_oracle/</link>
+      <pubDate>Mon, 11 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/bw5_prepare_oracle/</guid>
+      <description>Beim Einsatz von TIBCO EMS als Transport für die Administration Domain, muss eine Datenbank als Repository angegeben werden. Bei kleineren Systemen, wie beispielsweise einer lokalen Testinstallation, eignet sich Oracle XE ganz gut. In der XE muss für die Tibco Domain ein Datenbankuser mit den richtigen Rechten angelegt werden, damit die Domain über das DomainUtility ohne Probleme erzeugt werden kann.
+create user TIBCODOM identified by tibcoPass; GRANT CONNECT,RESOURCE,UNLIMITED TABLESPACE TO TIBCODOM ALTER USER TIBCODOM DEFAULT TABLESPACE USERS; ALTER USER TIBCODOM TEMPORARY TABLESPACE TEMP;  </description>
+    </item>
+    
+    <item>
+      <title>TIBCO BW5 Administration Domain</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/bw5_create_domain/</link>
+      <pubDate>Fri, 08 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/bw5_create_domain/</guid>
+      <description>Die Administration Domain umfasst eine zentrale Verwaltungs-, Überwachungs- und Deployment-, sowie die verteilte Laufzeit-Umgebung für BW Applikationen. Die Domain verwaltet alle Server (Machines), Benutzer, BW Komponenten und Projekte. Hierbei sind einzelne Maschinen sind nicht auf Domänen beschränkt, sondern können Applikationen von mehreren Domains ausführen.
+ Schema BW5 Domain   Eine Domain besteht aus folgenden Komponenten
+Machines Eine oder mehrere Server (Machines) auf denen die BW Engines ausgeführt werden. Im Verzeichnis &amp;lt;TIBCO_HOME&amp;gt; werden alle relevanten Tibco Applikationen installiert.</description>
+    </item>
+    
+    <item>
+      <title>TIBCO BW5 Fault Tolerant Deployment von BW 5 Prozessen</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/bw5_fault_tolerance/</link>
+      <pubDate>Fri, 08 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/bw5_fault_tolerance/</guid>
+      <description>Innerhalb einer TIBCO Domain kann dieFehlertoleranz durch die Verwendung mehrerer BW Engines erhöht werden. Im Falle eines Ausfalls einer Engine, kann eine andere Engine die Anwendung und die zugehörigen Prozesse neu starten. Dies ist aber nicht bei allen Prozess-Startern möglich. Beispielsweise wartet der HTTP-Starter auf Anfragen an einen bestimmten Port auf der Maschine auf der die Prozess-Engine gestartet wurde. Wenn eine sekundäre Engine den Prozess für eine Master-Engine übernimmt werden die HTTP Anfragen auf dem neuen Host entgegengenommen.</description>
+    </item>
+    
+    <item>
+      <title>TIBCO BW5 Application Deployment</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/bw5_deployment/</link>
+      <pubDate>Tue, 15 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/bw5_deployment/</guid>
+      <description>Anlegen einer Applikation Im Tibco Administrator unter Application Management -&amp;gt; New Application auswählen und ein EAR hochladen. Der Application Name lautet beispielsweise &amp;lt;DOMAIN&amp;gt;_MyAPP Um mehrere Applikationen zu gruppieren, können auch Verzeichnisse angelegt werden.   Konfigurieren der Application unter Im Tibco Administrator unter Application Management/&amp;lt;DOMAIN&amp;gt;_MyAPP unter Configuration/MyApp im Tab Advanced die Global Properties anpassen.   Konfiguration BW Prozesse Im Tibco Administrator unter Application Management/&amp;lt;DOMAIN&amp;gt;_MyAPP unter Configuration/MyApp/My Process.par wird der Service konfiguriert.</description>
+    </item>
+    
+    <item>
+      <title>TIBCO BW5 Appmanage</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/bw5_appmanage/</link>
+      <pubDate>Wed, 02 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/bw5_appmanage/</guid>
+      <description>Mit AppManage können BW Applikationen in einer TIBCO BW Domain verwaltet werden. Mit AppManage kann unter Anderen ein Deployment über die Kommandozeile vorbereitet und durchgeführt werden, Applikationen gestartet und gestoppt werden. Das Tool findet sich unter /&amp;lt;TIBCO_HOME&amp;gt;/tra/&amp;lt;VERSION&amp;gt;/bin, bei mir unter /opt/tibco/soa/tra/5.9/bin/AppManage
+Als Beispiel möchte ich hier eine BW Applikation deployen und starten. Hierfür habe ich im Designer einen einfachen Prozess entwickelt, der Nachrichten von einer Queue in ein Logfile schreibt.</description>
+    </item>
+    
+    <item>
+      <title>TIBCO BW5 Export und Import von Tibco Domain Usern</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/bw5_export_users/</link>
+      <pubDate>Sat, 16 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/bw5_export_users/</guid>
+      <description>Die User einer Tibco BW5 Domain können über die Kommandoziele im- und exportiert werden. Das Tool ExportDomainSecurity im Verzeichnis &amp;lt;TIBCO_HOME&amp;gt;/tra/&amp;lt;VERSION&amp;gt;/bin hilft dabei
+./ExportDomainSecurity -domain test_avb -allUsers -roleMembership -ACLS -GUID -cred credentials -file /tmp/users
+ausführen um eine Datei mit Nutzern zu exportieren.
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;UserManagement&amp;gt; &amp;lt;user name=&amp;quot;admin&amp;quot;&amp;gt; &amp;lt;password&amp;gt;#!I/BriFOGV5ltDJZCy64lRK+XAdNpkz&amp;lt;/password&amp;gt; &amp;lt;lastModDate&amp;gt;1456953280416&amp;lt;/lastModDate&amp;gt; &amp;lt;GUID&amp;gt;5e0dc204_153392ec103_-7ffb7f000001&amp;lt;/GUID&amp;gt; &amp;lt;userSource&amp;gt;1&amp;lt;/userSource&amp;gt; &amp;lt;/user&amp;gt; &amp;lt;user name=&amp;quot;alex&amp;quot;&amp;gt; &amp;lt;password&amp;gt;#!SVX8NDrBFjBWGxa9voVaF5J7+s/OMv&amp;lt;/password&amp;gt; &amp;lt;lastModDate&amp;gt;1458223714586&amp;lt;/lastModDate&amp;gt; &amp;lt;GUID&amp;gt;3f345044_1537c032d13_-7e2f7f000001&amp;lt;/GUID&amp;gt; &amp;lt;userSource&amp;gt;1&amp;lt;/userSource&amp;gt; &amp;lt;/user&amp;gt; &amp;lt;accessControlList name=&amp;quot;TIBCO Administrator/Application Management/MyApps&amp;quot; op=&amp;quot;Read&amp;quot; type=&amp;quot;Admin&amp;quot;&amp;gt; &amp;lt;user&amp;gt;alex&amp;lt;/user&amp;gt; &amp;lt;/accessControlList&amp;gt; &amp;lt;accessControlList name=&amp;quot;TIBCO Administrator/Application Management/MyApps&amp;quot; op=&amp;quot;Write&amp;quot; type=&amp;quot;Admin&amp;quot;&amp;gt; &amp;lt;user&amp;gt;alex&amp;lt;/user&amp;gt; &amp;lt;/accessControlList&amp;gt; &amp;lt;accessControlList name=&amp;quot;TIBCO Administrator/Application Management/MyApps&amp;quot; op=&amp;quot;Admin&amp;quot; type=&amp;quot;Admin&amp;quot;&amp;gt; &amp;lt;user&amp;gt;alex&amp;lt;/user&amp;gt; &amp;lt;/accessControlList&amp;gt; &amp;lt;accessControlList name=&amp;quot;TIBCO Administrator/Application Management/TIBCO Servers&amp;quot; op=&amp;quot;Read&amp;quot; type=&amp;quot;Admin&amp;quot;&amp;gt; &amp;lt;user&amp;gt;alex&amp;lt;/user&amp;gt; &amp;lt;/accessControlList&amp;gt; &amp;lt;/UserManagement&amp;gt;  </description>
+    </item>
+    
+    <item>
+      <title>TIBCO Hawk Architektur</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/hawk_configure/</link>
+      <pubDate>Sat, 02 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/hawk_configure/</guid>
+      <description>TIBCO Hawk ist ein Tool zum Überwachen und Verwalten von verteilten Anwendungen und Systemen. Systemadministratoren können Verhalten, Anwendungs- und Systemparameter für alle Knoten in einem Netzwerk überwachen und automatisierte Aktionen ausführen lassen wenn definierte Bedingungen eintreten. Im Gegensatz zu den meisten anderen Management Lösungen ist HAWK als verteiltes System konzipiert. Es gibt daher keinen zentralen Server, der Informationen von den anderen Knoten sammelt. Daher gibt es keinen Single Point of Failure, wenn der Server aus irgendeinem Grund ausfällt.</description>
+    </item>
+    
+    <item>
+      <title>TIBCO BW5 ein EAR-File aus einer Domain exportieren</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/bw5_export_ear/</link>
+      <pubDate>Fri, 27 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/bw5_export_ear/</guid>
+      <description>Das EAR und die Konfiguration einer Tibco BW Applikation kann mit AppManage aus einer Domain exportiert werden. Entweder einzelne oder als Batch Job. Um eine einzelne Applikation nach /tmp/bwexport/myapp/ zu exportieren kann AppManage mit der Option Export aufgerufen werden.
+AppManage -export -out /tmp/bwexport/myapp/config.xml -genEar -ear c/tmp/bwexport/myapp/myapp.ear -app root/folder1/MyApp -user admin -pw admin -domain test
+Mit dem batchExport werden alle Applikationen und die Konfigurationen in das Verzeichnis /tmp/bwexport abgelegt.
+./AppManage -batchExport - -exportDeployed -dir /tmp/bwexport domain test -user admin -pw admin</description>
+    </item>
+    
+    <item>
+      <title>Tibco Administrator Nutzer via ImportDomainSecurity anlegen</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/bw5_add_admin_user/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/bw5_add_admin_user/</guid>
+      <description>Mit dem Tool ImportDomainSecurity können unter anderem User in einer Tibco Domain angelegt werden. Ein neuer User wird über eine XML Datei beschrieben.
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;UserManagement&amp;gt; &amp;lt;role name=&amp;quot;Role1&amp;quot;&amp;gt; &amp;lt;members&amp;gt; &amp;lt;user&amp;gt;NewUser1&amp;lt;/user&amp;gt; &amp;lt;/members&amp;gt; &amp;lt;/role&amp;gt; &amp;lt;user name=&amp;quot;NewUser1&amp;quot;&amp;gt; &amp;lt;password&amp;gt;#!8LesLHVtT83GQEJZEzE89g==&amp;lt;/password&amp;gt; &amp;lt;userSource&amp;gt;1&amp;lt;/userSource&amp;gt; &amp;lt;/user&amp;gt; &amp;lt;/UserManagement&amp;gt;  Das Passwort muss verschlüsselt in die Datei eingetragen werden. Um das Passwort für den Nutzer verschlüsseln legen wir eine Textdatei mit dem String “pw=#!” angelegt werden. Anschließend kann mit obfuscate ein Passwort eingegeben werden.</description>
+    </item>
+    
+  </channel>
+</rss>
