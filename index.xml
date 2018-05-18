@@ -28,7 +28,8 @@
       <guid>http://alexander.vonboguszewski.name/imprint/</guid>
       <description>Verantwortlich für den Inhalt (gem. § 55 Abs. 2 RStV): Alexander von Boguszewski, Fauviller Ring 37, 53501 Grafschaft
 E-Mail: (alexander [at] vonboguszewski (.) name)
-var data = enc(&#34;2=6I2?56CoG@?3@8FDK6HD\u003c:]?2\u003e6&#34;); var text = document.createTextNode(data); document.getElementById(&#34;email&#34;).appendChild(text);  Hinweise Der übernimmt keine Gewähr für die Vollständigkeit, Richtigkeit oder Aktualität der bereitgestellten Inhalte. Dies gilt auch für fremde Inhalte, auf die hier durch Links verwiesen wird. Diese Websites unterliegen der Haftung der jeweiligen Betreiber. Durch das Setzen von externen Links macht sich der Anbieter die hinter dem Verweis oder Link liegenden Inhalte nicht zu eigen.</description>
+var data = enc(&#34;2=6I2?56CoG@?3@8FDK6HD\u003c:]?2\u003e6&#34;); var text = document.createTextNode(data); document.getElementById(&#34;email&#34;).appendChild(text);  Hinweise Die Verwendung der Kontaktdaten des Impressums zur gewerblichen Werbung ist ausdrücklich nicht erwünscht.
+Der übernimmt keine Gewähr für die Vollständigkeit, Richtigkeit oder Aktualität der bereitgestellten Inhalte. Dies gilt auch für fremde Inhalte, auf die hier durch Links verwiesen wird.</description>
     </item>
     
     <item>
@@ -120,6 +121,16 @@ var data = enc(&#34;2=6I2?56CoG@?3@8FDK6HD\u003c:]?2\u003e6&#34;); var text = do
       <guid>http://alexander.vonboguszewski.name/techdocs/bwce_on_kubernetes/</guid>
       <description>In diesem Blogpost werden wir die TIBCO BWCE Applikation entwickeln und das Docker Image auf einem lokalen Kubernetes Cluster (Minikube) starten.
 Was ist Kubernetes? Kubernetes (K8s, griechisch für &amp;ldquo;Steuermann&amp;rdquo; oder &amp;ldquo;Pilot&amp;rdquo;) ist ein Open-Source-System zur Automatisierung von Deployment, Skalierung und Management von containerisierten Anwendungen. Es wurde ursprünglich von Google erstellt und ist meiner Meinung nach das das verbreitetste Tool zur Container Orchestrierung. Einen einfachen Einstieg um K8 auf einem Laptop zu nutzen ist Minikube.</description>
+    </item>
+    
+    <item>
+      <title>Bonjour auf der Komandozeile</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/bonjour/</link>
+      <pubDate>Sun, 12 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/bonjour/</guid>
+      <description>Ich habe den Bonjour Dienst oft verwendet um die Konfig-Website meines AVR zu finden. Seid Safari dieses Feature nicht mehr anbietet, muss ich hierfür auf die CMD zurückgreifen. Um die per Bojour annoncierte Webseiten im lokalen Netzwerk zu finden (in etwa so wie Safari es konnte) reicht der Befehl
+ dns-sd -B Browsing for _http._tcp DATE: ---SUN 12 Nov 2017--- 16:52:12.485 ...STARTING... Timestamp A/R Flags if Domain Service Type Instance Name 16:52:12.</description>
     </item>
     
     <item>

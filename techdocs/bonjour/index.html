@@ -9,15 +9,15 @@
            cc: http://creativecommons.org/ns#"
    lang="de-de"
 >
-    <title> Impressum &middot; Alexander von Boguszewski </title>
+    <title> Bonjour auf der Komandozeile &middot; Alexander von Boguszewski </title>
 	<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Alexander von Boguszewski">
 <meta name="robots" content="index,follow">
 <meta name="revisit-after" content="5 days">
 <meta name="description" content="">
-<meta property="og:url" content="http://alexander.vonboguszewski.name/imprint/">
-<meta property="og:title" content="Impressum">
+<meta property="og:url" content="http://alexander.vonboguszewski.name/techdocs/bonjour/">
+<meta property="og:title" content="Bonjour auf der Komandozeile">
 <meta property="og:description" content="">
 
 <link rel="stylesheet" href="/css/general.css">
@@ -72,8 +72,8 @@
 		{
 		  "@context": "http://schema.org",
 		  "@type": "BlogPosting",
-  		   "headline": "Impressum",
- 			"url" : "http://alexander.vonboguszewski.name/imprint/",
+  		   "headline": "Bonjour auf der Komandozeile",
+ 			"url" : "http://alexander.vonboguszewski.name/techdocs/bonjour/",
   			"author": {
     			"@type": "Person",
   				"name" : "Alexander von Boguszewski", 
@@ -92,6 +92,8 @@
        			 "@id": "http://alexander.vonboguszewski.name/"
     		  }
   			
+  			, "dateModified": "2017-11-12T00:00:00&#43;00:00"
+  			, "datePublished": "2017-11-12T00:00:00&#43;00:00"
   			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
 		}
 		</script>
@@ -107,8 +109,8 @@
 		  <a href="/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
 		    <p>&lt;&lt;HOME</p>
 		  </a>
-		  <a href="/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
-		    <p>&lt;About</p>
+		  <a href="/techdocs/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;TechDocs</p>
 		  </a>
 		</nav>
 		
@@ -116,7 +118,7 @@
 		  <div class="avb-bar avb-light avb-opacity avb-hover-opacity-off avb-center avb-small">
 		  	  
 		    <a href="/" class="avb-bar-item avb-button" style="width:25% !important">&lt;&lt;HOME</a>
-		    <a href="/" class="avb-bar-item avb-button" style="width:25% !important">&lt;About</a>
+		    <a href="/techdocs/" class="avb-bar-item avb-button" style="width:25% !important">&lt;TechDocs</a>
 		  </div>
 		</div>
 		
@@ -125,41 +127,49 @@
 		  <header class="avb-container avb-padding-medium avb-center avb-light" id="home">
 		  		<br>
 	  			<p class="avb-large font-weight: bold;">Alexander von Boguszewski</p>
-		  		<h1 class="avb-jumbo font-weight: bold;">Impressum</h1>
+		  		<h1 class="avb-jumbo font-weight: bold;">Bonjour auf der Komandozeile</h1>
 		    	<p class="avb-text-normal"></p>
 		    </header>
 	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
-	  			<span class="post-date">Jan 1, 0001 </span>
+	  			<span class="post-date">Nov 12, 2017 </span>
 	  			<hr style="width:200px" class="avb-opacity">
-                
+                <p>Ich habe den Bonjour Dienst oft verwendet um die Konfig-Website meines AVR zu finden. Seid Safari dieses
+Feature nicht mehr anbietet, muss ich hierfür auf die CMD zurückgreifen.
+Um die per Bojour annoncierte Webseiten im lokalen Netzwerk zu finden (in etwa so wie Safari es konnte) reicht der Befehl</p>
 
-<p>Verantwortlich für den Inhalt (gem. § 55 Abs. 2 RStV):
-Alexander von Boguszewski, Fauviller Ring 37, 53501 Grafschaft</p>
+<pre><code>  dns-sd -B 
+Browsing for _http._tcp
+DATE: ---SUN 12 Nov 2017---
+16:52:12.485  ...STARTING...
+Timestamp     A/R    Flags  if Domain               Service Type         Instance Name
+16:52:12.487  Add        3   8 local.               _http._tcp.          MyAVR
 
-<p>E-Mail: <p id="email"></p> (alexander [at] vonboguszewski (.) name)</p>
+</code></pre>
 
-<script type="text/javascript">
-		var data = enc("2=6I2?56CoG@?3@8FDK6HD\u003c:]?2\u003e6");
-		var text = document.createTextNode(data);
-		document.getElementById("email").appendChild(text);
-</script>
+<p>Mit dem gelieferten Instance Name erhalte ich dann den Hostname</p>
 
-<h3 id="hinweise">Hinweise</h3>
+<pre><code>dns-sd -L &quot;MyAVR&quot;  _http._tcp.
+Lookup MyAVR._http._tcp..local
+DATE: ---SUN 12 Nov 2017---
+16:53:54.339  ...STARTING...
+16:53:54.507  MyAVR._http._tcp.local. can be reached at MyAVR.local.:80 (interface 8)
+...
+</code></pre>
 
-<p>Die Verwendung der Kontaktdaten des Impressums zur gewerblichen Werbung ist ausdrücklich nicht erwünscht.</p>
+<p>Hier finden wir den aktuellen (Bonjour-)Hostnamen der Website an. Mit dem wir die IP Adresse herausfinden können.</p>
 
-<p>Der übernimmt keine Gewähr für die Vollständigkeit, Richtigkeit oder Aktualität der bereitgestellten Inhalte.
-Dies gilt auch für fremde Inhalte, auf die hier durch Links verwiesen wird. Diese Websites unterliegen der Haftung der jeweiligen Betreiber. Durch das Setzen von externen Links macht sich der Anbieter die hinter dem Verweis oder Link liegenden Inhalte nicht zu eigen.
-Bei Kenntnis von Rechtsverstößen werden jedoch derartige externe Links zeitnah gelöscht.</p>
+<pre><code>
+dns-sd -Gv4v6 MyAVR.local
+DATE: ---SUN 12 Nov 2017---
+17:01:18.291  ...STARTING...
+Timestamp     A/R Flags if Hostname                               Address                                      TTL
+17:01:18.627  Add     3  8 MyAVR.local.                          192.168.1.12                                 120
+</code></pre>
 
-<p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />Die angebotenen Inhalte und Informationen sind lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International Lizenz</a>.</p>
+<p>Um selbst eine Webseite zu annoncieren, die von lokal auf Port 80 gehostet wird</p>
 
-<h3 id="datenschutz">Datenschutz</h3>
-
-<p>Wir erheben, verarbeiten und nutzen personenbezogene Daten soweit dies erforderlich ist, um Ihnen die Inanspruchnahme des Webangebots zu ermöglichen (Nutzungsdaten, Logging der Zugriffe, etc).
-Die Nutzung der Webseite ist ohne Angabe personenbezogener Daten möglich.
-Wenn Sie uns personenbezogene Daten (wie Name, Anschrift oder E-Mail Adresse) zukommen lassen, erfolgt dies auf freiwilliger Basis.
-Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.</p>
+<pre><code>  dns-sd -R &quot;MeinTest&quot; _http._tcp . 80 path=/
+</code></pre>
 
             </div>
             <hr style="width:200px" class="avb-opacity">

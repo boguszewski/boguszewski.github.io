@@ -6,10 +6,20 @@
     <description>Recent content in Admin on Alexander von Boguszewski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de-de</language>
-    <lastBuildDate>Sat, 02 Jan 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://alexander.vonboguszewski.name/categories/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bonjour auf der Komandozeile</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/bonjour/</link>
+      <pubDate>Sun, 12 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/bonjour/</guid>
+      <description>Ich habe den Bonjour Dienst oft verwendet um die Konfig-Website meines AVR zu finden. Seid Safari dieses Feature nicht mehr anbietet, muss ich hierfür auf die CMD zurückgreifen. Um die per Bojour annoncierte Webseiten im lokalen Netzwerk zu finden (in etwa so wie Safari es konnte) reicht der Befehl
+ dns-sd -B Browsing for _http._tcp DATE: ---SUN 12 Nov 2017--- 16:52:12.485 ...STARTING... Timestamp A/R Flags if Domain Service Type Instance Name 16:52:12.</description>
+    </item>
     
     <item>
       <title>TIBCO Hawk Architektur</title>
