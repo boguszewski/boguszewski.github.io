@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Things on Alexander von Boguszewski</title>
+    <link>http://alexander.vonboguszewski.name/tags/things/</link>
+    <description>Recent content in Things on Alexander von Boguszewski</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-de</language>
+    <lastBuildDate>Thu, 19 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://alexander.vonboguszewski.name/tags/things/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Links zu Outlook-E-Mails in MacOS - Application URL outlook://</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/outlook_things/</link>
+      <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/outlook_things/</guid>
+      <description>Wie ich Outlook E-Mails aus Things öffne.
+Things ist ein großartiger Taskmanager mit einer recht guten Integration in die MacOS Board Tools. Ich verwende aber Outlook für meine Arbeits-E-Mail.
+Doch jedes Mal wenn eine E-Mail zu einer neuen Aufgabe führt, find ich den Workflow mit Copy&amp;amp;Paste und dem QuickEntry Panel nicht sonderlich Benutzerfreundlich. Außerdem gibt es keinen weg um auf die ursprüngliche E-Mail zurückzukommen. Aber dies wäre hilfreich. Manchmal sind die Einzelheiten der Aufgabe in der E-Mail zu finden, manchmal habe ich Referenzdokumente an die E-Mail angehängt oder ich muss einfach auf die E-Mail antworten, wenn ich mit der Aufgabe fertig bin.</description>
+    </item>
+    
+  </channel>
+</rss>

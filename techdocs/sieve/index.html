@@ -73,28 +73,28 @@
 		  "@context": "http://schema.org",
 		  "@type": "BlogPosting",
   		   "headline": "SIEVE Email Regeln",
- 			"url" : "http://alexander.vonboguszewski.name/techdocs/sieve/",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/sieve\/",
   			"author": {
     			"@type": "Person",
   				"name" : "Alexander von Boguszewski", 
-  				"url" : "http://alexander.vonboguszewski.name/"
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
   			  },
   			  "publisher": {
     			"@type": "Organization",
   				"name" : "Alexander von Boguszewski Personal Webpage" ,
   				"logo": {
      				 "@type": "ImageObject",
-      				 "url": "http://alexander.vonboguszewski.name/images/bg.png"
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
    				 }
   			  },
   			  "mainEntityOfPage": {
         		 "@type": "WebPage",
-       			 "@id": "http://alexander.vonboguszewski.name/"
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
     		  }
   			
-  			, "dateModified": "2015-11-12T00:00:00&#43;00:00"
-  			, "datePublished": "2015-11-12T00:00:00&#43;00:00"
-  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+  			, "dateModified": "2015-11-12T00:00:00\u002b00:00"
+  			, "datePublished": "2015-11-12T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
 		}
 		</script>
 
@@ -133,47 +133,34 @@
 	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
 	  			<span class="post-date">Nov 12, 2015 </span>
 	  			<hr style="width:200px" class="avb-opacity">
-                
-
-<p>Mit SIEVE können Emails serverseitig auf IMAP-Servern verarbeitet werden. Mit der sieveshell können die Skripte auf den Server geladen werden.
+                <p>Mit SIEVE können Emails serverseitig auf IMAP-Servern verarbeitet werden. Mit der sieveshell können die Skripte auf den Server geladen werden.
 Es kann immer nur ein Skript aktiviert sein.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sieveshell –user<span style="color:#f92672">=</span>hdab –a hdab localhost
 put myscript.sieve
 activate myscript.sieve</code></pre></div>
-
 <h2 id="syntax">Syntax</h2>
-
 <h3 id="kommentare">Kommentare</h3>
-
 <p>Kommentarzeilen beginnen mit &ldquo;#&rdquo;.</p>
-
 <h3 id="zahlen">Zahlen</h3>
-
 <p>Nur positive Ganzzahlen sind erlaubt. Größen können über  &ldquo;K&rdquo; , &ldquo;M&rdquo; und &ldquo;G&rdquo;  für Kilobytes, Megabytes und Gigabytes angegeben werden.</p>
-
 <h3 id="strings">Strings</h3>
-
-<p>Strings werden durch &ldquo; eingeleitet. Das Escapezeichen ist . String-Listen werden mit &ldquo;[&rdquo; eingeleitet und mit &ldquo;]&rdquo; abgeschlossen.</p>
-
+<p>Strings werden durch &quot; eingeleitet. Das Escapezeichen ist . String-Listen werden mit &ldquo;[&rdquo; eingeleitet und mit &ldquo;]&rdquo; abgeschlossen.</p>
 <h3 id="kontrollstrukturen">Kontrollstrukturen</h3>
-
-<p>Sieve ermöglicht Wenn-Dann Konstrukte mit:
-* if
-* elsif
-* else</p>
-
+<p>Sieve ermöglicht Wenn-Dann Konstrukte mit:</p>
+<ul>
+<li>if</li>
+<li>elsif</li>
+<li>else</li>
+</ul>
 <p>Ein if leitet eine bedingte Anweisung ein. Nur wenn die zu testende Bedingung zutrifft, wird der nachfolgende Codeblock ausgeführt. Wenn nicht, dann können weitere Bedingungen mittels elsif abgefragt werden. Falls keine der Bedingungen aus den &ldquo;if&rdquo;- und &ldquo;elsif&rdquo;-Blöcken zutrifft, werden die Anweisungen des &ldquo;else&rdquo;-Blocks abgearbeitet, sofern vorhanden.</p>
-
 <h3 id="vergleiche-von-zeichenketten">Vergleiche von Zeichenketten</h3>
-
-<p>Es bestehen mehrere Vergleichsoperationen für Strings:
-* :contains prüft, ob eine bestimmte Zeichenkette in einem anderen String enthalten ist.
-* :is führt einen exakten Vergleich durch, d.h. die Inhalte der verglichenen Zeichenketten müssen exakt übereinstimmen.
-* :matches beinhaltet eine Möglichkeit, beim Vergleich Teile einer Zeichenkette ungeprüft zu belassen. Mit dem Symbol * können mehrere, mit dem Symbol ? genau ein Zeichen freigestellt werden. So wird beispielsweise G?n alle dreibuchstabigen Wörter mit einem großen G am Anfang und einem kleinen n am Ende finden, während G*n alle Wörter von Gin über Gasmann bis hin zu Gesundheitskartenevaluierungskommission und darüber hinaus adressieren wird.</p>
-
+<p>Es bestehen mehrere Vergleichsoperationen für Strings:</p>
+<ul>
+<li>:contains prüft, ob eine bestimmte Zeichenkette in einem anderen String enthalten ist.</li>
+<li>:is führt einen exakten Vergleich durch, d.h. die Inhalte der verglichenen Zeichenketten müssen exakt übereinstimmen.</li>
+<li>:matches beinhaltet eine Möglichkeit, beim Vergleich Teile einer Zeichenkette ungeprüft zu belassen. Mit dem Symbol * können mehrere, mit dem Symbol ? genau ein Zeichen freigestellt werden. So wird beispielsweise G?n alle dreibuchstabigen Wörter mit einem großen G am Anfang und einem kleinen n am Ende finden, während G*n alle Wörter von Gin über Gasmann bis hin zu Gesundheitskartenevaluierungskommission und darüber hinaus adressieren wird.</li>
+</ul>
 <h3 id="adressen-matching">Adressen-Matching</h3>
-
 <p>E-Mail-Adressen mit dem Keyword address geprüft werden. Natürlich ist es möglich, die Absender- oder die Empfängeradresse zu prüfen. Dabei wird generell nur auf die eigentliche Adresse verglichen, also alles was zwischen den spitzen Klammern geschrieben steht. Um den kompletten String zu vergleichen, sollte man auf Name &ldquo;&lt;&rdquo; Adresse &ldquo;&gt;&rdquo; prüfen. Die Anführungszeichen kennzeichnen hierbei Strings. Um Adressen auf den Teil vor dem @ oder nach dem @ zu prüfen, können die optionalen Argumente :localpart bzw. :domain genutzt werden. Standardmäßig wird die komplette Adresse geprüft (entspricht :all).
 Größenvergleiche
 Die Größe einer Mail prüft man mit dem Keyword size. Vergleiche mit Zahlen kann man mit den Operatoren :over bzw. :under durchführen.
@@ -182,17 +169,17 @@ Header können mit dem Keyword header geprüft werden. Header-Felder können gan
 Blöcke
 Um nach einem Test mehrere Anweisungen auszuführen können Blöcke mit {} gebildet werden.
 Anweisungen
-Wenn eine Regel matcht können folgende Anweisungen ausgeführt werden:
-* stop Beendet die Ausführung. Falls keine Regel zugetroffen hat, wird die Nachricht in der INBOX belassen (Impliziertes keep)
-* keep Speichert die Nachricht in der INBOX
-* redirect Weiterleiten einer Nachricht. Als Argument wird eine E-Mail-Adresse angegeben.
-* discard Löscht die Nachricht. Der Absender erhält davon keine Nachricht.
-* reject Diese Anweisung sorgt dafür, dass die Nachricht abgelehnt wird. Optional kann man einen Grund für die Ablehnung angeben. Es wird eine sogenannte &ldquo;Message Delivery Notification&rdquo; erstellt. Falls man &ldquo;reject&rdquo; nutzen will, muss man dies über den &ldquo;require reject&rdquo; am Anfang des Scriptes anfordern.
-* fileinto Die Nachricht kann in einen bestimmten Ordner verschoben werden. Dazu muss als Argument der Folder in der für den Server spezifischen Form angegeben werden. Will man &ldquo;fileinto&rdquo; nutzen, muss man es als erstes über den &ldquo;require&rdquo; anfordern.</p>
-
+Wenn eine Regel matcht können folgende Anweisungen ausgeführt werden:</p>
+<ul>
+<li>stop Beendet die Ausführung. Falls keine Regel zugetroffen hat, wird die Nachricht in der INBOX belassen (Impliziertes keep)</li>
+<li>keep Speichert die Nachricht in der INBOX</li>
+<li>redirect Weiterleiten einer Nachricht. Als Argument wird eine E-Mail-Adresse angegeben.</li>
+<li>discard Löscht die Nachricht. Der Absender erhält davon keine Nachricht.</li>
+<li>reject Diese Anweisung sorgt dafür, dass die Nachricht abgelehnt wird. Optional kann man einen Grund für die Ablehnung angeben. Es wird eine sogenannte &ldquo;Message Delivery Notification&rdquo; erstellt. Falls man &ldquo;reject&rdquo; nutzen will, muss man dies über den &ldquo;require reject&rdquo; am Anfang des Scriptes anfordern.</li>
+<li>fileinto Die Nachricht kann in einen bestimmten Ordner verschoben werden. Dazu muss als Argument der Folder in der für den Server spezifischen Form angegeben werden. Will man &ldquo;fileinto&rdquo; nutzen, muss man es als erstes über den &ldquo;require&rdquo; anfordern.</li>
+</ul>
 <h2 id="beispielskript">Beispielskript</h2>
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">require [&#34;fileinto&#34;, &#34;reject&#34;];
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">require [&#34;fileinto&#34;, &#34;reject&#34;];
 
 # Nachrichten größer 100K werden abgewiesen mit einer Fehlermeldung
 #
@@ -223,7 +210,7 @@ header :matches &#34;Subject&#34; [&#34;*money*&#34;,&#34;*Viagra*&#34;])
 
 else {
      keep;
-}</code></pre></div></p>
+}</code></pre></div>
 
             </div>
             <hr style="width:200px" class="avb-opacity">

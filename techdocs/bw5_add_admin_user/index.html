@@ -73,28 +73,28 @@
 		  "@context": "http://schema.org",
 		  "@type": "BlogPosting",
   		   "headline": "Tibco Administrator Nutzer via ImportDomainSecurity anlegen",
- 			"url" : "http://alexander.vonboguszewski.name/techdocs/bw5_add_admin_user/",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/bw5_add_admin_user\/",
   			"author": {
     			"@type": "Person",
   				"name" : "Alexander von Boguszewski", 
-  				"url" : "http://alexander.vonboguszewski.name/"
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
   			  },
   			  "publisher": {
     			"@type": "Organization",
   				"name" : "Alexander von Boguszewski Personal Webpage" ,
   				"logo": {
      				 "@type": "ImageObject",
-      				 "url": "http://alexander.vonboguszewski.name/images/bg.png"
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
    				 }
   			  },
   			  "mainEntityOfPage": {
         		 "@type": "WebPage",
-       			 "@id": "http://alexander.vonboguszewski.name/"
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
     		  }
   			
-  			, "dateModified": "2014-04-02T00:00:00&#43;00:00"
-  			, "datePublished": "2014-04-02T00:00:00&#43;00:00"
-  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+  			, "dateModified": "2014-04-02T00:00:00\u002b00:00"
+  			, "datePublished": "2014-04-02T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
 		}
 		</script>
 
@@ -134,7 +134,6 @@
 	  			<span class="post-date">Apr 2, 2014 </span>
 	  			<hr style="width:200px" class="avb-opacity">
                 <p>Mit dem Tool <em>ImportDomainSecurity</em> können unter anderem User in einer Tibco Domain angelegt werden. Ein neuer User wird über eine XML Datei beschrieben.</p>
-
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;UserManagement&gt;
 	&lt;role name=&quot;Role1&quot;&gt;
@@ -147,18 +146,13 @@
 		&lt;userSource&gt;1&lt;/userSource&gt;
 	&lt;/user&gt;
 &lt;/UserManagement&gt;
-</code></pre>
-
-<p>Das Passwort muss verschlüsselt in die Datei eingetragen werden.
+</code></pre><p>Das Passwort muss verschlüsselt in die Datei eingetragen werden.
 Um das Passwort für den Nutzer verschlüsseln legen wir eine Textdatei mit dem String “pw=#!” angelegt werden. Anschließend kann mit <em>obfuscate</em> ein Passwort eingegeben werden.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">printf <span style="color:#e6db74">&#34;pw=\x23\x21\x21\n&#34;</span> &gt; pw.txt
 ./obfuscate -password pw.txt</code></pre></div>
-
 <p>Anschließend ist in der Datei das Passwort verschlüsselt gespeichert. Dieses Password kann in die die XML Datei kopiert werden
 Wenn die Admin Zugangsdaten nicht in Klartext in die Kommandozeile getippt werden sollen, kann eine Credentials Datei angelegt werden.
 Das Password kann natürlich auch mit VI in die Datei geschrieben werden.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">printf <span style="color:#e6db74">&#34;user=%s\npw=\x23\x21%s\n&#34;</span> <span style="color:#e6db74">&#34;admin&#34;</span> <span style="color:#e6db74">&#34;adminpassword” &gt; cred
 </span><span style="color:#e6db74">./obfuscate -password cred
 </span><span style="color:#e6db74">./ImportDomainSecurity -noACLs -domain test_avb -cred cred -file /tmp/newUser</span></code></pre></div>

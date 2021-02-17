@@ -73,28 +73,28 @@
 		  "@context": "http://schema.org",
 		  "@type": "BlogPosting",
   		   "headline": "TIBCO BW6 einrichten",
- 			"url" : "http://alexander.vonboguszewski.name/techdocs/bw6_create_domain_oracle/",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/bw6_create_domain_oracle\/",
   			"author": {
     			"@type": "Person",
   				"name" : "Alexander von Boguszewski", 
-  				"url" : "http://alexander.vonboguszewski.name/"
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
   			  },
   			  "publisher": {
     			"@type": "Organization",
   				"name" : "Alexander von Boguszewski Personal Webpage" ,
   				"logo": {
      				 "@type": "ImageObject",
-      				 "url": "http://alexander.vonboguszewski.name/images/bg.png"
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
    				 }
   			  },
   			  "mainEntityOfPage": {
         		 "@type": "WebPage",
-       			 "@id": "http://alexander.vonboguszewski.name/"
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
     		  }
   			
-  			, "dateModified": "2017-08-18T00:00:00&#43;00:00"
-  			, "datePublished": "2017-08-18T00:00:00&#43;00:00"
-  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+  			, "dateModified": "2017-08-18T00:00:00\u002b00:00"
+  			, "datePublished": "2017-08-18T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
 		}
 		</script>
 
@@ -133,119 +133,62 @@
 	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
 	  			<span class="post-date">Aug 18, 2017 </span>
 	  			<hr style="width:200px" class="avb-opacity">
-                
-
-<p>BW6 kann über verschiedene Weisen konfiguriert werden. Die einfachste Möglichkeit ist TIBCO ActiveSpaces für den Datatransport und den Datastorage zu verwenden.
+                <p>BW6 kann über verschiedene Weisen konfiguriert werden. Die einfachste Möglichkeit ist TIBCO ActiveSpaces für den Datatransport und den Datastorage zu verwenden.
 Aktuell ist dies jedoch nur für Testsysteme empfohlen. Daher richte ich BW6 hier mit einer Oracle DB als Datastorrage und EMS als Datatransport ein.
 Ich habe Oracle und EMS auf der gleichen Maschine installiert wie BW6. Ich gehe davon aus, das EMS mit den Standardkonfigurationen läuft.</p>
-
 <h2 id="datenbank-user-anlegen">Datenbank User Anlegen</h2>
-
 <p>Als erstes müssen wir einen Datenbanknutzer für die BW Domain angelegen.
 Für dieses Beispiel habe habe ich eine Oracle XE Instance auf dem selben
 Rechner verwendet, auf dem auch BW installiert ist.</p>
-
 <pre><code>create user bw6 identified by bw6;
 grant connect,resource to bw6;
-</code></pre>
-
-
-<figure >
-    
-        <img src="/techdocs/bw6_create_domain_oracle/1_create_db_user.png" />
-    
-    
-    <figcaption>
-        <h4>Datenbank Nutzer anlegen</h4>
-        
-    </figcaption>
-    
+</code></pre><figure>
+    <img src="/techdocs/bw6_create_domain_oracle/1_create_db_user.png"/> <figcaption>
+            <h4>Datenbank Nutzer anlegen</h4>
+        </figcaption>
 </figure>
-
 
 <p>Anschließend müssen die Tabellen für den Datastore angelegt werden.
 Ein entsprechendes Skript wird mit der BW6 Installation mitgeliefert.
 Das Skript liegt im Ordner <code>&lt;TIBCO_HOME&gt;/bw/6.x/config/dbscripts/admin/</code></p>
-
-
-<figure >
-    
-        <img src="/techdocs/bw6_create_domain_oracle/2_create_oracle_tables.png" />
-    
-    
-    <figcaption>
-        <h4>Datenbank Tabellen anlegen</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bw6_create_domain_oracle/2_create_oracle_tables.png"/> <figcaption>
+            <h4>Datenbank Tabellen anlegen</h4>
+        </figcaption>
 </figure>
-
 
 <h2 id="oracle-db-treiber-kopieren">Oracle DB Treiber kopieren</h2>
-
-<p>Aus der Oracle XE Installation muss der JDBC Treiber nach TIBCO_HOME\bw\6.<x>\config\design\thirdparty  und nach  TIBCO_HOME\bw\6.<x>\config\drivers/shells/jdbc.oracle.runtime/runtime/plugins/com.tibco.bw.jdbc.datasourcefactory.oracle/lib/ kopiert werden</p>
-
+<p>Aus der Oracle XE Installation muss der JDBC Treiber nach TIBCO_HOME\bw\6.<!-- raw HTML omitted -->\config\design\thirdparty  und nach  TIBCO_HOME\bw\6.<!-- raw HTML omitted -->\config\drivers/shells/jdbc.oracle.runtime/runtime/plugins/com.tibco.bw.jdbc.datasourcefactory.oracle/lib/ kopiert werden</p>
 <pre><code>tibco@eai1:~&gt; cp /u01/app/oracle/product/11.2.0/xe/jdbc/lib/ojdbc6.jar /opt/tibco/soa/bw/6.3/config/design/thirdparty/
 tibco@eai1:~&gt; cp /u01/app/oracle/product/11.2.0/xe/jdbc/lib/ojdbc6.jar /opt/tibco/soa/bw/6.3/config/drivers/shells/jdbc.oracle.runtime/runtime/plugins/com.tibco.bw.jdbc.datasourcefactory.oracle/lib/
-</code></pre>
-
-
-<figure >
-    
-        <img src="/techdocs/bw6_create_domain_oracle/3_install_oracle_dirver.png" />
-    
-    
-    <figcaption>
-        <h4>Datenbank Treiber installieren</h4>
-        
-    </figcaption>
-    
+</code></pre><figure>
+    <img src="/techdocs/bw6_create_domain_oracle/3_install_oracle_dirver.png"/> <figcaption>
+            <h4>Datenbank Treiber installieren</h4>
+        </figcaption>
 </figure>
 
-
 <p>Anschließend muss die Datenbankkonfiguration in der Datei  <code>TIBCO_HOME\bw\6.&lt;x&gt;\config\bwagent_db.json</code> angepasst werden.</p>
-
 <pre><code>dbtype: oracle,
 dbdriver: &quot;oracle.jdbc.driver.OracleDriver&quot;,
 dbconnectionurl: &quot;jdbc:oracle:thin:@localhost:1521:XE&quot;,
 dbuser: bw6,
 dbpassword: bw6,
-</code></pre>
-
-<p>dann die Konfiguration für den agent übernehmen <code>bwadmin  config -cf /opt/tibco/soa/bw/6.3/config/bwagent_db.json agent</code>
-
-<figure >
-    
-        <img src="/techdocs/bw6_create_domain_oracle/4_create_bwagent.png" />
-    
-    
-    <figcaption>
-        <h4>bwadmin  config -cf /opt/tibco/soa/bw/6.3/config/bwagent_db.json agent</h4>
-        
-    </figcaption>
-    
+</code></pre><p>dann die Konfiguration für den agent übernehmen <code>bwadmin  config -cf /opt/tibco/soa/bw/6.3/config/bwagent_db.json agent</code>
+<figure>
+    <img src="/techdocs/bw6_create_domain_oracle/4_create_bwagent.png"/> <figcaption>
+            <h4>bwadmin  config -cf /opt/tibco/soa/bw/6.3/config/bwagent_db.json agent</h4>
+        </figcaption>
 </figure>
 </p>
-
 <p>In der Agentkonfiguration sind die Änderungen jetzt sichtbar
 <code>/opt/tibco/soa/bw/6.3/config/bwagent.ini</code></p>
-
 <p>und den agent starten.Jetzt kann mit dem BW Admin eine neue Domain angelegt und die neue DB Konfiguration
 angelegt werden</p>
-
-
-<figure >
-    
-        <img src="/techdocs/bw6_create_domain_oracle/5_create_domain.png" />
-    
-    
-    <figcaption>
-        <h4>Appspace anlegen</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bw6_create_domain_oracle/5_create_domain.png"/> <figcaption>
+            <h4>Appspace anlegen</h4>
+        </figcaption>
 </figure>
-
 
 <pre><code>bwadmin[admin]&gt; mode enterprise
 bwadmin[admin]&gt; create domain myDBDomain
@@ -253,21 +196,11 @@ bwadmin[admin]&gt; cd myDBDomain
 bwadmin[admin@myDBDomain]&gt; create appspace myAppspace
 bwadmin[admin@myDBDomain]&gt; cd myAppspace
 bwadmin[admin@myDBDomain/myAppspace]&gt; create -hp 6666 appnode h01n01
-</code></pre>
-
-
-<figure >
-    
-        <img src="/techdocs/bw6_create_domain_oracle/6_startAppspace.png" />
-    
-    
-    <figcaption>
-        <h4>start Appspace myAppspace</h4>
-        
-    </figcaption>
-    
+</code></pre><figure>
+    <img src="/techdocs/bw6_create_domain_oracle/6_startAppspace.png"/> <figcaption>
+            <h4>start Appspace myAppspace</h4>
+        </figcaption>
 </figure>
-
 
 <p>.</p>
 

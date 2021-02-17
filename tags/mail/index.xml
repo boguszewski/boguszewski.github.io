@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mail on Alexander von Boguszewski</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Mail on Alexander von Boguszewski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de-de</language>
-    <lastBuildDate>Thu, 12 Nov 2015 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://alexander.vonboguszewski.name/tags/mail/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 12 Nov 2015 00:00:00 +0000</lastBuildDate><atom:link href="http://alexander.vonboguszewski.name/tags/mail/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SIEVE Email Regeln</title>
       <link>http://alexander.vonboguszewski.name/techdocs/sieve/</link>
@@ -20,7 +16,7 @@
       <description>Mit SIEVE können Emails serverseitig auf IMAP-Servern verarbeitet werden. Mit der sieveshell können die Skripte auf den Server geladen werden. Es kann immer nur ein Skript aktiviert sein.
 sieveshell –user=hdab –a hdab localhost put myscript.sieve activate myscript.sieve Syntax Kommentare Kommentarzeilen beginnen mit &amp;ldquo;#&amp;rdquo;.
 Zahlen Nur positive Ganzzahlen sind erlaubt. Größen können über &amp;ldquo;K&amp;rdquo; , &amp;ldquo;M&amp;rdquo; und &amp;ldquo;G&amp;rdquo; für Kilobytes, Megabytes und Gigabytes angegeben werden.
-Strings Strings werden durch &amp;ldquo; eingeleitet.</description>
+Strings Strings werden durch &amp;quot; eingeleitet. Das Escapezeichen ist .</description>
     </item>
     
   </channel>

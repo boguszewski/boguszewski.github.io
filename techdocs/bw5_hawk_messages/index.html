@@ -73,28 +73,28 @@
 		  "@context": "http://schema.org",
 		  "@type": "BlogPosting",
   		   "headline": "TIBCO BW5 Hawk Alerts verarbeiten",
- 			"url" : "http://alexander.vonboguszewski.name/techdocs/bw5_hawk_messages/",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/bw5_hawk_messages\/",
   			"author": {
     			"@type": "Person",
   				"name" : "Alexander von Boguszewski", 
-  				"url" : "http://alexander.vonboguszewski.name/"
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
   			  },
   			  "publisher": {
     			"@type": "Organization",
   				"name" : "Alexander von Boguszewski Personal Webpage" ,
   				"logo": {
      				 "@type": "ImageObject",
-      				 "url": "http://alexander.vonboguszewski.name/images/bg.png"
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
    				 }
   			  },
   			  "mainEntityOfPage": {
         		 "@type": "WebPage",
-       			 "@id": "http://alexander.vonboguszewski.name/"
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
     		  }
   			
-  			, "dateModified": "2017-01-12T00:00:00&#43;00:00"
-  			, "datePublished": "2017-01-12T00:00:00&#43;00:00"
-  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+  			, "dateModified": "2017-01-12T00:00:00\u002b00:00"
+  			, "datePublished": "2017-01-12T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
 		}
 		</script>
 
@@ -140,9 +140,7 @@ trotzdem recht leicht abgreifen.
 Für eine HAWK Domain mit EMS als Data Transport habe ich ein kleines Beispiel
 erstellt. Wichtig ist es die HAWK, EMS und RV Bibliotheken im Classpath vorhanden
 sind. Ich habe das JAR tibrvj.jar noch in der TRA Konfiguration manuell aufnehmen müssen.</p>
-
 <p>Der wichtigste Code Teil ist in der INIT Methode des Java Process Starters</p>
-
 <pre><code>public void init() throws Exception {
 
 
@@ -203,9 +201,7 @@ sind. Ich habe das JAR tibrvj.jar noch in der TRA Konfiguration manuell aufnehme
 	public void onStop() throws Exception {
 		hawkMonitor.shutdown();
 	}
-</code></pre>
-
-<p>Hier wird die Verbindung zur Hawk Domain aufgebaut und die Listener auf die Alerts definiert.
+</code></pre><p>Hier wird die Verbindung zur Hawk Domain aufgebaut und die Listener auf die Alerts definiert.
 Um den Alert Meldung im BW Prozess zu verwenden muss ein Mapping durchgeführt werden.
 Der Einfachheit halber speichere ich die Daten des Alerts, wie Text und Level in einer Map.
 In einem zweiten Schritt, einer Java Code Activity, lese ich die Map aus und kopiere die Werte

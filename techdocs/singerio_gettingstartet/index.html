@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html
+   prefix="dct: http://purl.org/dc/terms/
+   		   foaf: http://xmlns.com/foaf/0.1/
+   		   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+   		   xf: http://www.w3.org/2002/xforms
+           xsd: http://www.w3.org/2001/XMLSchema
+           xsi: http://www.w3.org/2001/XMLSchema-instance
+           cc: http://creativecommons.org/ns#"
+   lang="de-de"
+>
+    <title> Singer.io ETL getting started &middot; Alexander von Boguszewski </title>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Alexander von Boguszewski">
+<meta name="robots" content="index,follow">
+<meta name="revisit-after" content="5 days">
+<meta name="description" content="">
+<meta property="og:url" content="http://alexander.vonboguszewski.name/techdocs/singerio_gettingstartet/">
+<meta property="og:title" content="Singer.io ETL getting started">
+<meta property="og:description" content="">
+
+<link rel="stylesheet" href="/css/general.css">
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+	
+	function enc(text) {
+		  var map =  "!\"#$%&'()*+,-";
+			map += "./0123456789:;<=>?";
+			var R = new String()
+			map += "@ABCDEFGHIJKLMNOPQRSTU";
+			map += "VWXYZ[\\]^_`abcdefghijklm";
+			var i, j, c, len;
+			map += "nopqrstuvwxyz{|}~";
+		  	len = map.length;
+		  	for(i = 0; i < text.length; i++) {
+		  	  c = text.charAt(i)
+		  	  j = map.indexOf(c)
+		  	  if (j >= 0) {
+		  	    c = map.charAt((j + len / 2) % len)
+		  	  }
+		  	  R = R + c
+		  	}
+		  	return R;
+		}
+
+		function toggleMe(a,b){
+		  var onDiv=document.getElementById(a);
+			var onLink=document.getElementById(a+"_link");
+			var offDiv=document.getElementById(b);
+			var offLink=document.getElementById(b+"_link");
+		 	if(!onDiv || !offDiv){
+				return true;
+			} else {
+
+			$(offDiv).fadeOut(1500);
+			offLink.style.fontWeight="normal";
+			$(onDiv).fadeIn(1500);
+			onLink.style.fontWeight="bold";
+
+		  	return true;
+			}
+		}
+</script>
+
+ 
+	<script type="application/ld+json">
+		{
+		  "@context": "http://schema.org",
+		  "@type": "BlogPosting",
+  		   "headline": "Singer.io ETL getting started",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/singerio_gettingstartet\/",
+  			"author": {
+    			"@type": "Person",
+  				"name" : "Alexander von Boguszewski", 
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
+  			  },
+  			  "publisher": {
+    			"@type": "Organization",
+  				"name" : "Alexander von Boguszewski Personal Webpage" ,
+  				"logo": {
+     				 "@type": "ImageObject",
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
+   				 }
+  			  },
+  			  "mainEntityOfPage": {
+        		 "@type": "WebPage",
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
+    		  }
+  			
+  			, "dateModified": "2020-01-19T00:00:00\u002b00:00"
+  			, "datePublished": "2020-01-19T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
+		}
+		</script>
+
+		        
+    </head>
+	<body class="avb-light">
+		
+		<nav class="avb-sidebar avb-bar-block avb-small avb-hide-small avb-center">
+		  
+		  <br>
+	      <img src="/images/bg.png" alt="Alexander von Boguszewski" style="width:100%">
+		  <a href="/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;&lt;HOME</p>
+		  </a>
+		  <a href="/techdocs/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;TechDocs</p>
+		  </a>
+		</nav>
+		
+		<div class="avb-top avb-hide-large avb-hide-medium" id="myNavbar">
+		  <div class="avb-bar avb-light avb-opacity avb-hover-opacity-off avb-center avb-small">
+		  	  
+		    <a href="/" class="avb-bar-item avb-button" style="width:25% !important">&lt;&lt;HOME</a>
+		    <a href="/techdocs/" class="avb-bar-item avb-button" style="width:25% !important">&lt;TechDocs</a>
+		  </div>
+		</div>
+		
+		<div class="avb-padding-large" id="main">
+		  
+		  <header class="avb-container avb-padding-medium avb-center avb-light" id="home">
+		  		<br>
+	  			<p class="avb-large font-weight: bold;">Alexander von Boguszewski</p>
+		  		<h1 class="avb-jumbo font-weight: bold;">Singer.io ETL getting started</h1>
+		    	<p class="avb-text-normal"></p>
+		    </header>
+	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
+	  			<span class="post-date">Jan 19, 2020 </span>
+	  			<hr style="width:200px" class="avb-opacity">
+                <p><a href="https://www.singer.io">Singer</a>, entwickelt von <a href="https://www.talend.com/">Talend</a>, ist ein Open-Source-Tool, das die Entwicklung von Ingestion Prozessen erleichtert.
+Singer wurde so strukturiert ETL Prozesse so, dass Datenein- und Ausgänge zu verbinden, wodurch ETL-Prozesse  modular aufgebaut und recht einfacher zu betreiben sind. Bei der Verarbeitung werden die Daten im JSON Format zwischen Quellen und Zielen übertragen, so dass Sie inkompatible Formate kein Problem darstellen sollten.
+Wie also macht Singer all dies? Im Wesentlichen bricht es ein ETL-Skripte in Taps und Targets auf, die im Folgenden beschrieben werden:</p>
+<p>Taps sind Skripte zur Datenextraktion, mit denen Daten aus Dateien, Datenbanken und APIs abgerufen werden können.</p>
+<p>Targets sind Skripte zum Laden von Daten, die dazu bestimmt sind, die von Taps extrahierten Daten zu nehmen und sie zu ihrem Zielort zu bewegen.</p>
+<p>Ziemlich unkompliziert, oder? Leider funktioniert das Beispiel auf der Website nicht. Also doch kompliziert.</p>
+<p>Daher hier das ganze Beispiel um Wechselkurs-Daten aus Exchangeratesapi.io in eine CSV-Datei zu übertragen</p>
+<p>Zunächst müssen wir eine virtuelle Python Umgebung für den Tap einrichten.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">python3 -m venv tap-exchangeratesapi
+source tap-exchangeratesapi/bin/activate
+pip install tap-exchangeratesapi
+deactivate</code></pre></div>
+<p>Danach müssen wir dasselbe jetzt auch das Ziel tun:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">python3 -m venv target-csv
+source target-csv/bin/activate
+pip --install target-csv
+deactivate</code></pre></div>
+<p>Sobald wir das Target und Tap installiert haben, müssen wir die Konfigurationsdateien im Arbeitsverzeichnis bearbeiten. Dies ist notwendig, um einige Parameter zu setzen:</p>
+<p>**Credentials: Falls erforderlich, geben wir die Zugangsdaten für den Aufruf der Datenquelle ein. In der Regel handelt es sich dabei um einen API-Schlüssel, es kann sich aber auch um beispielsweise username/passwort handeln.</p>
+<p>**Start Date: Definiert bei der ersten Synchronisierung, ab welchem Datum Daten geladen werden sollen. Startdaten müssen im RFC3339 Format angegeben sein.</p>
+<p>**User Agent: Kontaktinformationen für den Fall, dass der API-Anbieter diese benötigt.</p>
+<p>Für unser Beispiel müssen wir nur das Tap konfigurieren:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi exchangetap.config</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;base&#34;</span>: <span style="color:#e6db74">&#34;AUD&#34;</span>,
+    <span style="color:#f92672">&#34;start_date&#34;</span>: <span style="color:#e6db74">&#34;2020-01-19&#34;</span>
+}</code></pre></div>
+<p>Einige Taps unterstützen den Discovery-Modus, der es ermöglicht, eine Beschreibung der Daten-Streams zu erhalten. Wenn Ihr Tap für den Discovery-Modus unterstützt, können wir den Parameter &ndash;discover hinzufügen.</p>
+<p>Sobald das erledigt ist, können wir den Tap ausführen und die Ausgabe direkt an das Ziel leiten.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./tap-exchangeratesapi/bin/tap-exchangeratesapi -c exchangetap.config | ./target-csv/bin/target-csv </code></pre></div>
+<p>Um das nächste Startdatum zu ermitteln können wir das letzte Datum ausloggen:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./tap-exchangeratesapi/bin/tap-exchangeratesapi -c tap.config | ./target-csv/bin/target-csv &gt; nextrun.json</code></pre></div>
+<p>Singer.io ist meiner Meinung nach ein einfach zu verstehendes Framework für Data Ingestion und hat theoretisch viel Potenzial! Es ist quelloffen und hat eine Menge Taps und Targets die einfach installiert und eingebunden werden können. Es können jedoch einige Probleme auftreten, da nicht alle Taps und Targes auf dem neuesten Stand gehalten werden und es zu inkompatiblitäten bei den Abhänigkeiten kommen kann, venv ist die Lösung.
+Außerdem gibt es keine Möglichkeit zum Mapping von einem Schema auf ein anderes. Ansonsten sind die Singer-Bibliotheken und -Vorlagen ziemlich gut dokumentiert und gepflegt, so dass der Prozess zur Erstellung einer Integration ziemlich einfach war. Für die automatisierte Verarbeitung bietet Talend ein kommerzielles Angebot.</p>
+<p>+++</p>
+
+            </div>
+            <hr style="width:200px" class="avb-opacity">
+        	<div id="footer" style="font-size:small;">
+<span property="dct:title"><a property="cc:attributionName" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Lizensiert unter einer Creative Commons Lizent - Weitergabe unter gleichen Bedingungen</a></span>
+| <a href="/imprint/">Impressum</a>
+</div>
+        </div>
+	</body>
+</html>

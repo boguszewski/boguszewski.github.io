@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bwce on Alexander von Boguszewski</title>
+    <title>BWCE on Alexander von Boguszewski</title>
     <link>http://alexander.vonboguszewski.name/tags/bwce/</link>
-    <description>Recent content in Bwce on Alexander von Boguszewski</description>
+    <description>Recent content in BWCE on Alexander von Boguszewski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de-de</language>
-    <lastBuildDate>Sat, 23 Dec 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://alexander.vonboguszewski.name/tags/bwce/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 23 Dec 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://alexander.vonboguszewski.name/tags/bwce/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TIBCO BWCE auf Kubernetes</title>
       <link>http://alexander.vonboguszewski.name/techdocs/bwce_on_kubernetes/</link>

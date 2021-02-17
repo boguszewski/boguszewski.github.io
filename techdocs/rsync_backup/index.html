@@ -73,28 +73,28 @@
 		  "@context": "http://schema.org",
 		  "@type": "BlogPosting",
   		   "headline": "Automatisches Backup Linux mit rsync",
- 			"url" : "http://alexander.vonboguszewski.name/techdocs/rsync_backup/",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/rsync_backup\/",
   			"author": {
     			"@type": "Person",
   				"name" : "Alexander von Boguszewski", 
-  				"url" : "http://alexander.vonboguszewski.name/"
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
   			  },
   			  "publisher": {
     			"@type": "Organization",
   				"name" : "Alexander von Boguszewski Personal Webpage" ,
   				"logo": {
      				 "@type": "ImageObject",
-      				 "url": "http://alexander.vonboguszewski.name/images/bg.png"
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
    				 }
   			  },
   			  "mainEntityOfPage": {
         		 "@type": "WebPage",
-       			 "@id": "http://alexander.vonboguszewski.name/"
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
     		  }
   			
-  			, "dateModified": "2014-04-02T00:00:00&#43;00:00"
-  			, "datePublished": "2014-04-02T00:00:00&#43;00:00"
-  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+  			, "dateModified": "2014-04-02T00:00:00\u002b00:00"
+  			, "datePublished": "2014-04-02T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
 		}
 		</script>
 
@@ -133,23 +133,17 @@
 	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
 	  			<span class="post-date">Apr 2, 2014 </span>
 	  			<hr style="width:200px" class="avb-opacity">
-                
-
-<p>Automatisches Backup Linux mit rsync</p>
-
+                <p>Automatisches Backup Linux mit rsync</p>
 <p>Unter Linux kann man mit RSYNC, CRON und
 einem Bash Script ein Time Machine artiges Backupsystem
 aufsetzen.</p>
-
 <p>Verteiltes Backup mit einen Backupserver.
 In diesem Fall wird das Script auf dem Backupserver via CRON gestartet. Auf dem zu sichernden System muss ein SSH Server laufen.</p>
-
 <ol>
 <li>Automatisches SSH Login vom BackupServer (Target) auf den BackupClient (Source) einrichten
 Auf dem BackupServer muss ein Public/Private Key Paar ohne Passwort erzeugt werden und
 der Public Key auf dem BackupClient registriert werden.</li>
 </ol>
-
 <p>backupuser@Target:~$
 backupuser@Target:~$ ssh-keygen -t rsa
 Generating public/private rsa key pair.
@@ -173,107 +167,81 @@ The key&rsquo;s randomart image is:
 |o . o o oo.o     |
 |   oo=.o&hellip;      |
 +&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
-backupuser@Target:~$ cat .ssh/id_rsa.pub | ssh share@Source &lsquo;cat &gt;&gt; .ssh/authorized_keys&rsquo;
+backupuser@Target:~$ cat .ssh/id_rsa.pub | ssh share@Source &lsquo;cat &raquo; .ssh/authorized_keys&rsquo;
 share@Source&rsquo;s password:
 backupuser@Target:~$
 backupuser@Target:~$
 backupuser@Target:~$ ssh share@Source</p>
-
 <p>The programs included with the Debian GNU/Linux system are free software;
 the exact distribution terms for each program are described in the
 individual files in /usr/share/doc/*/copyright.</p>
-
 <p>Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 Last login: Fri Apr  1 17:29:06 2016 from 192.168.2.110
 share@Source:~$</p>
-
-<ol>
+<ol start="2">
 <li>SSH Config anpassen
 Auf dem BackupServer muss für den BackupUser die ssh Konfiguration angepasst werden</li>
 </ol>
-
 <p>vi ~/.ssh/config</p>
-
 <p>Host *
-    ServerAliveInterval 120
-    ServerAliveCountMax 5</p>
-
+ServerAliveInterval 120
+ServerAliveCountMax 5</p>
 <p>Hierdurch wird alle zwei Minuten ein Datenpaket vom Client an den Server geschickt, um die Connection offen zu
 halten. Beim kopieren von größeren Datenmengen kann ansonsten die Session vom Server aus beendet werden.
 Anstelle des * kann natürlich auch der Hostname angegeben werden um mehrere Server unterschiedlich zu behandeln.</p>
-
-<ol>
+<ol start="3">
 <li>Auf dem BackupServer muss das Backupscript kopiert werden</li>
 </ol>
-
 <p>#!/bin/sh</p>
-
 <p>date=<code>date &quot;+%Y-%m-%dT%H_%M_%S&quot;</code>
 SOURCEUSER=share
 SOURCESERVER=source
 SOURCEFOLDER=/home/share
 TARGETFOLDER=/DataVolume/shares/backup</p>
-
-<p>rsync -aP <br />
-  -e &lsquo;ssh&rsquo; <br />
-  &ndash;delete <br />
-  &ndash;delete-excluded <br />
-  &ndash;link-dest=$TARGETFOLDER/current <br />
-  $SOURCEUSER@$SOURCESERVER:$SOURCEFOLDER $TARGETFOLDER/incomplete<em>-$date <br />
-  &amp;&amp; mv $TARGETFOLDER/incomplete</em>-$date $TARGETFOLDER/$date <br />
-  &amp;&amp; rm -f $TARGETFOLDER/current <br />
-  &amp;&amp; ln -s $TARGETFOLDER/$date $TARGETFOLDER/current</p>
-
+<p>rsync -aP<br>
+-e &lsquo;ssh&rsquo;<br>
+&ndash;delete<br>
+&ndash;delete-excluded<br>
+&ndash;link-dest=$TARGETFOLDER/current<br>
+$SOURCEUSER@$SOURCESERVER:$SOURCEFOLDER $TARGETFOLDER/incomplete_-$date<br>
+&amp;&amp; mv $TARGETFOLDER/incomplete_-$date $TARGETFOLDER/$date<br>
+&amp;&amp; rm -f $TARGETFOLDER/current<br>
+&amp;&amp; ln -s $TARGETFOLDER/$date $TARGETFOLDER/current</p>
 <p>Die Variablen müssen noch an die Umgebung angepasst werden:
 SOURCEUSER= Loginuser auf dem Sourceserver für den der Passwortlose Login eingerichtet wurde
 SOURCESERVER= IP oder Hostname des Servers von dem die Daten gesichert werden sollen
 SOURCEFOLDER= Vollständiger Pfad des Ordners, der gesichert werden soll
 TARGETFOLDER= Vollständiger Pfad auf dem das Backup im Backupserver gesichert werden soll</p>
-
-<ol>
+<ol start="4">
 <li>Cron Job anlegen</li>
 </ol>
-
 <p>In der Datei /etc/crontab werden die einzelnen Cron Jobs konfigurert. In einer Zeile wird
 ein Job definiert: erst wann der Job ausgeführt wird Minute, Stunde, Tag, Monat, Wochentag dann der user und der Befehl. Hier wird jeden Tag um ein Uhr das Backupscript aufgerufen. Wichtig ist, dass am Ende der Tabelle ein Kommentar oder eine Leerzeile stehen.</p>
-
-<h1 id="etc-crontab-system-wide-crontab">/etc/crontab: system-wide crontab</h1>
-
-<h1 id="unlike-any-other-crontab-you-don-t-have-to-run-the-crontab">Unlike any other crontab you don&rsquo;t have to run the `crontab&rsquo;</h1>
-
+<h1 id="etccrontab-system-wide-crontab">/etc/crontab: system-wide crontab</h1>
+<h1 id="unlike-any-other-crontab-you-dont-have-to-run-the-crontab">Unlike any other crontab you don&rsquo;t have to run the `crontab'</h1>
 <h1 id="command-to-install-the-new-version-when-you-edit-this-file">command to install the new version when you edit this file</h1>
-
-<h1 id="and-files-in-etc-cron-d-these-files-also-have-username-fields">and files in /etc/cron.d. These files also have username fields,</h1>
-
+<h1 id="and-files-in-etccrond-these-files-also-have-username-fields">and files in /etc/cron.d. These files also have username fields,</h1>
 <h1 id="that-none-of-the-other-crontabs-do">that none of the other crontabs do.</h1>
-
 <p>SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin</p>
-
-<h1 id="m-h-dom-mon-dow-user-command">m h dom mon dow user  command</h1>
-
-<p>0    1    * * * backupuser /home/backupuser/backup.sh<br />
+<h1 id="m-h-dom-mon-dow-user--command">m h dom mon dow user  command</h1>
+<p>0    1    * * * backupuser /home/backupuser/backup.sh <br>
 #&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</p>
-
 <p>Für ein rein lokales Backup mit einer externen Festplatte lässt sich das Skript natürlich anpassen</p>
-
 <p>#!/bin/sh</p>
-
 <p>date=<code>date &quot;+%Y-%m-%dT%H_%M_%S&quot;</code></p>
-
 <p>SOURCEFOLDER=/home/share
 TARGETFOLDER=/DataVolume/shares/backup</p>
-
-<p>rsync -aP <br />
-  -e &lsquo;ssh&rsquo; <br />
-  &ndash;delete <br />
-  &ndash;delete-excluded <br />
-  &ndash;link-dest=$TARGETFOLDER/current <br />
-  $SOURCEFOLDER $TARGETFOLDER/incomplete<em>-$date <br />
-  &amp;&amp; mv $TARGETFOLDER/incomplete</em>-$date $TARGETFOLDER/$date <br />
-  &amp;&amp; rm -f $TARGETFOLDER/current <br />
-  &amp;&amp; ln -s $TARGETFOLDER/$date $TARGETFOLDER/current</p>
+<p>rsync -aP<br>
+-e &lsquo;ssh&rsquo;<br>
+&ndash;delete<br>
+&ndash;delete-excluded<br>
+&ndash;link-dest=$TARGETFOLDER/current<br>
+$SOURCEFOLDER $TARGETFOLDER/incomplete_-$date<br>
+&amp;&amp; mv $TARGETFOLDER/incomplete_-$date $TARGETFOLDER/$date<br>
+&amp;&amp; rm -f $TARGETFOLDER/current<br>
+&amp;&amp; ln -s $TARGETFOLDER/$date $TARGETFOLDER/current</p>
 
             </div>
             <hr style="width:200px" class="avb-opacity">

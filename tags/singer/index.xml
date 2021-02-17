@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Singer on Alexander von Boguszewski</title>
+    <link>http://alexander.vonboguszewski.name/tags/singer/</link>
+    <description>Recent content in Singer on Alexander von Boguszewski</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-de</language>
+    <lastBuildDate>Sun, 19 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://alexander.vonboguszewski.name/tags/singer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Singer.io ETL getting started</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/singerio_gettingstartet/</link>
+      <pubDate>Sun, 19 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/singerio_gettingstartet/</guid>
+      <description>Singer, entwickelt von Talend, ist ein Open-Source-Tool, das die Entwicklung von Ingestion Prozessen erleichtert. Singer wurde so strukturiert ETL Prozesse so, dass Datenein- und Ausgänge zu verbinden, wodurch ETL-Prozesse modular aufgebaut und recht einfacher zu betreiben sind. Bei der Verarbeitung werden die Daten im JSON Format zwischen Quellen und Zielen übertragen, so dass Sie inkompatible Formate kein Problem darstellen sollten. Wie also macht Singer all dies? Im Wesentlichen bricht es ein ETL-Skripte in Taps und Targets auf, die im Folgenden beschrieben werden:</description>
+    </item>
+    
+  </channel>
+</rss>

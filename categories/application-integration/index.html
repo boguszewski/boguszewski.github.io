@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html 
+   prefix="dct: http://purl.org/dc/terms/
+   		   foaf: http://xmlns.com/foaf/0.1/
+   		   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+   		   xf: http://www.w3.org/2002/xforms
+           xsd: http://www.w3.org/2001/XMLSchema
+           xsi: http://www.w3.org/2001/XMLSchema-instance
+           cc: http://creativecommons.org/ns#"
+   lang="de-de"
+>
+
+<title> Application Integration &middot; Alexander von Boguszewski </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Alexander von Boguszewski">
+<meta name="robots" content="index,follow">
+<meta name="revisit-after" content="5 days">
+<meta name="description" content="">
+<meta property="og:url" content="http://alexander.vonboguszewski.name/categories/application-integration/">
+<meta property="og:title" content="Application Integration">
+<meta property="og:description" content="">
+
+<link rel="stylesheet" href="/css/general.css">
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+	
+	function enc(text) {
+		  var map =  "!\"#$%&'()*+,-";
+			map += "./0123456789:;<=>?";
+			var R = new String()
+			map += "@ABCDEFGHIJKLMNOPQRSTU";
+			map += "VWXYZ[\\]^_`abcdefghijklm";
+			var i, j, c, len;
+			map += "nopqrstuvwxyz{|}~";
+		  	len = map.length;
+		  	for(i = 0; i < text.length; i++) {
+		  	  c = text.charAt(i)
+		  	  j = map.indexOf(c)
+		  	  if (j >= 0) {
+		  	    c = map.charAt((j + len / 2) % len)
+		  	  }
+		  	  R = R + c
+		  	}
+		  	return R;
+		}
+
+		function toggleMe(a,b){
+		  var onDiv=document.getElementById(a);
+			var onLink=document.getElementById(a+"_link");
+			var offDiv=document.getElementById(b);
+			var offLink=document.getElementById(b+"_link");
+		 	if(!onDiv || !offDiv){
+				return true;
+			} else {
+
+			$(offDiv).fadeOut(1500);
+			offLink.style.fontWeight="normal";
+			$(onDiv).fadeIn(1500);
+			onLink.style.fontWeight="bold";
+
+		  	return true;
+			}
+		}
+</script>
+
+
+		<script type="application/ld+json">
+		{
+		  "@context": "http://schema.org",
+		  "@type": "Blog",
+  		   "headline": "Application Integration",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/categories\/application-integration\/",
+  			"author": {
+    			"@type": "Person",
+  				"name" : "Alexander von Boguszewski", 
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
+  			  },
+  			 "publisher": {
+    			"@type": "Organization",
+  				"name" : "Alexander von Boguszewski Personal Webpage" ,
+  				"logo": {
+     				 "@type": "ImageObject",
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
+   				 }
+  			  }
+  			, "dateModified": "2020-03-19T00:00:00\u002b00:00"
+  			, "datePublished": "2020-03-19T00:00:00\u002b00:00"
+  			,"keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
+		}
+		</script>
+
+		
+<body class="avb-light">
+	
+	<nav class="avb-sidebar avb-bar-block avb-small avb-hide-small avb-center">
+	  
+	  <br>
+	  <img src="/images/bg.png" alt="Alexander von Boguszewski" style="width:100%">
+	  <a href="/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+	    <p>&lt;&lt;HOME</p>
+	  </a>
+	</nav>
+	
+	<div class="avb-top avb-hide-large avb-hide-medium" id="myNavbar">
+	  <div class="avb-bar avb-light avb-opacity avb-hover-opacity-off avb-center avb-small">
+	  
+	    <a href="/" class="avb-bar-item avb-button" style="width:25% !important">&lt;&lt;HOME</a>
+	  </div>
+	</div>
+	
+	<div class="avb-padding-large" id="main">
+	  
+	  <header class="avb-container avb-padding-medium avb-center avb-light" id="home">
+	  		<p class="avb-large font-weight: bold;">Alexander von Boguszewski</p>
+	  		<h1 class="avb-jumbo font-weight: bold;">Application Integration</h1>
+	    	<p class="avb-text-normal"></p>
+	    	
+	    </header>
+	    <hr style="width:200px" class="avb-opacity">
+		<ul class="avb-ul">
+		
+			<li class="avb-li">
+				<div id="post-676e7d3fa8c2b8731fae3666dd3d45da">
+					<h4 id="post-link-676e7d3fa8c2b8731fae3666dd3d45da"><a href="/techdocs/outlook_things/">Links zu Outlook-E-Mails in MacOS - Application URL outlook://</a></h4>
+					
+				</div>
+			</li>
+		
+		</ul>	
+	<div id="footer" style="font-size:small;">
+<span property="dct:title"><a property="cc:attributionName" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Lizensiert unter einer Creative Commons Lizent - Weitergabe unter gleichen Bedingungen</a></span>
+| <a href="/imprint/">Impressum</a>
+</div>
+	</div>
+</body>
+</html>

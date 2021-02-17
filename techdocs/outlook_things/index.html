@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html
+   prefix="dct: http://purl.org/dc/terms/
+   		   foaf: http://xmlns.com/foaf/0.1/
+   		   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+   		   xf: http://www.w3.org/2002/xforms
+           xsd: http://www.w3.org/2001/XMLSchema
+           xsi: http://www.w3.org/2001/XMLSchema-instance
+           cc: http://creativecommons.org/ns#"
+   lang="de-de"
+>
+    <title> Links zu Outlook-E-Mails in MacOS - Application URL outlook:// &middot; Alexander von Boguszewski </title>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Alexander von Boguszewski">
+<meta name="robots" content="index,follow">
+<meta name="revisit-after" content="5 days">
+<meta name="description" content="">
+<meta property="og:url" content="http://alexander.vonboguszewski.name/techdocs/outlook_things/">
+<meta property="og:title" content="Links zu Outlook-E-Mails in MacOS - Application URL outlook://">
+<meta property="og:description" content="">
+
+<link rel="stylesheet" href="/css/general.css">
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+	
+	function enc(text) {
+		  var map =  "!\"#$%&'()*+,-";
+			map += "./0123456789:;<=>?";
+			var R = new String()
+			map += "@ABCDEFGHIJKLMNOPQRSTU";
+			map += "VWXYZ[\\]^_`abcdefghijklm";
+			var i, j, c, len;
+			map += "nopqrstuvwxyz{|}~";
+		  	len = map.length;
+		  	for(i = 0; i < text.length; i++) {
+		  	  c = text.charAt(i)
+		  	  j = map.indexOf(c)
+		  	  if (j >= 0) {
+		  	    c = map.charAt((j + len / 2) % len)
+		  	  }
+		  	  R = R + c
+		  	}
+		  	return R;
+		}
+
+		function toggleMe(a,b){
+		  var onDiv=document.getElementById(a);
+			var onLink=document.getElementById(a+"_link");
+			var offDiv=document.getElementById(b);
+			var offLink=document.getElementById(b+"_link");
+		 	if(!onDiv || !offDiv){
+				return true;
+			} else {
+
+			$(offDiv).fadeOut(1500);
+			offLink.style.fontWeight="normal";
+			$(onDiv).fadeIn(1500);
+			onLink.style.fontWeight="bold";
+
+		  	return true;
+			}
+		}
+</script>
+
+ 
+	<script type="application/ld+json">
+		{
+		  "@context": "http://schema.org",
+		  "@type": "BlogPosting",
+  		   "headline": "Links zu Outlook-E-Mails in MacOS - Application URL outlook:\/\/",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/outlook_things\/",
+  			"author": {
+    			"@type": "Person",
+  				"name" : "Alexander von Boguszewski", 
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
+  			  },
+  			  "publisher": {
+    			"@type": "Organization",
+  				"name" : "Alexander von Boguszewski Personal Webpage" ,
+  				"logo": {
+     				 "@type": "ImageObject",
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
+   				 }
+  			  },
+  			  "mainEntityOfPage": {
+        		 "@type": "WebPage",
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
+    		  }
+  			
+  			, "dateModified": "2020-03-19T00:00:00\u002b00:00"
+  			, "datePublished": "2020-03-19T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
+		}
+		</script>
+
+		        
+    </head>
+	<body class="avb-light">
+		
+		<nav class="avb-sidebar avb-bar-block avb-small avb-hide-small avb-center">
+		  
+		  <br>
+	      <img src="/images/bg.png" alt="Alexander von Boguszewski" style="width:100%">
+		  <a href="/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;&lt;HOME</p>
+		  </a>
+		  <a href="/techdocs/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;TechDocs</p>
+		  </a>
+		</nav>
+		
+		<div class="avb-top avb-hide-large avb-hide-medium" id="myNavbar">
+		  <div class="avb-bar avb-light avb-opacity avb-hover-opacity-off avb-center avb-small">
+		  	  
+		    <a href="/" class="avb-bar-item avb-button" style="width:25% !important">&lt;&lt;HOME</a>
+		    <a href="/techdocs/" class="avb-bar-item avb-button" style="width:25% !important">&lt;TechDocs</a>
+		  </div>
+		</div>
+		
+		<div class="avb-padding-large" id="main">
+		  
+		  <header class="avb-container avb-padding-medium avb-center avb-light" id="home">
+		  		<br>
+	  			<p class="avb-large font-weight: bold;">Alexander von Boguszewski</p>
+		  		<h1 class="avb-jumbo font-weight: bold;">Links zu Outlook-E-Mails in MacOS - Application URL outlook://</h1>
+		    	<p class="avb-text-normal"></p>
+		    </header>
+	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
+	  			<span class="post-date">Mar 19, 2020 </span>
+	  			<hr style="width:200px" class="avb-opacity">
+                <p>Wie ich Outlook E-Mails aus Things öffne.</p>
+<p>Things ist ein großartiger Taskmanager mit einer recht guten Integration in die MacOS Board Tools.
+Ich verwende aber Outlook für meine Arbeits-E-Mail.</p>
+<p>Doch jedes Mal wenn eine E-Mail zu einer neuen Aufgabe führt, find ich den Workflow mit Copy&amp;Paste und dem QuickEntry Panel
+nicht sonderlich Benutzerfreundlich. Außerdem gibt es keinen weg um auf die ursprüngliche E-Mail zurückzukommen.
+Aber dies wäre hilfreich. Manchmal sind die Einzelheiten der Aufgabe in der E-Mail zu finden, manchmal habe ich Referenzdokumente an die E-Mail angehängt oder ich muss einfach auf die E-Mail antworten, wenn ich mit der Aufgabe fertig bin.</p>
+<p>Was ich möchte, ist die Möglichkeit, einen Link zu einer Outlook-Nachricht in Things zu verwenden.</p>
+<p>In diesem Beitrag integrieren wir Outlook mit Todoist (oder eigentlich mit jedem anderen Tool), indem wir Links zurück zu Outlook-E-Mails erstellen.</p>
+<h2 id="erstes-apple-skript-markierte-outlook-nachrichten-als-task-anlegen">Erstes Apple Skript: Markierte Outlook-Nachrichten als Task anlegen</h2>
+<p>[Mac Automation Scripting]{https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/index.html} ermöglicht die Interaktion mit Programmen zur Automatisierung von Aufgaben. AppleScript ist die Sprache, die Apple für diesen Zweck zur Verfügung stellt, aber es ist auch möglich JavaScript für die Automatisierung zu verwenden. Der eingebaute Skript-Editor bietet eine sehr einfache IDE für die Bearbeitung von Skripten. Es gibt eine eingebaute Dokumentation zu den verfügbaren Bibliotheken
+Versuchen wir zunächst, einige Informationen zu einer ausgewählten Nachricht in Outlook zu erhalten.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-AppleScript" data-lang="AppleScript"><span style="color:#66d9ef">tell</span> application <span style="color:#e6db74">&#34;Microsoft Outlook&#34;</span>
+	<span style="color:#66d9ef">set</span> selectedMessage <span style="color:#66d9ef">to</span> first item <span style="color:#66d9ef">of</span> (<span style="color:#66d9ef">get</span> current messages)
+	<span style="color:#66d9ef">set</span> selectedMessageSubject <span style="color:#66d9ef">to</span> the subject <span style="color:#66d9ef">of</span> selectedMessage
+	display notification selectedMessageSubject
+<span style="color:#66d9ef">end</span> <span style="color:#66d9ef">tell</span>
+</code></pre></div><p>Das obige Skript zeigt den Betreff der ausgewählten Nachricht als Benachrichtigung an. Dieses Skript kannst du kopieren und im Skript-Editor ausprobieren
+Jetzt, da wir wissen, wie wir ausgewählte Nachrichten erhalten, müssen wir einen Link zu dieser Nachricht erstellen.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-AppleScript" data-lang="AppleScript"><span style="color:#66d9ef">tell</span> application <span style="color:#e6db74">&#34;Microsoft Outlook&#34;</span>
+	<span style="color:#66d9ef">set</span> outlookMessage <span style="color:#66d9ef">to</span> first item <span style="color:#66d9ef">of</span> (<span style="color:#66d9ef">get</span> current messages)
+	<span style="color:#66d9ef">set</span> outlookMessageID <span style="color:#66d9ef">to</span> the <span style="color:#a6e22e">id</span> <span style="color:#66d9ef">of</span> outlookMessage
+	<span style="color:#66d9ef">set</span> outlookMessageSubject <span style="color:#66d9ef">to</span> the subject <span style="color:#66d9ef">of</span> outlookMessage
+	<span style="color:#66d9ef">set</span> outlookMessageBody <span style="color:#66d9ef">to</span> the plain text <span style="color:#a6e22e">content</span> <span style="color:#66d9ef">of</span> outlookMessage
+	<span style="color:#66d9ef">set</span> outlookMessageReceived <span style="color:#66d9ef">to</span> time received <span style="color:#66d9ef">of</span> outlookMessage
+	<span style="color:#66d9ef">set</span> outlookMessageSenderDat <span style="color:#66d9ef">to</span> the sender <span style="color:#66d9ef">of</span> outlookMessage
+	<span style="color:#66d9ef">set</span> outlookMessageSenderName <span style="color:#66d9ef">to</span> the <span style="color:#a6e22e">name</span> <span style="color:#66d9ef">of</span> outlookMessageSenderDat
+	<span style="color:#66d9ef">set</span> outlookMessageSenderAddress <span style="color:#66d9ef">to</span> the address <span style="color:#66d9ef">of</span> outlookMessageSenderDat
+	
+	<span style="color:#66d9ef">set</span> taskMessage <span style="color:#66d9ef">to</span> outlookMessageSubject <span style="color:#f92672">&amp;</span> outlookMessageSenderName <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;&lt;&#34;</span> <span style="color:#f92672">&amp;</span> outlookMessageSenderAddress <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;&gt; hat am &#34;</span> <span style="color:#f92672">&amp;</span> outlookMessageReceived <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34; eine Email mit dem Betreff \&#34;&#34;</span> <span style="color:#f92672">&amp;</span> outlookMessageSubject <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;\&#34; gesendet. outlook://&#34;</span> <span style="color:#f92672">&amp;</span> outlookMessageID
+	set the clipboard to taskMessage
+	display notification taskMessage
+<span style="color:#66d9ef">end</span> <span style="color:#66d9ef">tell</span>
+</code></pre></div><p>Im oberen Script habe ich bereits einen Text und einen Link zur Message erzeugt.
+Um das Skript auszuprobieren, können wir es einfach wie gewohnt im Skript-Editor starten.
+Wenn  eine Nachricht in Outlook ausgewählt ist wird ein Text und  die URI in die Zwischenablage des Systems kopiert, von da aus können wir den Text im Things Quick Entry Panel einzufügen.
+Der Link zur Nachricht funktioniert so aber noch nicht.</p>
+<h2 id="ein-benutzerdefinierter-protokoll-handler">Ein benutzerdefinierter Protokoll-Handler</h2>
+<p>Jetzt, wo wir in der Lage sind, Links zu Outlook-Nachrichten zu kopieren, brauchen wir eine Möglichkeit, diese Links zu handhaben, um zur Outlook-Nachricht zu springen. Dazu müssen wir einen benutzerdefinierten Protokoll-Handler erstellen. Dadurch wird unsere neu eingeführte Outlook://<!-- raw HTML omitted --> URLs von MacOS erkannt.</p>
+<p>Um einen benutzerdefinierten Protokoll-Handler mit AppleScript zu implementieren, implementieren wir einfach einen <em>open location</em> wie folgt.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-AppleScript" data-lang="AppleScript"><span style="color:#66d9ef">on</span> open location this_URL
+	<span style="color:#66d9ef">set</span> the messageId <span style="color:#66d9ef">to</span> text <span style="color:#ae81ff">11</span> thru <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">of</span> this_URL
+	<span style="color:#66d9ef">tell</span> application <span style="color:#e6db74">&#34;Microsoft Outlook&#34;</span>
+		activate
+		open message <span style="color:#a6e22e">id</span> messageId
+	<span style="color:#66d9ef">end</span> <span style="color:#66d9ef">tell</span>
+<span style="color:#66d9ef">end</span> open location
+</code></pre></div><figure>
+    <img src="/techdocs/outlook_things/scripteditor.png"
+         alt="Script im Scripteditor"/> <figcaption>
+            <h4>scripteditor</h4>
+        </figcaption>
+</figure>
+
+<p>Dann müssen wir aus dem Script ein ausführbares Programm erstellen und seine Info.plist bearbeiten, um unser neues URL-Schema zu definieren.
+Im Wesentlichen müssen wir die folgenden Schritte durchlaufen:</p>
+<ol>
+<li>Das Skript als <em>app package</em> aus dem <em>Script-Editor</em> exportieren (<em>Ablage -&gt; Exportieren -&gt; Dateiformat Programm</em>)</li>
+<li>Im Finder die exportierte Datei markieren und mit der rechten Maustaste klicken und Paketinhalt wählen.</li>
+<li>Im Ordner &ldquo;Contents&rdquo; öffnen wir die Datei Info.plist im Texteditor und fügen vor den letzten beiden Zeilen den folgenden Inhalt hinzu.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;key&gt;</span>CFBundleIdentifier<span style="color:#f92672">&lt;/key&gt;</span>
+<span style="color:#f92672">&lt;string&gt;</span>org.personal.outlook<span style="color:#f92672">&lt;/string&gt;</span>
+<span style="color:#f92672">&lt;key&gt;</span>CFBundleURLTypes<span style="color:#f92672">&lt;/key&gt;</span>
+<span style="color:#f92672">&lt;array&gt;</span>
+    <span style="color:#f92672">&lt;dict&gt;</span>
+        <span style="color:#f92672">&lt;key&gt;</span>CFBundleURLName<span style="color:#f92672">&lt;/key&gt;</span>
+        <span style="color:#f92672">&lt;string&gt;</span>Pass To OutlookUriHandler<span style="color:#f92672">&lt;/string&gt;</span>
+        <span style="color:#f92672">&lt;key&gt;</span>CFBundleURLSchemes<span style="color:#f92672">&lt;/key&gt;</span>
+        <span style="color:#f92672">&lt;array&gt;</span>
+            <span style="color:#f92672">&lt;string&gt;</span>outlook<span style="color:#f92672">&lt;/string&gt;</span>
+        <span style="color:#f92672">&lt;/array&gt;</span>
+    <span style="color:#f92672">&lt;/dict&gt;</span>
+<span style="color:#f92672">&lt;/array&gt;</span>
+</code></pre></div><ol start="4">
+<li>Die Datei speichern, im Programmverzeichnis ablegen und mit Doppelklick ausführen.</li>
+</ol>
+<p>Jetzt sind wir im Grunde genommen fertig. Wir können es testen wenn wir einen Outlook-Nachrichten-Link kopieren und den Link von der Befehlszeile aus zu öffnen (<em>open <!-- raw HTML omitted --></em>). Wenn alles klappt sollte sich die E-Mail in Outlook öffnen.</p>
+<h2 id="alles-zusammenfügen">Alles zusammenfügen</h2>
+<p>An diesem Punkt haben wir ein Skript, das Links zu Outlook in die Zwischenablage kopieren kann, sodass wir den Link in eine andere Anwendung einfügen können.
+Und wir können auch auf diesen Link klicken um die Email in Outlook zu öffnen. Wir sind also fast fertig, aber noch nicht ganz.
+Wir müssen in Outlook eine Nachricht auszuwählen, und dann unser Skript im Skript-Editor öffnen und es ausführen, um Links in die Zwischenablage zu kopieren.
+Dieser Prozess ist überhaupt nicht effizient, aber wenn wir einen Outlook Link in die Zwischenablage kopieren können, können wir den Link doch evt. auch direkt in ein Things Quick Entry Panel einfügen:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-AppleScript" data-lang="AppleScript"><span style="color:#66d9ef">tell</span> application <span style="color:#e6db74">&#34;Microsoft Outlook&#34;</span>
+	<span style="color:#66d9ef">set</span> outlookMessage <span style="color:#66d9ef">to</span> first item <span style="color:#66d9ef">of</span> (<span style="color:#66d9ef">get</span> current messages)
+	<span style="color:#66d9ef">set</span> outlookMessageID <span style="color:#66d9ef">to</span> the <span style="color:#a6e22e">id</span> <span style="color:#66d9ef">of</span> outlookMessage
+	<span style="color:#66d9ef">set</span> outlookMessageSubject <span style="color:#66d9ef">to</span> the subject <span style="color:#66d9ef">of</span> outlookMessage
+	<span style="color:#66d9ef">set</span> outlookMessageBody <span style="color:#66d9ef">to</span> the plain text <span style="color:#a6e22e">content</span> <span style="color:#66d9ef">of</span> outlookMessage
+	<span style="color:#66d9ef">set</span> outlookMessageReceived <span style="color:#66d9ef">to</span> time received <span style="color:#66d9ef">of</span> outlookMessage
+	<span style="color:#66d9ef">set</span> outlookMessageSenderDat <span style="color:#66d9ef">to</span> the sender <span style="color:#66d9ef">of</span> outlookMessage
+	<span style="color:#66d9ef">set</span> outlookMessageSenderName <span style="color:#66d9ef">to</span> the <span style="color:#a6e22e">name</span> <span style="color:#66d9ef">of</span> outlookMessageSenderDat
+	<span style="color:#66d9ef">set</span> outlookMessageSenderAddress <span style="color:#66d9ef">to</span> the address <span style="color:#66d9ef">of</span> outlookMessageSenderDat
+<span style="color:#66d9ef">end</span> <span style="color:#66d9ef">tell</span>
+
+<span style="color:#66d9ef">tell</span> application <span style="color:#e6db74">&#34;Things3&#34;</span>
+	<span style="color:#66d9ef">set</span> thingsSubject <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#34;✉️ &#34;</span> <span style="color:#f92672">&amp;</span> outlookMessageSenderName <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">&amp;</span> outlookMessageSubject
+	<span style="color:#66d9ef">set</span> thingsNote <span style="color:#66d9ef">to</span> outlookMessageSubject <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;
+</span><span style="color:#e6db74">	
+</span><span style="color:#e6db74">✉️ &#34;</span> <span style="color:#f92672">&amp;</span> outlookMessageSenderName <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;&lt;&#34;</span> <span style="color:#f92672">&amp;</span> outlookMessageSenderAddress <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;&gt; hat am &#34;</span> <span style="color:#f92672">&amp;</span> outlookMessageReceived <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34; eine Email mit dem Betreff \&#34;&#34;</span> <span style="color:#f92672">&amp;</span> outlookMessageSubject <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;\&#34; gesendet. outlook://&#34;</span> <span style="color:#f92672">&amp;</span> outlookMessageID
+	
+	show quick entry panel <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">properties</span> {<span style="color:#a6e22e">name</span>:thingsSubject, notes:thingsNote}
+<span style="color:#66d9ef">end</span> <span style="color:#66d9ef">tell</span>
+</code></pre></div><p>Als Nächstes können wir die Automator-Anwendung verwenden, um einen Dienst mit unserem Skript zu definieren, und dann eine Shortcut zu unserem neuen Dienst definieren.
+<figure>
+    <img src="/techdocs/outlook_things/automator.png"
+         alt="Automator Skript erstellen"/> <figcaption>
+            <h4>Automator</h4>
+        </figcaption>
+</figure>
+</p>
+<p>Jetzt haben wir eine funktionierende Integration von Outlook in Things, prinzipiell haben wir sogar die Möglichkeit von jeder Anwendung aus auf Outlook-Nachrichten zu verlinken und zu öffnen.</p>
+<p>Ich habe das Skript auf GitHub hochgeladen.</p>
+
+            </div>
+            <hr style="width:200px" class="avb-opacity">
+        	<div id="footer" style="font-size:small;">
+<span property="dct:title"><a property="cc:attributionName" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Lizensiert unter einer Creative Commons Lizent - Weitergabe unter gleichen Bedingungen</a></span>
+| <a href="/imprint/">Impressum</a>
+</div>
+        </div>
+	</body>
+</html>

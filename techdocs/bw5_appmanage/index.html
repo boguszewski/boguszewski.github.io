@@ -73,28 +73,28 @@
 		  "@context": "http://schema.org",
 		  "@type": "BlogPosting",
   		   "headline": "TIBCO BW5 Appmanage",
- 			"url" : "http://alexander.vonboguszewski.name/techdocs/bw5_appmanage/",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/bw5_appmanage\/",
   			"author": {
     			"@type": "Person",
   				"name" : "Alexander von Boguszewski", 
-  				"url" : "http://alexander.vonboguszewski.name/"
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
   			  },
   			  "publisher": {
     			"@type": "Organization",
   				"name" : "Alexander von Boguszewski Personal Webpage" ,
   				"logo": {
      				 "@type": "ImageObject",
-      				 "url": "http://alexander.vonboguszewski.name/images/bg.png"
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
    				 }
   			  },
   			  "mainEntityOfPage": {
         		 "@type": "WebPage",
-       			 "@id": "http://alexander.vonboguszewski.name/"
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
     		  }
   			
-  			, "dateModified": "2016-03-02T00:00:00&#43;00:00"
-  			, "datePublished": "2016-03-02T00:00:00&#43;00:00"
-  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+  			, "dateModified": "2016-03-02T00:00:00\u002b00:00"
+  			, "datePublished": "2016-03-02T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
 		}
 		</script>
 
@@ -133,13 +133,10 @@
 	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
 	  			<span class="post-date">Mar 2, 2016 </span>
 	  			<hr style="width:200px" class="avb-opacity">
-                
-
-<p>Mit AppManage können BW Applikationen in einer TIBCO BW Domain verwaltet werden.
+                <p>Mit AppManage können BW Applikationen in einer TIBCO BW Domain verwaltet werden.
 Mit AppManage kann unter Anderen ein Deployment über die Kommandozeile vorbereitet und durchgeführt werden,
 Applikationen gestartet und gestoppt werden.
 Das Tool findet sich unter <code>/&lt;TIBCO_HOME&gt;/tra/&lt;VERSION&gt;/bin</code>, bei mir unter <code>/opt/tibco/soa/tra/5.9/bin/AppManage</code></p>
-
 <p>Als Beispiel möchte ich hier eine BW Applikation deployen und starten. Hierfür habe ich im Designer einen
 einfachen Prozess entwickelt, der Nachrichten von einer Queue in ein Logfile schreibt. Also ziemlich einfach.
 Im Designer habe ich anschließend das EAR File erzeugt.
@@ -147,51 +144,28 @@ Bevor wir aber mit dem Deployment starten erzeuge ich zunächst verschlüsselte 
 Der Username und das Passwort kann zwar auch über Argumente an AppManage übergeben werden, doch dann werden die
 Credentials in Klartext auch in der History gespeichert. Mit der Credentials Datei kann das Deployment durch Skripte auch einfach
 automatisiert werden.</p>
-
 <p>Der Befehl hierfür ist
 <code>./obfuscate -password CREDENTIALS.TXT</code></p>
-
 <p>Über die Option wird angegeben, dass das Password nach Aufruf des Programms einmalig angegeben werden muss. In der Credentials
 Datei muss die Zeile mit dem Password mit pw=!# beginnen. Anschließend folgt dass Password.</p>
-
-
-<figure >
-    
-        <img src="/techdocs/bw5_appmanage/Appmanage1.png" />
-    
-    
-    <figcaption>
-        <h4>obfuscate password</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bw5_appmanage/Appmanage1.png"/> <figcaption>
+            <h4>obfuscate password</h4>
+        </figcaption>
 </figure>
-
 
 <p>Wie erwähnt kann AppManage die Deployment Konfiguration, Globals etc., aus dem EAR extrahieren. Um AppManage zu starten muss zunächst
 in den Bin Ordner (<code>TIBCO_HOME/tra/5.x/bin/</code>) gewechselt werden. Dann über</p>
-
 <p><code>./AppManage -export -ear /home/tibco/sampleProj.ear -out /home/tibco/sampleProj.xml</code></p>
-
 <p>eine XML Datei mit den Konfigurationen anlegen. Wie Werte in der Datei können natürlich auch an die Umgebung angepasst werden.</p>
-
-
-<figure >
-    
-        <img src="/techdocs/bw5_appmanage/Appmanage2.png" />
-    
-    
-    <figcaption>
-        <h4>Export Ear</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bw5_appmanage/Appmanage2.png"/> <figcaption>
+            <h4>Export Ear</h4>
+        </figcaption>
 </figure>
-
 
 <p>Wenn noch eine Hawk Rulebase zum Deployment hinzugefügt werden soll, muss ein monitor Tag in die sampleProj.xml
 eingefügt werden.</p>
-
 <pre><code>&lt;monitor&gt;
      &lt;rulebases&gt;
           &lt;rulebase&gt;
@@ -201,32 +175,18 @@ eingefügt werden.</p>
            &lt;/rulebase&gt;
       &lt;/rulebases&gt;
 &lt;/monitor&gt;
-</code></pre>
-
-<p>Unter Linux kann die .hrb Datei mit der Rulebase via</p>
-
+</code></pre><p>Unter Linux kann die .hrb Datei mit der Rulebase via</p>
 <p><code>base64 MyApp.hrb &gt; MyApp.base64</code></p>
-
 <p>kodiert werden. Der Inhalt der MyApp.base64 Datei wird dann in den <code>&lt;data&gt;</code> Tag kopiert.
 Anschließend kann die Applikation in die Tibco Domain deployed werden.
-
-<figure >
-    
-        <img src="/techdocs/bw5_appmanage/Appmanage3.png" />
-    
-    
-    <figcaption>
-        <h4>Deploy EAR</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bw5_appmanage/Appmanage3.png"/> <figcaption>
+            <h4>Deploy EAR</h4>
+        </figcaption>
 </figure>
 </p>
-
-<p><code>./AppManage -deploy -ear /home/tibco/sampleProj.ear -deployConfig /home/tibco/sampleProj.xml -domain test_avb -cred credentials</code></p>
-
+<p><code>./AppManage -deploy -ear /home/tibco/sampleProj.ear -deployConfig /home/tibco/sampleProj.xml -domain test_avb -cred credentials </code></p>
 <p>Die Argumente die AppManage für das Deployment benötigt sind</p>
-
 <ul>
 <li>-ear : Pfad und Name des Applications Archives</li>
 <li>-deployConfig : Pfad und Name der Konfiguration</li>
@@ -234,50 +194,27 @@ Anschließend kann die Applikation in die Tibco Domain deployed werden.
 <li>-domain : Name der Tibco Domain in die die Applikation deployed werden soll</li>
 <li>-cred : die Datei mit den Credentials. Wenn die Datei nicht verwendet werden soll können die Login Daten mit -user und -pw auch direkt übergeben werden</li>
 </ul>
-
-<p>Mit <code>./AppManage -config -ear /home/tibco/sampleProj.ear -deployConfig /home/tibco/sampleProj.xml -domain test_avb -cred credentials</code>
+<p>Mit <code>./AppManage -config -ear /home/tibco/sampleProj.ear -deployConfig /home/tibco/sampleProj.xml -domain test_avb -cred credentials </code>
 kann nur die Konfiguration ausgerollt werden.
 Nach dem Deployment kann mit</p>
-
-<p><code>./AppManage -start -app sampleProj -domain test_avb -cred credentials</code></p>
-
+<p><code>./AppManage -start -app sampleProj -domain test_avb -cred credentials </code></p>
 <p>die Applikation gestartet werden. Mit</p>
-
-<p><code>./AppManage -stop -app sampleProj -domain test_avb -cred credentials</code></p>
-
+<p><code>./AppManage -stop -app sampleProj -domain test_avb -cred credentials </code></p>
 <p>kann die Applikation wieder gestoppt werden
-
-<figure >
-    
-        <img src="/techdocs/bw5_appmanage/Appmanage4.png" />
-    
-    
-    <figcaption>
-        <h4>Start and Stop EAR</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bw5_appmanage/Appmanage4.png"/> <figcaption>
+            <h4>Start and Stop EAR</h4>
+        </figcaption>
 </figure>
 </p>
-
 <p>Im Tibco Administrator können wir überprüfen ob das Deployment auch erfolgreich war</p>
-
-
-<figure >
-    
-        <img src="/techdocs/bw5_appmanage/Appmanage5.png" />
-    
-    
-    <figcaption>
-        <h4>TIBCO Adminstrator</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bw5_appmanage/Appmanage5.png"/> <figcaption>
+            <h4>TIBCO Adminstrator</h4>
+        </figcaption>
 </figure>
 
-
 <h2 id="befehlsfolge">Befehlsfolge</h2>
-
 <pre><code>vi credentials 
 ./obfuscate -password credentials 
 cat credentials 
@@ -286,10 +223,7 @@ cat credentials
 ./AppManage -deploy -ear /home/tibco/sampleProj.ear -deployConfig /home/tibco/sampleProj.xml -domain test_avb -cred credentials 
 ./AppManage -start -app sampleProj -domain test_avb -cred credentials 
 ./AppManage -stop -app sampleProj -domain test_avb -cred credentials 
-</code></pre>
-
-<h2 id="config-xml">Config-XML</h2>
-
+</code></pre><h2 id="config-xml">Config-XML</h2>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 
 &lt;application xmlns=&quot;http://www.tibco.com/xmlns/ApplicationManagement&quot; name=&quot;sampleProj&quot;&gt;
@@ -552,7 +486,6 @@ cat credentials
     &lt;/services&gt;
 &lt;/application&gt;
 </code></pre>
-
             </div>
             <hr style="width:200px" class="avb-opacity">
         	<div id="footer" style="font-size:small;">

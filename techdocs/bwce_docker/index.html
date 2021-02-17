@@ -73,28 +73,28 @@
 		  "@context": "http://schema.org",
 		  "@type": "BlogPosting",
   		   "headline": "TIBCO BWCE Container mit Docker",
- 			"url" : "http://alexander.vonboguszewski.name/techdocs/bwce_docker/",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/bwce_docker\/",
   			"author": {
     			"@type": "Person",
   				"name" : "Alexander von Boguszewski", 
-  				"url" : "http://alexander.vonboguszewski.name/"
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
   			  },
   			  "publisher": {
     			"@type": "Organization",
   				"name" : "Alexander von Boguszewski Personal Webpage" ,
   				"logo": {
      				 "@type": "ImageObject",
-      				 "url": "http://alexander.vonboguszewski.name/images/bg.png"
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
    				 }
   			  },
   			  "mainEntityOfPage": {
         		 "@type": "WebPage",
-       			 "@id": "http://alexander.vonboguszewski.name/"
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
     		  }
   			
-  			, "dateModified": "2017-09-25T00:00:00&#43;00:00"
-  			, "datePublished": "2017-09-25T00:00:00&#43;00:00"
-  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+  			, "dateModified": "2017-09-25T00:00:00\u002b00:00"
+  			, "datePublished": "2017-09-25T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
 		}
 		</script>
 
@@ -138,28 +138,19 @@ TIBCO liefert zwar ein eigenes <a href="https://github.com/TIBCOSoftware/bwce-do
 Wir können aber auch selbst ein eigenes Base-Image erstellen. Nachfolgendes Beispiel ist zwar auch nicht Production Ready, soll aber als Inspiration für eigene Ansätze dienen.
 Als Base Image verwende ich <a href="https://alpinelinux.org">Alpine Linux</a>, da die Basis Installation nur 5 MByte groß ist. Wir sparen uns nicht nur erheblich Speicherplatz, sondern auch Zeit beim Download, der Installation und dem Ausrollen auf dem Docker Host. Zudem erhöht ein System mit kleinerem Fußabdruck die Sicherheit, da die Angriffsfläche verringert wird.
 Alpine Linux basiert auf Busybox und der C-Standard-Bibliothek Musl und verwendet die PAX- und GRSecurity-Patches. Leider müssen wir die GLIBC für die Java Plattform nachinstallieren.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull alpine </code></pre></div>
-
 <p>Legen wir nun mit dem Image unseren ersten Container an uns starten diesen direkt:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker create --name<span style="color:#f92672">=</span>bwceconatiner -t -i alpine
 docker start -a -i bwceconatiner</code></pre></div>
-
 <p>Durch das -a -i verbindet der Docker-Client die aktuelle Konsole mit der Comandozeile des Containers.
 Wenn wir die Eingabe durch exit schließen, wird damit auch der Container-Prozess beendet.</p>
-
 <p>Der Befehl <code>docker ps</code> zeigt alle gerade laufenden Container.
 Der Befehl <code>docker ps -a</code> zeigt auch angelegte Container an, die gerade nicht laufen.</p>
-
 <p>Sollte ein Container nicht mehr benötigt haben, können wir ihn löschen mit <code>docker rm bwceconatiner</code></p>
-
 <p>Der folgende Befehl liefert die Ausgaben, die die Container-Anwendung auf ihre Konsole schreibt:
 <code>docker logs bwceconatiner</code></p>
-
 <p>Wir können auch in einem laufenden Container eine interaktive Shell starten:
 <code>docker exec -t -i bwceconatiner bash</code></p>
-
 <p>Für unser eigenes Base Image habe ich folgendes <a href="https://github.com/boguszewski/bwce-alpine-docker/blob/master/baseimage/Dockerfile">Dockerfile</a> erstellt
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> alpine:3.5</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Alexander von Boguszewski &lt;avonbogu@tibco.com&gt;</span><span style="color:#960050;background-color:#1e0010">
@@ -183,7 +174,7 @@ Der Befehl <code>docker ps -a</code> zeigt auch angelegte Container an, die gera
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apk add --update bash <span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Download and install glibc, little bit hacky</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span><span style="color:#e6db74"> GLIBC_VERSION 2.23-r3</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> GLIBC_VERSION 2.23-r3<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apk add --update curl <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  curl -Lo /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
@@ -196,7 +187,7 @@ Der Befehl <code>docker ps -a</code> zeigt auch angelegte Container an, die gera
 </span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy BWCE Files to Image</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>COPY <span style="color:#e6db74">&#34;bwce-runtime  java-code  scripts resources&#34;</span> /tmp/<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> <span style="color:#e6db74">&#34;bwce-runtime  java-code  scripts resources&#34;</span> /tmp/<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">#add tibco user</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> addgroup tibco <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
@@ -205,25 +196,23 @@ Der Befehl <code>docker ps -a</code> zeigt auch angelegte Container an, die gera
 </span><span style="color:#ae81ff"></span>	chown  tibco <span style="color:#e6db74">${</span>APPDIR<span style="color:#e6db74">}</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>	chmod <span style="color:#ae81ff">755</span> /tmp/*.sh<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>USER tibco<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> tibco</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Configure BWCE Installation</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span>  /tmp/install.sh<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>USER root<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> root</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span><span style="color:#e6db74"> [&#34;/opt/tibco/scripts/start.sh&#34;]</span></code></pre></div></p>
-
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> [<span style="color:#e6db74">&#34;/opt/tibco/scripts/start.sh&#34;</span>]</code></pre></div></p>
 <p>Bevor wir unser neues Basis Image bauen, muss natürlich die BWCE Runtime (bwce_cf.zip) aus dem <a href="http://edelivery.tibco.com">TIBCO EDelivery</a> geladen und im gleichen Ordner wie das Dockerfile gespeichert werden.
 Eine Internetverbindung ist erforderlich, um Images und deren Abhängigkeiten von Docker herunterzuladen.
 Das Dockerfile erwartet die Ordner <code>resources</code> und <code>scripts</code> im gleichen Verzeichnis.
 Der Ordner <code>resources</code> beinhaltet alle Zertifikate, Java Bibliotheken (JAR), BWCE Plugins andere Komponenten, die wir für unser persönliches Base Image benötigen.
 Die Bash-Skripte in <code>scripts</code> dienen für das Einrichten des Images, sowie der Installation und Konfiguration von BWCE.
 Mit dem Skript createDockerImage.sh kann unser neues Basis-Docker-Image erstellt werden.</p>
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $# -lt <span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> $# -gt <span style="color:#ae81ff">2</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $# -lt <span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> $# -gt <span style="color:#ae81ff">2</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
     	echo <span style="color:#e6db74">&#34;Usage: ./createDockerImage.sh &lt;path/to/bwce_cf.zip&gt; &lt;Tag&gt;&#34;</span>
     	echo <span style="color:#e6db74">&#34;Location of bwce_cf.zip&#34;</span>
     	echo <span style="color:#e6db74">&#34;Version Eg: v2.0.0&#34;</span>
@@ -231,8 +220,8 @@ Mit dem Skript createDockerImage.sh kann unser neues Basis-Docker-Image erstellt
 	<span style="color:#66d9ef">fi</span>
 
 
-	<span style="color:#75715e">#set tagname
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span>$2<span style="color:#e6db74">&#34;</span>  <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+	<span style="color:#75715e">#set tagname</span>
+	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span>$2<span style="color:#e6db74">&#34;</span>  <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
 	tag<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;alpinebwcebase:latest&#34;</span>
 	<span style="color:#66d9ef">else</span>
 	tag<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;alpinebwcebase:&#34;</span>$2
@@ -240,50 +229,43 @@ Mit dem Skript createDockerImage.sh kann unser neues Basis-Docker-Image erstellt
 	echo <span style="color:#e6db74">&#34;Tag is set to </span>$tag<span style="color:#e6db74">&#34;</span>
 
 
-	<span style="color:#75715e">#copy bwce_cf.zip, the bwce runtime
-</span><span style="color:#75715e"></span>	zipLocation<span style="color:#f92672">=</span>$1
+	<span style="color:#75715e">#copy bwce_cf.zip, the bwce runtime</span>
+	zipLocation<span style="color:#f92672">=</span>$1
 	mkdir -p bwce-runtime <span style="color:#f92672">&amp;&amp;</span> cp -i $zipLocation <span style="color:#e6db74">&#34;</span>$_<span style="color:#e6db74">&#34;</span>
 
-	<span style="color:#75715e">#Download the original token resolver
-</span><span style="color:#75715e"></span>	tibcoTokenResolverURL<span style="color:#f92672">=</span>https://raw.githubusercontent.com/TIBCOSoftware/bwce-docker/master/java-code/ProfileTokenResolver.java
+	<span style="color:#75715e">#Download the original token resolver</span>
+	tibcoTokenResolverURL<span style="color:#f92672">=</span>https://raw.githubusercontent.com/TIBCOSoftware/bwce-docker/master/java-code/ProfileTokenResolver.java
 	curl -o java-code/ProfileTokenResolver.java $tibcoTokenResolverURL
 
 
 	docker build -f Dockerfile -t $tag .
 
-	rm -rf bwce-runtime</code></pre></div></p>
-
+	rm -rf bwce-runtime</code></pre></div>
 <p>Mit diesem Base-Image können wir nun Images für einzelne Applikationen/Services erstellen.
 Als Beispiel verwende ich den von TIBCO bereitgestellten <a href="https://github.com/TIBCOSoftware/bwce-docker/raw/master/examples/HTTP">HELLO-WORLD-Service</a>
 Um für ein Image für ein konkretes Projekt zu erstellen verwende ich hier in eigenes Dockerfile.
 Ich habe ein kurzes <a href="https://github.com/boguszewski/bwce-alpine-docker/blob/master/exampleHttpApp/createExampleHttpAppImage.sh">Script</a> erstellt, dass den Service
 aus dem GitHub Repository lädt und ein entsprechendes Service Image baut. Wir können das Image aber natürlich auch leicht manuell bauen.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -LOk -o docker.http.application_1.0.0.ear https://github.com/TIBCOSoftware/bwce-docker/raw/master/examples/HTTP/docker.http.application_1.0.0.ear</code></pre></div>
-
 <p>Im Dockerfile erkennt man, das hierfür einfach das EAR File in das Image kopiert und das Configuration Script ausgeführt wird.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> alpinebwcebase:latest</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Alexander von Boguszewski &lt;avonbogu@tibco.com&gt;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>USER tibco<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> tibco</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>COPY *.ear /tmp<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> *.ear /tmp<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Configure BWCE Application</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span>  <span style="color:#e6db74">${</span>TIBCO_HOME<span style="color:#e6db74">}</span>/scripts/configuration.sh<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 8080</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 8090</span></code></pre></div>
-
 <p>Um das Image zu bauen und die BWCE Anwendung zu Starten dann :
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build -t $tag  .
 run -P -e MESSAGE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Willkommen bei BWCE 2.0 !!!&#39;</span>  Bwce-http-app</code></pre></div></p>
-
-<p>Um den BWCE Service zu testen suchen wir zuerst die Portnummer mit Docker ps abgebildet und rufen dann im Browser http: // <DOCKER-HOST-IP>: <HOST-PORT> auf.
+<p>Um den BWCE Service zu testen suchen wir zuerst die Portnummer mit Docker ps abgebildet und rufen dann im Browser http: // <!-- raw HTML omitted -->: <!-- raw HTML omitted --> auf.
 Als Ergebnis sollte im Browser &ldquo;Willkommen bei BWCE 2.0 !!!&rdquo; erscheinen.</p>
-
 <p>Die angepassten Dockerfiles und Skripte liegen auf <a href="https://github.com/boguszewski/bwce-alpine-docker">GitHub</a>, bzw. im original <a href="https://github.com/TIBCOSoftware/bwce-docker">TIBCO Repository</a></p>
 
             </div>

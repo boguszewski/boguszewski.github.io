@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Db on Alexander von Boguszewski</title>
+    <title>DB on Alexander von Boguszewski</title>
     <link>http://alexander.vonboguszewski.name/tags/db/</link>
-    <description>Recent content in Db on Alexander von Boguszewski</description>
+    <description>Recent content in DB on Alexander von Boguszewski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de-de</language>
-    <lastBuildDate>Thu, 29 Dec 2016 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://alexander.vonboguszewski.name/tags/db/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 29 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="http://alexander.vonboguszewski.name/tags/db/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JDBC Tester</title>
       <link>http://alexander.vonboguszewski.name/techdocs/java_oracle_jdbc_tester/</link>
@@ -28,7 +24,7 @@ import java.sql.DriverManager; import java.sql.Connection; import java.sql.SQLEx
       
       <guid>http://alexander.vonboguszewski.name/techdocs/bw5_prepare_oracle/</guid>
       <description>Beim Einsatz von TIBCO EMS als Transport für die Administration Domain, muss eine Datenbank als Repository angegeben werden. Bei kleineren Systemen, wie beispielsweise einer lokalen Testinstallation, eignet sich Oracle XE ganz gut. In der XE muss für die Tibco Domain ein Datenbankuser mit den richtigen Rechten angelegt werden, damit die Domain über das DomainUtility ohne Probleme erzeugt werden kann.
-create user TIBCODOM identified by tibcoPass; GRANT CONNECT,RESOURCE,UNLIMITED TABLESPACE TO TIBCODOM ALTER USER TIBCODOM DEFAULT TABLESPACE USERS; ALTER USER TIBCODOM TEMPORARY TABLESPACE TEMP;  </description>
+create user TIBCODOM identified by tibcoPass; GRANT CONNECT,RESOURCE,UNLIMITED TABLESPACE TO TIBCODOM ALTER USER TIBCODOM DEFAULT TABLESPACE USERS; ALTER USER TIBCODOM TEMPORARY TABLESPACE TEMP; </description>
     </item>
     
   </channel>

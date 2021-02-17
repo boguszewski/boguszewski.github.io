@@ -73,28 +73,28 @@
 		  "@context": "http://schema.org",
 		  "@type": "BlogPosting",
   		   "headline": "Talend Open Studio mit Cloudera Quickstart verbinden",
- 			"url" : "http://alexander.vonboguszewski.name/techdocs/talend_clouderaqickstart/",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/talend_clouderaqickstart\/",
   			"author": {
     			"@type": "Person",
   				"name" : "Alexander von Boguszewski", 
-  				"url" : "http://alexander.vonboguszewski.name/"
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
   			  },
   			  "publisher": {
     			"@type": "Organization",
   				"name" : "Alexander von Boguszewski Personal Webpage" ,
   				"logo": {
      				 "@type": "ImageObject",
-      				 "url": "http://alexander.vonboguszewski.name/images/bg.png"
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
    				 }
   			  },
   			  "mainEntityOfPage": {
         		 "@type": "WebPage",
-       			 "@id": "http://alexander.vonboguszewski.name/"
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
     		  }
   			
-  			, "dateModified": "2018-03-11T00:00:00&#43;00:00"
-  			, "datePublished": "2018-03-11T00:00:00&#43;00:00"
-  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+  			, "dateModified": "2018-03-11T00:00:00\u002b00:00"
+  			, "datePublished": "2018-03-11T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
 		}
 		</script>
 
@@ -134,32 +134,26 @@
 	  			<span class="post-date">Mar 11, 2018 </span>
 	  			<hr style="width:200px" class="avb-opacity">
                 <p>Mit Cloudera&rsquo;s Quickstart ist wie die &ldquo;Live-CD&rdquo; der Hadoop-Welt, wir können  Hadoop auszuprobieren ohne die Pakete selbst zu konfigurieren. Daher halte ich die Plattform für den idealen Einstieg zum Experimentieren mit Hadoop und Talends Big Data Plattform. Wenn etwas schief geht, können wir einfach zum letzten Schnappschuss zurückkehren. Dahin wo die alles tatsächlich noch funktioniert hat. Cloudera bietet Quickstart zum einen als VM für  VMWare und Virtual Box and und zum anderen als Docker Container. Für meine Experimente möchte ich die Container Version verwenden, was im zusammenspiel mit dem Talend Studio aber leider nicht Out-of-the-Box funktioniert. In diesem Beitrag zeige ich, wie wir das Talend Open Studio einrichten, um auf den  Cloudera Quickstart Hadoop Cluster zuzugreifen.</p>
-
 <p>Für die Experimente benötigen wir viel Speicherplatz um Talend Open Studio, Docker und den Cloudera Container gleichzeitig auszuführen. Der VM habe ich 12 GB zugewiesen, mindestens 8 GB RAM sollten es sein um etwas Sinnvolles damit zu tun. Open Studio benötigt weitere 1 GB, dazu kommt natürlich noch das was das Betriebssystem benötigt. Realistisch gesehen benötigen wir also mindestens 16 GB um das Ganze zum Laufen zu bringen.</p>
-
 <p>Um die Talend Jobs ausführen zu können, muss Talend Studio mit einem laufenden Hadoop Cluster verbunden sein. Die Verbindungsinformationen können in jeder Komponente individuell konfiguriert werden, oder die Konfiguration kann als Metadaten im Repository gespeichert und bei Bedarf in den verschiedenen Komponenten wiederverwendet werden.
 Da der Quickstart Containers gegen den Hostname &ldquo;quickstart.cloudera&rdquo; konfiguriert ist, und das Ändern des Hostnames bei mir dazu geführt hat das der Container nicht nutzbar war konfiguriere ich &ldquo;quickstart.cloudera&rdquo; auf meinem Entwicklungsrechner gegen meinen Localhost.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/hosts
 
-<span style="color:#75715e">##
-</span><span style="color:#75715e"># Host Database
-</span><span style="color:#75715e">#
-</span><span style="color:#75715e"># localhost is used to configure the loopback interface
-</span><span style="color:#75715e"># when the system is booting.  Do not change this entry.
-</span><span style="color:#75715e">##
-</span><span style="color:#75715e"></span><span style="color:#ae81ff">127</span>.0.0.1       localhost
-<span style="color:#ae81ff">255</span>.255.255.255 broadcasthost
+<span style="color:#75715e">##</span>
+<span style="color:#75715e"># Host Database</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e"># localhost is used to configure the loopback interface</span>
+<span style="color:#75715e"># when the system is booting.  Do not change this entry.</span>
+<span style="color:#75715e">##</span>
+127.0.0.1       localhost
+255.255.255.255 broadcasthost
 ::1             localhost
-<span style="color:#ae81ff">127</span>.0.0.1       quickstart.cloudera</code></pre></div>
-
+127.0.0.1       quickstart.cloudera</code></pre></div>
 <p>Danach müssen wir uns aber natürlich das Image herunterladen und starten
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$docker pull cloudera/quickstart:latest
 
-$docker run --hostname<span style="color:#f92672">=</span>quickstart.cloudera -p <span style="color:#ae81ff">111</span>:111 -p <span style="color:#ae81ff">1004</span>:1004 -p <span style="color:#ae81ff">1006</span>:1006 -p <span style="color:#ae81ff">2049</span>:2049 -p <span style="color:#ae81ff">2181</span>:2181 -p <span style="color:#ae81ff">2888</span>:2888 -p <span style="color:#ae81ff">3888</span>:3888 -p <span style="color:#ae81ff">4242</span>:4242 -p <span style="color:#ae81ff">7077</span>:7077 -p <span style="color:#ae81ff">7078</span>:7078 -p <span style="color:#ae81ff">7180</span>:7180 -p <span style="color:#ae81ff">8020</span>:8020 -p <span style="color:#ae81ff">8021</span>:8021 -p <span style="color:#ae81ff">8030</span>:8030 -p <span style="color:#ae81ff">8032</span>:8032 -p <span style="color:#ae81ff">8033</span>:8033 -p <span style="color:#ae81ff">8042</span>:8042 -p <span style="color:#ae81ff">8080</span>:8080 -p <span style="color:#ae81ff">8085</span>:8085 -p <span style="color:#ae81ff">8088</span>:8088 -p <span style="color:#ae81ff">8888</span>:8888 -p <span style="color:#ae81ff">9083</span>:9083 -p <span style="color:#ae81ff">9090</span>:9090 -p <span style="color:#ae81ff">9095</span>:9095 -p <span style="color:#ae81ff">9290</span>:9290 -p <span style="color:#ae81ff">10000</span>:10000 -p <span style="color:#ae81ff">10002</span>:10002 -p <span style="color:#ae81ff">10020</span>:10020 -p <span style="color:#ae81ff">11000</span>:11000 -p <span style="color:#ae81ff">11060</span>:11060 -p <span style="color:#ae81ff">12000</span>:12000 -p <span style="color:#ae81ff">12001</span>:12001 -p <span style="color:#ae81ff">14000</span>:14000 -p <span style="color:#ae81ff">14001</span>:14001 -p <span style="color:#ae81ff">16000</span>:16000 -p <span style="color:#ae81ff">18080</span>:18080 -p <span style="color:#ae81ff">18081</span>:18081 -p <span style="color:#ae81ff">19888</span>:19888 -p <span style="color:#ae81ff">50010</span>:50010 -p <span style="color:#ae81ff">50020</span>:50020 -p <span style="color:#ae81ff">50030</span>:50030 -p <span style="color:#ae81ff">50060</span>:50060 -p <span style="color:#ae81ff">50070</span>:50070 -p <span style="color:#ae81ff">50075</span>:50075 -p <span style="color:#ae81ff">50470</span>:50470 -p <span style="color:#ae81ff">60000</span>:60000 -p <span style="color:#ae81ff">60010</span>:60010 -p <span style="color:#ae81ff">60020</span>:60020 -p <span style="color:#ae81ff">60030</span>:60030  --privileged<span style="color:#f92672">=</span>true -t -i cloudera/quickstart  /usr/bin/docker-quickstart</code></pre></div></p>
-
+$docker run --hostname<span style="color:#f92672">=</span>quickstart.cloudera -p 111:111 -p 1004:1004 -p 1006:1006 -p 2049:2049 -p 2181:2181 -p 2888:2888 -p 3888:3888 -p 4242:4242 -p 7077:7077 -p 7078:7078 -p 7180:7180 -p 8020:8020 -p 8021:8021 -p 8030:8030 -p 8032:8032 -p 8033:8033 -p 8042:8042 -p 8080:8080 -p 8085:8085 -p 8088:8088 -p 8888:8888 -p 9083:9083 -p 9090:9090 -p 9095:9095 -p 9290:9290 -p 10000:10000 -p 10002:10002 -p 10020:10020 -p 11000:11000 -p 11060:11060 -p 12000:12000 -p 12001:12001 -p 14000:14000 -p 14001:14001 -p 16000:16000 -p 18080:18080 -p 18081:18081 -p 19888:19888 -p 50010:50010 -p 50020:50020 -p 50030:50030 -p 50060:50060 -p 50070:50070 -p 50075:50075 -p 50470:50470 -p 60000:60000 -p 60010:60010 -p 60020:60020 -p 60030:60030  --privileged<span style="color:#f92672">=</span>true -t -i cloudera/quickstart  /usr/bin/docker-quickstart</code></pre></div></p>
 <p>Ich habe eine ganze Reihe von Ports gemappt, um vom Studio und meinem Browser auf die Dienste des Containers zuzugreifen.</p>
-
 <table>
 <thead>
 <tr>
@@ -168,296 +162,247 @@ $docker run --hostname<span style="color:#f92672">=</span>quickstart.cloudera -p
 <th>Port</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Hadoop HDFS</td>
 <td>DataNode</td>
 <td>50010</td>
 </tr>
-
 <tr>
 <td></td>
 <td>DataNode</td>
 <td>1004</td>
 </tr>
-
 <tr>
 <td></td>
 <td>DataNode</td>
 <td>50075</td>
 </tr>
-
 <tr>
 <td></td>
 <td>DataNode</td>
 <td>1006</td>
 </tr>
-
 <tr>
 <td></td>
 <td>DataNode</td>
 <td>50020</td>
 </tr>
-
 <tr>
 <td></td>
 <td>NameNode</td>
 <td>8020</td>
 </tr>
-
 <tr>
 <td></td>
 <td>NameNode</td>
 <td>50070</td>
 </tr>
-
 <tr>
 <td></td>
 <td>NameNode</td>
 <td>50470</td>
 </tr>
-
 <tr>
 <td></td>
 <td>NFS gateway</td>
 <td>2049</td>
 </tr>
-
 <tr>
 <td></td>
 <td>NFS gateway</td>
 <td>4242</td>
 </tr>
-
 <tr>
 <td></td>
 <td>NFS gateway</td>
 <td>111</td>
 </tr>
-
 <tr>
 <td></td>
 <td>HttpFS</td>
 <td>14000</td>
 </tr>
-
 <tr>
 <td></td>
 <td>HttpFS</td>
 <td>14001</td>
 </tr>
-
 <tr>
 <td>Hadoop MapReduce (MRv1)</td>
 <td>JobTracker</td>
 <td>8021</td>
 </tr>
-
 <tr>
 <td></td>
 <td>JobTracker</td>
 <td>50030</td>
 </tr>
-
 <tr>
 <td></td>
 <td>JobTracker Thrift Plugin</td>
 <td>9290</td>
 </tr>
-
 <tr>
 <td></td>
 <td>TaskTracker</td>
 <td>50060</td>
 </tr>
-
 <tr>
 <td>Hadoop YARN (MRv2)</td>
 <td>ResourceManager</td>
 <td>8032</td>
 </tr>
-
 <tr>
 <td></td>
 <td>ResourceManager</td>
 <td>8033</td>
 </tr>
-
 <tr>
 <td></td>
 <td>ResourceManager</td>
 <td>8088</td>
 </tr>
-
 <tr>
 <td></td>
 <td>NodeManager</td>
 <td>8042</td>
 </tr>
-
 <tr>
 <td></td>
 <td>MapReduce JobHistory Server</td>
 <td>19888</td>
 </tr>
-
 <tr>
 <td>HBase</td>
 <td>Master</td>
 <td>60000</td>
 </tr>
-
 <tr>
 <td></td>
 <td>Master</td>
 <td>60010</td>
 </tr>
-
 <tr>
 <td></td>
 <td>RegionServer</td>
 <td>60020</td>
 </tr>
-
 <tr>
 <td></td>
 <td>RegionServer</td>
 <td>60030</td>
 </tr>
-
 <tr>
 <td></td>
 <td>HQuorumPeer</td>
 <td>2888</td>
 </tr>
-
 <tr>
 <td></td>
 <td>HQuorumPeer</td>
 <td>3888</td>
 </tr>
-
 <tr>
 <td></td>
 <td>REST Service</td>
 <td>8080</td>
 </tr>
-
 <tr>
 <td></td>
 <td>REST UI</td>
 <td>8085</td>
 </tr>
-
 <tr>
 <td></td>
 <td>ThriftServer</td>
 <td>9095</td>
 </tr>
-
 <tr>
 <td></td>
 <td>Avro server</td>
 <td>9090</td>
 </tr>
-
 <tr>
 <td></td>
 <td>hbase-solr-indexer</td>
 <td>11060</td>
 </tr>
-
 <tr>
 <td>Hive</td>
 <td>Metastore</td>
 <td>9083</td>
 </tr>
-
 <tr>
 <td></td>
 <td>HiveServer2</td>
 <td>10000</td>
 </tr>
-
 <tr>
 <td></td>
 <td>HiveServer WEB UI</td>
 <td>10002</td>
 </tr>
-
 <tr>
 <td>Sqoop</td>
 <td>Metastore</td>
 <td>16000</td>
 </tr>
-
 <tr>
 <td>Sqoop 2</td>
 <td>Sqoop 2 server</td>
 <td>12000</td>
 </tr>
-
 <tr>
 <td></td>
 <td>Sqoop 2</td>
 <td>12001</td>
 </tr>
-
 <tr>
 <td>ZooKeeper</td>
 <td>Server (with CDH 5 or Cloudera Manager 5)</td>
 <td>2181</td>
 </tr>
-
 <tr>
 <td>Hue</td>
 <td>Server</td>
 <td>8888</td>
 </tr>
-
 <tr>
 <td>Oozie</td>
 <td>Oozie Server</td>
 <td>11000</td>
 </tr>
-
 <tr>
 <td>Spark</td>
 <td>Default Master RPC port</td>
 <td>7077</td>
 </tr>
-
 <tr>
 <td></td>
 <td>Default Worker RPC port</td>
 <td>7078</td>
 </tr>
-
 <tr>
 <td></td>
 <td>Default Master web UI port</td>
 <td>18080</td>
 </tr>
-
 <tr>
 <td></td>
 <td>Default Worker web UI port</td>
 <td>18081</td>
 </tr>
-
 <tr>
 <td></td>
 <td>Ressource Manager Scheduler Accessa</td>
 <td>8030</td>
 </tr>
-
 <tr>
 <td></td>
 <td>Job History Server</td>
 <td>10020</td>
 </tr>
-
 <tr>
 <td>Cloudera Manager</td>
 <td>Web UI port</td>
@@ -465,11 +410,9 @@ $docker run --hostname<span style="color:#f92672">=</span>quickstart.cloudera -p
 </tr>
 </tbody>
 </table>
-
 <p>Die 6.5er Version vom Talend Studio empfiehlt Java 8. Lieder hat Cloudera in dem Quickstartcontainer noch Java 7 installiert, sodass wir hier erst einmal die Java Version aktualisieren müssen.
 Dafür laden wir das neueste Java SE Development Kit 8 von Oracle herunter.
 Unten folgen die Befehle zum update der Java VM</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -LO http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.tar.gz -H --no-cookies --header <span style="color:#e6db74">&#34;Cookie: oraclelicense=accept-securebackup-cookie&#34;</span>
 $
 $ tar xzf jdk-8u161-linux-x64.tar.gz
@@ -490,217 +433,104 @@ $
 $ echo <span style="color:#e6db74">&#34;export JAVA_HOME=/opt/jdk1.8.0_161&#34;</span> &gt;&gt; /etc/default/cloudera-scm-server
 $
 $ export PATH<span style="color:#f92672">=</span>$JAVA_HOME/bin:$PATH</code></pre></div>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@localhost /<span style="color:#f92672">]</span># /home/cloudera/cloudera-manager --express</code></pre></div>
-
-<p>Wenn der Cloudera Manager gestartet ist können wir im Webbrowser die URL [<a href="http://quickstart.cloudera:7180]‚">http://quickstart.cloudera:7180]‚</a> aufrufen. Mit den Zugangsdaten cloudera/cloudera (gilt für alle Dienste im Container) können wir uns Einloggen. Mit dem Cloudera Manager können wir den Hadoop Cluster über ein Webinterface überwachen und administrieren.</p>
-
-
-<figure >
-    
-        <img src="/techdocs/talend_clouderaquickstart/cloudera_manager.png" />
-    
-    
-    <figcaption>
-        <h4>Cloudera Manager</h4>
-        
-    </figcaption>
-    
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@localhost /<span style="color:#f92672">]</span><span style="color:#75715e"># /home/cloudera/cloudera-manager --express</span></code></pre></div>
+<p>Wenn der Cloudera Manager gestartet ist können wir im Webbrowser die URL [http://quickstart.cloudera:7180]‚ aufrufen. Mit den Zugangsdaten cloudera/cloudera (gilt für alle Dienste im Container) können wir uns Einloggen. Mit dem Cloudera Manager können wir den Hadoop Cluster über ein Webinterface überwachen und administrieren.</p>
+<figure>
+    <img src="/techdocs/talend_clouderaquickstart/cloudera_manager.png"/> <figcaption>
+            <h4>Cloudera Manager</h4>
+        </figcaption>
 </figure>
 
-
-<p>Als erstes müssen wir ein Custom JavaHome angeben. In der Navigationsbar können wir unter Hosts die Konfiguration anpassen (URL <a href="http://quickstart.cloudera:7180/cmf/hardware/hosts/config">http://quickstart.cloudera:7180/cmf/hardware/hosts/config</a>). Hier tragen wir unter Java-Home-Verzeichnis <code>/opt/jdk1.8.0_161</code> ein uns speichern.</p>
-
+<p>Als erstes müssen wir ein Custom JavaHome angeben. In der Navigationsbar können wir unter Hosts die Konfiguration anpassen (URL <a href="http://quickstart.cloudera">http://quickstart.cloudera</a>:7180/cmf/hardware/hosts/config). Hier tragen wir unter Java-Home-Verzeichnis <code>/opt/jdk1.8.0_161</code> ein uns speichern.</p>
 <p>Um vom Studio direkt auf das HDFS des Conatiners zugreifen zu können müssen wir nun die Konfiguration noch etwas anpassen. Standardmäßig versucht die Hadoop-Client-Bibliothek, sich mit der IP-Adresse des Namensknotens zu verbinden, was jedoch fehlschlägt, da sich diese Adresse nicht vom Host aus zugänglich ist. Um dem em Hadoop-Client mitzuteilen, dass er sich mit dem Hostnamen <code>quickstart.cloudera</code> und nicht mit der IP-Adresse verbinden soll, müssen wir in der Serverkonfiguration <code>dfs.client.use.datanode.hostname</code> auf <code>true</code> setzen.</p>
-
-
-<figure >
-    
-        <img src="/techdocs/talend_clouderaquickstart/config_datanode_hostname_1.png" />
-    
-    
-    <figcaption>
-        <h4>Suche des Parameters zur Konfiguration des Datanode Hostnames im Cloudera Manager</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/talend_clouderaquickstart/config_datanode_hostname_1.png"/> <figcaption>
+            <h4>Suche des Parameters zur Konfiguration des Datanode Hostnames im Cloudera Manager</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/talend_clouderaquickstart/config_datanode_hostname_2.png" />
-    
-    
-    <figcaption>
-        <h4>Konfiguration des Datanode Hostnames</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/talend_clouderaquickstart/config_datanode_hostname_2.png"/> <figcaption>
+            <h4>Konfiguration des Datanode Hostnames</h4>
+        </figcaption>
 </figure>
-
 
 <p>Nach der Konfigurationsänderung müssen wir die neue Konfiguration allen Diensten bereitstellen und dann alle Dienste im Cloudera Manager neustarten.</p>
-
-
-<figure >
-    
-        <img src="/techdocs/talend_clouderaquickstart/restart_1.png" />
-    
-    
-    <figcaption>
-        <h4>Bereitstellen der Konfiguration</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/talend_clouderaquickstart/restart_1.png"/> <figcaption>
+            <h4>Bereitstellen der Konfiguration</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/talend_clouderaquickstart/restart_2.png" />
-    
-    
-    <figcaption>
-        <h4>Neustart der Dienste</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/talend_clouderaquickstart/restart_2.png"/> <figcaption>
+            <h4>Neustart der Dienste</h4>
+        </figcaption>
 </figure>
-
 
 <p>** Hadoop Cluster Konfiguration im Talend Studio</p>
-
 <p>Nun können wir das Open Studio mit dem Quickstart Container verbinden.
 Im Talend Open Studio navigieren wir zu Metadaten | Hadoop Cluster, klicken dann mit der rechten Maustaste und wählen  Create Hadoop Cluster.</p>
-
-<p>
-<figure >
-    
-        <img src="/techdocs/talend_clouderaquickstart/create_hadoop_cluster.png" />
-    
-    
-    <figcaption>
-        <h4>Anlegen der Hadoop Cluster Konfiguration</h4>
-        
-    </figcaption>
-    
+<p><figure>
+    <img src="/techdocs/talend_clouderaquickstart/create_hadoop_cluster.png"/> <figcaption>
+            <h4>Anlegen der Hadoop Cluster Konfiguration</h4>
+        </figcaption>
 </figure>
 
 Als Namen tragen wir &ldquo;Quickstart&rdquo; ein und klicken auf Weiter.
 Die Konfigurationsdaten können wir direkt aus dem Cluster  importieren, also wählen wir &ldquo;Cloudera&rdquo; für die Distribution und setzen Sie dann den Optionsschalter auf &ldquo;Retrieve configuration for Ambari or Cloudera&rdquo;.</p>
-
-
-<figure >
-    
-        <img src="/techdocs/talend_clouderaquickstart/cluster_config_1.png" />
-    
-    
-    <figcaption>
-        <h4>Konfigurationsassistent</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/talend_clouderaquickstart/cluster_config_1.png"/> <figcaption>
+            <h4>Konfigurationsassistent</h4>
+        </figcaption>
 </figure>
-
 
 <p>Anschließend geben wir die Manager URL, sowie die Anmeldeinformationen ein und klicken  auf Fetch: dies wird Open Studio anweisen, sich mit dem Cluster zu verbinden und die Konfigurationseinstellungen für HDFS, YARN und andere Hadoop-Dienste herunterzuladen.
 Als Anmeldeinformationen geben wir folgendes ein:
-Manager URI (with port): <a href="http://quickstart.cloudera:7180/">http://quickstart.cloudera:7180/</a>
+Manager URI (with port): <a href="http://quickstart.cloudera">http://quickstart.cloudera</a>:7180/
 Username: cloudera
 Password: cloudera</p>
-
-
-<figure >
-    
-        <img src="/techdocs/talend_clouderaquickstart/cluster_config_2.png" />
-    
-    
-    <figcaption>
-        <h4>Konfigurationsparameter Hadoop Cluster Konfiguration</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/talend_clouderaquickstart/cluster_config_2.png"/> <figcaption>
+            <h4>Konfigurationsparameter Hadoop Cluster Konfiguration</h4>
+        </figcaption>
 </figure>
-
 
 <p>** Speichern einer Datei auf HDFS</p>
-
-<p>Wir benutzen dazu einen Datensatz von MeteoSchweiz aus dem Internet, der die monatlichen Niederschläge und Durchschnittstemperaturen für Basel von 1864 bis heute enthält. Sie finden die Daten auf der Homepage www.meteoschweiz.ch unter Klima / Schweizer Klima im Detail / Homogene Messreihen ab 1864&rdquo; (<a href="http://www.meteoschweiz.admin.ch/product/output/climate-data/homogenous-monthly-data-processing/data/homog_mo_BAS.txt">http://www.meteoschweiz.admin.ch/product/output/climate-data/homogenous-monthly-data-processing/data/homog_mo_BAS.txt</a>) , wo Sie in der Tabelle neben der Karte die Datei homog_mo_BAS.csv als ersten Eintrag finden.</p>
-
+<p>Wir benutzen dazu einen Datensatz von MeteoSchweiz aus dem Internet, der die monatlichen Niederschläge und Durchschnittstemperaturen für Basel von 1864 bis heute enthält. Sie finden die Daten auf der Homepage <a href="http://www.meteoschweiz.ch">www.meteoschweiz.ch</a> unter Klima / Schweizer Klima im Detail / Homogene Messreihen ab 1864&quot; (<a href="http://www.meteoschweiz.admin.ch/product/output/climate-data/homogenous-monthly-data-processing/data/homog_mo_BAS.txt">http://www.meteoschweiz.admin.ch/product/output/climate-data/homogenous-monthly-data-processing/data/homog_mo_BAS.txt</a>) , wo Sie in der Tabelle neben der Karte die Datei homog_mo_BAS.csv als ersten Eintrag finden.</p>
 <p>Hierfür erstellen wir einen neuen Standard Job mit dem Namen LoadClimateBasel.
 Als einzige Komponente für den Job konfigurieren wir tHDFSPut. Mit der Komponente können wir eine Datei vom lokalen Dateisystem nach HDFS kopieren.</p>
-
-
-<figure >
-    
-        <img src="/techdocs/talend_clouderaquickstart/LoadClimate1.png" />
-    
-    
-    <figcaption>
-        <h4>Neuen Standard Job anlegen</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/talend_clouderaquickstart/LoadClimate1.png"/> <figcaption>
+            <h4>Neuen Standard Job anlegen</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/talend_clouderaquickstart/LoadClimate2.png" />
-    
-    
-    <figcaption>
-        <h4>tHDFSPut Konfigurieren</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/talend_clouderaquickstart/LoadClimate2.png"/> <figcaption>
+            <h4>tHDFSPut Konfigurieren</h4>
+        </figcaption>
 </figure>
-
 
 <p>Als lokales Verzeichnis geben wir den Ordner an, indem wir die Datei homog_mo_BAS.csv abgelegt haben, als HDFS Directory das Zielverzeichnis. Da wir exakt eine Datei hochladen wollen, geben wir unter Dateien exact den Namen unserer Quelldatei an und unter &ldquo;Neuer Name&rdquo; den Zielnamen. Sollten wir mehrere Dateien hochladen wollen, können wir unter &ldquo;Dateimaske&rdquo; aus beispielsweise &ldquo;*&rdquo; angeben um alle Dateien aus dem Quellverzeichnis hochzuladen.</p>
-
 <p>Mit F6 können wir den Job nun starten und in der Run View die Ausgabe des Logs überprüfen.</p>
-
-
-<figure >
-    
-        <img src="/techdocs/talend_clouderaquickstart/console_run_job.png" />
-    
-    
-    <figcaption>
-        <h4>Konsolenausgabe beim Ausführen des Jobs</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/talend_clouderaquickstart/console_run_job.png"/> <figcaption>
+            <h4>Konsolenausgabe beim Ausführen des Jobs</h4>
+        </figcaption>
 </figure>
 
-
-<p>Im Browser können wir uns die hochgeladene Datei ansehen: [<a href="http://quickstart.cloudera:8888/hue]‚">http://quickstart.cloudera:8888/hue]‚</a>
-
-<figure >
-    
-        <img src="/techdocs/talend_clouderaquickstart/hue_dateibrowser.png" />
-    
-    
-    <figcaption>
-        <h4>Mit Hue überprüfen ob die Datei wirklich hochgeladen wurde</h4>
-        
-    </figcaption>
-    
+<p>Im Browser können wir uns die hochgeladene Datei ansehen: [http://quickstart.cloudera:8888/hue]‚
+<figure>
+    <img src="/techdocs/talend_clouderaquickstart/hue_dateibrowser.png"/> <figcaption>
+            <h4>Mit Hue überprüfen ob die Datei wirklich hochgeladen wurde</h4>
+        </figcaption>
 </figure>
 </p>
-
 <p>** Tips und Tricks</p>
-
 <p>Nach dem erstmaligen Einrichten kannd er Cloudera Manager mit</p>
-
 <p><code>service cloudera-scm-server start|stop|restart</code></p>
-
-<p>gesteuert werden. Nach der Startphase ist er dann unter <a href="http://localhost:7180/cmf/">http://localhost:7180/cmf/</a> verfügbar. Zugangsdaten sind Cloudera/Cloudera</p>
+<p>gesteuert werden. Nach der Startphase ist er dann unter http://localhost:7180/cmf/ verfügbar. Zugangsdaten sind Cloudera/Cloudera</p>
 
             </div>
             <hr style="width:200px" class="avb-opacity">

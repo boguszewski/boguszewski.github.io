@@ -73,28 +73,28 @@
 		  "@context": "http://schema.org",
 		  "@type": "BlogPosting",
   		   "headline": "TIBCO BWCE auf Kubernetes",
- 			"url" : "http://alexander.vonboguszewski.name/techdocs/bwce_on_kubernetes/",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/bwce_on_kubernetes\/",
   			"author": {
     			"@type": "Person",
   				"name" : "Alexander von Boguszewski", 
-  				"url" : "http://alexander.vonboguszewski.name/"
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
   			  },
   			  "publisher": {
     			"@type": "Organization",
   				"name" : "Alexander von Boguszewski Personal Webpage" ,
   				"logo": {
      				 "@type": "ImageObject",
-      				 "url": "http://alexander.vonboguszewski.name/images/bg.png"
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
    				 }
   			  },
   			  "mainEntityOfPage": {
         		 "@type": "WebPage",
-       			 "@id": "http://alexander.vonboguszewski.name/"
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
     		  }
   			
-  			, "dateModified": "2017-12-23T00:00:00&#43;00:00"
-  			, "datePublished": "2017-12-23T00:00:00&#43;00:00"
-  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+  			, "dateModified": "2017-12-23T00:00:00\u002b00:00"
+  			, "datePublished": "2017-12-23T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
 		}
 		</script>
 
@@ -133,212 +133,115 @@
 	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
 	  			<span class="post-date">Dec 23, 2017 </span>
 	  			<hr style="width:200px" class="avb-opacity">
-                
-
-<p>In diesem Blogpost werden wir die TIBCO BWCE Applikation entwickeln und das Docker Image auf einem lokalen Kubernetes Cluster (Minikube) starten.</p>
-
+                <p>In diesem Blogpost werden wir die TIBCO BWCE Applikation entwickeln und das Docker Image auf einem lokalen Kubernetes Cluster (Minikube) starten.</p>
 <h2 id="was-ist-kubernetes">Was ist Kubernetes?</h2>
-
-<p>Kubernetes (K8s,  griechisch für &ldquo;Steuermann&rdquo; oder &ldquo;Pilot&rdquo;) ist ein Open-Source-System zur Automatisierung von Deployment, Skalierung und Management von containerisierten Anwendungen. Es wurde ursprünglich von Google erstellt und ist meiner Meinung nach das das verbreitetste Tool zur Container Orchestrierung. Einen einfachen Einstieg um K8 auf einem Laptop zu nutzen ist Minikube. Minikube betreibt einen Kubernetes-Cluster mit einem einzigen Knoten in einer VM (z.B. VirtualBox). Eine gute Einführung zu Minikube findet sich zu [<a href="https://kubernetes.io/docs/getting-started-guides/minikube/">https://kubernetes.io/docs/getting-started-guides/minikube/</a>]</p>
-
+<p>Kubernetes (K8s,  griechisch für &ldquo;Steuermann&rdquo; oder &ldquo;Pilot&rdquo;) ist ein Open-Source-System zur Automatisierung von Deployment, Skalierung und Management von containerisierten Anwendungen. Es wurde ursprünglich von Google erstellt und ist meiner Meinung nach das das verbreitetste Tool zur Container Orchestrierung. Einen einfachen Einstieg um K8 auf einem Laptop zu nutzen ist Minikube. Minikube betreibt einen Kubernetes-Cluster mit einem einzigen Knoten in einer VM (z.B. VirtualBox). Eine gute Einführung zu Minikube findet sich zu [https://kubernetes.io/docs/getting-started-guides/minikube/]</p>
 <h2 id="entwicklung-einer-demo-anwendung">Entwicklung einer Demo Anwendung</h2>
-
 <p>Zuerst müssen wir natürlich mit dem Designer einen kleinen Prozess bauen, den wir in K8 ausrollen können. Nachdem wir den TIBCO BWCE Designer gestartet haben erstellen wir eine neue BusinessWorks Applikation
-
-<figure >
-    
-        <img src="/techdocs/bwce/1.png" alt="1. BusinessWorks Applikation im Kontextmenü des Designers" />
-    
-    
-    <figcaption>
-        <h4>BusinessWorks Applikation erstellen</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bwce/1.png"
+         alt="1. BusinessWorks Applikation im Kontextmenü des Designers"/> <figcaption>
+            <h4>BusinessWorks Applikation erstellen</h4>
+        </figcaption>
 </figure>
 
-
-<figure >
-    
-        <img src="/techdocs/bwce/2.png" alt="2. Projektname Calculator angeben und Create Applikation Module auswählen" />
-    
-    
-    <figcaption>
-        <h4>Projekt Konfigurieren</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bwce/2.png"
+         alt="2. Projektname Calculator angeben und Create Applikation Module auswählen"/> <figcaption>
+            <h4>Projekt Konfigurieren</h4>
+        </figcaption>
 </figure>
 
-
-<figure >
-    
-        <img src="/techdocs/bwce/3.png" alt="3. Neues Datenschema anlegen" />
-    
-    
-    <figcaption>
-        <h4>Schema Konfigurieren</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bwce/3.png"
+         alt="3. Neues Datenschema anlegen"/> <figcaption>
+            <h4>Schema Konfigurieren</h4>
+        </figcaption>
 </figure>
 
-
-<figure >
-    
-        <img src="/techdocs/bwce/4.png" alt="4. Create Rest Service im angelegten Prozess auswählen" />
-    
-    
-    <figcaption>
-        <h4>Neuen Rest Service Erstellen</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bwce/4.png"
+         alt="4. Create Rest Service im angelegten Prozess auswählen"/> <figcaption>
+            <h4>Neuen Rest Service Erstellen</h4>
+        </figcaption>
 </figure>
 
-
-<figure >
-    
-        <img src="/techdocs/bwce/5.png" alt="4. Configure Rest Service Implementation" />
-    
-    
-    <figcaption>
-        <h4>Service Konfigurieren</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bwce/5.png"
+         alt="4. Configure Rest Service Implementation"/> <figcaption>
+            <h4>Service Konfigurieren</h4>
+        </figcaption>
 </figure>
 
-
-<figure >
-    
-        <img src="/techdocs/bwce/6.png" alt="6. Neuer Prozess mit leerer Get und Put Methode " />
-    
-    
-    <figcaption>
-        <h4>Neuer Prozess mit leerer Get und Put Methode</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bwce/6.png"
+         alt="6. Neuer Prozess mit leerer Get und Put Methode "/> <figcaption>
+            <h4>Neuer Prozess mit leerer Get und Put Methode</h4>
+        </figcaption>
 </figure>
 
-
-<figure >
-    
-        <img src="/techdocs/bwce/7.png" alt="7. Einfachen Service zur Addition aller Werte einer Liste Implementieren " />
-    
-    
-    <figcaption>
-        <h4>Implementieren der Post Methode</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bwce/7.png"
+         alt="7. Einfachen Service zur Addition aller Werte einer Liste Implementieren "/> <figcaption>
+            <h4>Implementieren der Post Methode</h4>
+        </figcaption>
 </figure>
 
-
-<figure >
-    
-        <img src="/techdocs/bwce/8.png" alt="8. Run as BusinessWorks Application" />
-    
-    
-    <figcaption>
-        <h4>Starten des Services im Designer</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bwce/8.png"
+         alt="8. Run as BusinessWorks Application"/> <figcaption>
+            <h4>Starten des Services im Designer</h4>
+        </figcaption>
 </figure>
 
-
-<figure >
-    
-        <img src="/techdocs/bwce/9.png" alt="9. Test Application mit Swagger" />
-    
-    
-    <figcaption>
-        <h4>Aufruf von Swagger im Browser</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bwce/9.png"
+         alt="9. Test Application mit Swagger"/> <figcaption>
+            <h4>Aufruf von Swagger im Browser</h4>
+        </figcaption>
 </figure>
 
-
-<figure >
-    
-        <img src="/techdocs/bwce/10.png" alt="10. Aufruf des Add Services mit Swagger" />
-    
-    
-    <figcaption>
-        <h4>Testen des Services</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bwce/10.png"
+         alt="10. Aufruf des Add Services mit Swagger"/> <figcaption>
+            <h4>Testen des Services</h4>
+        </figcaption>
 </figure>
 
-
-<figure >
-    
-        <img src="/techdocs/bwce/11.png" alt="11. Konfiguration des HTTP Connectors" />
-    
-    
-    <figcaption>
-        <h4>Bei der Konfiguration des HTTP Endpoints müssen wir the 0.0.0.0 anstatt 127.0.0.1, bwz. die Variablen BW.HOST.NAME und BW.CLOUD.PORT setzen</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bwce/11.png"
+         alt="11. Konfiguration des HTTP Connectors"/> <figcaption>
+            <h4>Bei der Konfiguration des HTTP Endpoints müssen wir the 0.0.0.0 anstatt 127.0.0.1, bwz. die Variablen BW.HOST.NAME und BW.CLOUD.PORT setzen</h4>
+        </figcaption>
 </figure>
 
-
-<figure >
-    
-        <img src="/techdocs/bwce/12.png" alt="12. Export des EAR Files" />
-    
-    
-    <figcaption>
-        <h4>Build der Applikation</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bwce/12.png"
+         alt="12. Export des EAR Files"/> <figcaption>
+            <h4>Build der Applikation</h4>
+        </figcaption>
 </figure>
 </p>
-
 <h2 id="docker-image">Docker Image</h2>
-
 <p>Für das gerade gebaute EAR File benötigen wir noch die Laufzeitumgebung.
-TIBCO stellt unter (GITHub)[<a href="https://github.com/TIBCOSoftware/bwce-docker">https://github.com/TIBCOSoftware/bwce-docker</a>] einen entsprechenden Container bereit.</p>
-
-
-<figure >
-    
-        <img src="/techdocs/bwce/13.png" alt="13. Export des bwce-docker Github Projekts " />
-    
-    
-    <figcaption>
-        <h4>Download Docker Project</h4>
-        
-    </figcaption>
-    
+TIBCO stellt unter (GITHub)[https://github.com/TIBCOSoftware/bwce-docker] einen entsprechenden Container bereit.</p>
+<figure>
+    <img src="/techdocs/bwce/13.png"
+         alt="13. Export des bwce-docker Github Projekts "/> <figcaption>
+            <h4>Download Docker Project</h4>
+        </figcaption>
 </figure>
-
 
 <p>Da in dem Container die BWZW Laufzeitumgebung fehlt, müssen wir uns diese (bwce_cf.zip) von <a href="http://edelivery.tibco.com">http://edelivery.tibco.com</a> herunterladen (Konto erforderlich). Die Datei bwce_cf.zip kopieren wir in das ausgecheckte GITHUb Projekt nach &lsquo;Resources/BWCE-Runtime&rsquo;</p>
-
-
-<figure >
-    
-        <img src="/techdocs/bwce/14.png" alt="14. BWCE RUNTIME" />
-    
-    
-    <figcaption>
-        <h4>BWCE Runtime kopieren</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bwce/14.png"
+         alt="14. BWCE RUNTIME"/> <figcaption>
+            <h4>BWCE Runtime kopieren</h4>
+        </figcaption>
 </figure>
-
 
 <p>Ich hatte einige Probleme mit dem com.tibco.bwce.profile.resolver.Resolver, daher habe ich
 die start.sh und setup.sh anpassen müssen.</p>
-
 <pre><code>#!/bin/bash
 #start.sh
 #Set ENV Variables
@@ -352,9 +255,7 @@ export BW_KEYSTORE_PATH=/resources/addons/certs
 
 #ADD THIS
 export JAVA_HOME=$BWCE_HOME/tibco.home/tibcojre64/1.8.0
-</code></pre>
-
-<pre><code>#setup.sh
+</code></pre><pre><code>#setup.sh
 STATUS=$?
 if [ $STATUS == &quot;1&quot; ]; then
     echo &quot;ERROR: Failed to setup BWCE runtime. See logs for more details.&quot;
@@ -376,29 +277,26 @@ checkJAVAHOME()
  			export JAVA_HOME=$BWCE_HOME/tibco.home/tibcojre64/1.8.0
  		#fi
 }
-</code></pre>
-
-<p>Anschließend können wir das Image mit dem mitgelieferten Script bauen.</p>
-
+</code></pre><p>Anschließend können wir das Image mit dem mitgelieferten Script bauen.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./createDockerImage.sh resources/bwce-runtime/bwce-runtime-2.3.2.zip 
 Tag is set to bwce:latest
-Sending build context to Docker daemon  <span style="color:#ae81ff">400</span>.2MB
-Step <span style="color:#ae81ff">1</span>/5 : FROM debian:jessie-slim
+Sending build context to Docker daemon  400.2MB
+Step 1/5 : FROM debian:jessie-slim
  ---&gt; d086c1dfff1f
-Step <span style="color:#ae81ff">2</span>/5 : MAINTAINER TIBCO Software Inc.
+Step 2/5 : MAINTAINER TIBCO Software Inc.
  ---&gt; Using cache
  ---&gt; ecf2e3eaf860
-Step <span style="color:#ae81ff">3</span>/5 : ADD . /
+Step 3/5 : ADD . /
  ---&gt; 73a54a288b9b
-Step <span style="color:#ae81ff">4</span>/5 : RUN chmod <span style="color:#ae81ff">755</span> /scripts/*.sh <span style="color:#f92672">&amp;&amp;</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get --no-install-recommends -y install unzip ssh net-tools <span style="color:#f92672">&amp;&amp;</span> apt-get clean <span style="color:#f92672">&amp;&amp;</span> rm -rf /var/lib/apt/lists/*
+Step 4/5 : RUN chmod <span style="color:#ae81ff">755</span> /scripts/*.sh <span style="color:#f92672">&amp;&amp;</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get --no-install-recommends -y install unzip ssh net-tools <span style="color:#f92672">&amp;&amp;</span> apt-get clean <span style="color:#f92672">&amp;&amp;</span> rm -rf /var/lib/apt/lists/*
  ---&gt; Running in c5c10c15b9f9
-Get:1 http://security.debian.org jessie/updates InRelease <span style="color:#f92672">[</span><span style="color:#ae81ff">63</span>.1 kB<span style="color:#f92672">]</span>
+Get:1 http://security.debian.org jessie/updates InRelease <span style="color:#f92672">[</span>63.1 kB<span style="color:#f92672">]</span>
 ....
-Processing triggers <span style="color:#66d9ef">for</span> libc-bin <span style="color:#f92672">(</span><span style="color:#ae81ff">2</span>.19-18+deb8u10<span style="color:#f92672">)</span> ...
-Processing triggers <span style="color:#66d9ef">for</span> systemd <span style="color:#f92672">(</span><span style="color:#ae81ff">215</span>-17+deb8u7<span style="color:#f92672">)</span> ...
+Processing triggers <span style="color:#66d9ef">for</span> libc-bin <span style="color:#f92672">(</span>2.19-18+deb8u10<span style="color:#f92672">)</span> ...
+Processing triggers <span style="color:#66d9ef">for</span> systemd <span style="color:#f92672">(</span>215-17+deb8u7<span style="color:#f92672">)</span> ...
  ---&gt; 0c0deccccc63
 Removing intermediate container c5c10c15b9f9
-Step <span style="color:#ae81ff">5</span>/5 : ENTRYPOINT /scripts/start.sh
+Step 5/5 : ENTRYPOINT /scripts/start.sh
  ---&gt; Running in ae9754bae67b
  ---&gt; 6e0530148b24
 Removing intermediate container ae9754bae67b
@@ -421,24 +319,24 @@ Calculator_1.0.0.ear	Dockerfile
 $
 $
 $ docker build -t calculator:v1 .
-Sending build context to Docker daemon  <span style="color:#ae81ff">15</span>.36kB
-Step <span style="color:#ae81ff">1</span>/6 : FROM bwce:latest
+Sending build context to Docker daemon  15.36kB
+Step 1/6 : FROM bwce:latest
  ---&gt; 6e0530148b24
-Step <span style="color:#ae81ff">2</span>/6 : MAINTAINER Alexander von Boguszewski
+Step 2/6 : MAINTAINER Alexander von Boguszewski
  ---&gt; Running in 1ee07480f95c
  ---&gt; 4c9dbfbaf1b4
 Removing intermediate container 1ee07480f95c
-Step <span style="color:#ae81ff">3</span>/6 : ADD Calculator_1.0.0.ear /
+Step 3/6 : ADD Calculator_1.0.0.ear /
  ---&gt; 4b957635177a
-Step <span style="color:#ae81ff">4</span>/6 : EXPOSE <span style="color:#ae81ff">8080</span>
+Step 4/6 : EXPOSE <span style="color:#ae81ff">8080</span>
  ---&gt; Running in 1d528b8fc69f
  ---&gt; 6e1c63d40da2
 Removing intermediate container 1d528b8fc69f
-Step <span style="color:#ae81ff">5</span>/6 : EXPOSE <span style="color:#ae81ff">8090</span>
+Step 5/6 : EXPOSE <span style="color:#ae81ff">8090</span>
  ---&gt; Running in ea2f951e20ec
  ---&gt; d820efa49b2b
 Removing intermediate container ea2f951e20ec
-Step <span style="color:#ae81ff">6</span>/6 : EXPOSE <span style="color:#ae81ff">7777</span>
+Step 6/6 : EXPOSE <span style="color:#ae81ff">7777</span>
  ---&gt; Running in 554c515e4c77
  ---&gt; d3ca020299a0
 Removing intermediate container 554c515e4c77
@@ -446,43 +344,24 @@ Successfully built d3ca020299a0
 Successfully tagged calculator:v1
 $
 $ docker run -P calculator </code></pre></div>
-
-
-<figure >
-    
-        <img src="/techdocs/bwce/15.png" alt="15. docker run -P calculator " />
-    
-    
-    <figcaption>
-        <h4>Starte Container</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bwce/15.png"
+         alt="15. docker run -P calculator "/> <figcaption>
+            <h4>Starte Container</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/bwce/16.png" alt="16. docker ps und öffene http://localhost:32816/swagger/" />
-    
-    
-    <figcaption>
-        <h4>Öffne Swagger</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bwce/16.png"
+         alt="16. docker ps und öffene http://localhost:32816/swagger/"/> <figcaption>
+            <h4>Öffne Swagger</h4>
+        </figcaption>
 </figure>
-
 
 <h2 id="installation-minikube">Installation Minikube</h2>
-
 <p>Ursprünglich wollte ich VMWare Fusion als Laufzeitumgebung verwenden, aber auch nach langen probieren ist mir das so nicht gelungen. Daher habe ich schlussendlich Virtual Box werwendet, was out of the Box funktioniert hat</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew cask install minikube</code></pre></div>
-
 <p>Nachdem wir Minikube installiert haben, können wir es starten, indem wir <code>minikube start</code> starten. Wenn wir wollen, können wir mit <code>minikube Dashboard</code> das K8 Dashboard zu starten.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ minikube start
 Starting local Kubernetes v1.8.0 cluster...
 Starting VM...
@@ -494,9 +373,7 @@ Setting up kubeconfig...
 Starting cluster components...
 Kubectl is now configured to use the cluster.
 Loading cached images from config file.</code></pre></div>
-
 <p>In einem zweiten Terminal können wir dann unsere Anwendung zu K8 hinzufügen</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$
 $
 $ kubectl run bwcecalculator-node --image<span style="color:#f92672">=</span>calculator:v1 --port<span style="color:#f92672">=</span><span style="color:#ae81ff">8080</span>
@@ -512,8 +389,8 @@ $
 $
 $ kubectl get pods
 NAME                                   READY     STATUS             RESTARTS   AGE
-bwce-node-7474788dcf-qwjrn             <span style="color:#ae81ff">0</span>/1       ImagePullBackOff   <span style="color:#ae81ff">0</span>          1d
-bwcecalculator-node-8548dfdf57-rshnw   <span style="color:#ae81ff">0</span>/1       ImagePullBackOff   <span style="color:#ae81ff">0</span>          20s
+bwce-node-7474788dcf-qwjrn             0/1       ImagePullBackOff   <span style="color:#ae81ff">0</span>          1d
+bwcecalculator-node-8548dfdf57-rshnw   0/1       ImagePullBackOff   <span style="color:#ae81ff">0</span>          20s
 $
 $
 $ kubectl expose deployment bwcecalculator-node --type<span style="color:#f92672">=</span>LoadBalancer service <span style="color:#e6db74">&#34;bwcecalculator-node&#34;</span> exposed
@@ -524,8 +401,7 @@ Waiting, endpoint <span style="color:#66d9ef">for</span> service is not ready ye
 
 $minikube service --url helloworldbwce-node
 http://192.168.0.100:30724</code></pre></div>
-
-<p>Mit der zurückgegebenen URL können wir die Swagger WEBUI aufrufen (<a href="http://192.168.99.100:30724/swagger">http://192.168.99.100:30724/swagger</a>)</p>
+<p>Mit der zurückgegebenen URL können wir die Swagger WEBUI aufrufen (http://192.168.99.100:30724/swagger)</p>
 
             </div>
             <hr style="width:200px" class="avb-opacity">

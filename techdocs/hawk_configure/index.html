@@ -73,28 +73,28 @@
 		  "@context": "http://schema.org",
 		  "@type": "BlogPosting",
   		   "headline": "TIBCO Hawk Architektur",
- 			"url" : "http://alexander.vonboguszewski.name/techdocs/hawk_configure/",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/hawk_configure\/",
   			"author": {
     			"@type": "Person",
   				"name" : "Alexander von Boguszewski", 
-  				"url" : "http://alexander.vonboguszewski.name/"
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
   			  },
   			  "publisher": {
     			"@type": "Organization",
   				"name" : "Alexander von Boguszewski Personal Webpage" ,
   				"logo": {
      				 "@type": "ImageObject",
-      				 "url": "http://alexander.vonboguszewski.name/images/bg.png"
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
    				 }
   			  },
   			  "mainEntityOfPage": {
         		 "@type": "WebPage",
-       			 "@id": "http://alexander.vonboguszewski.name/"
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
     		  }
   			
-  			, "dateModified": "2016-01-02T00:00:00&#43;00:00"
-  			, "datePublished": "2016-01-02T00:00:00&#43;00:00"
-  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+  			, "dateModified": "2016-01-02T00:00:00\u002b00:00"
+  			, "datePublished": "2016-01-02T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
 		}
 		</script>
 
@@ -133,58 +133,42 @@
 	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
 	  			<span class="post-date">Jan 2, 2016 </span>
 	  			<hr style="width:200px" class="avb-opacity">
-                
-
-<p>TIBCO Hawk ist ein Tool zum Überwachen und Verwalten von verteilten Anwendungen und Systemen.  Systemadministratoren können Verhalten, Anwendungs- und Systemparameter für alle Knoten in einem Netzwerk überwachen und automatisierte Aktionen ausführen lassen wenn definierte Bedingungen eintreten. Im Gegensatz zu den meisten anderen Management Lösungen ist HAWK als verteiltes System konzipiert.
+                <p>TIBCO Hawk ist ein Tool zum Überwachen und Verwalten von verteilten Anwendungen und Systemen.  Systemadministratoren können Verhalten, Anwendungs- und Systemparameter für alle Knoten in einem Netzwerk überwachen und automatisierte Aktionen ausführen lassen wenn definierte Bedingungen eintreten. Im Gegensatz zu den meisten anderen Management Lösungen ist HAWK als verteiltes System konzipiert.
 Es gibt daher keinen zentralen Server, der Informationen von den anderen Knoten sammelt. Daher gibt es keinen Single Point of Failure, wenn der Server aus irgendeinem Grund ausfällt.
 Die  Hawk-Agents werden auf jedem Knoten ausgeführt, sammeln und verarbeiten Information und können anhand von Regeln Skripte starten durch oder Alarm Nachrichten innerhalb des Hawk Netzes versenden. Der Hawk Agent dient als Schnittstelle zu dem Hawk Data Transport über den mehrere Agents miteinander verbunden sind. Innerhalb des Agents dienen Microagents dazu den System- oder Programmstatus zu überwachen.
 Die Überwachung selbst wird über Rulebases realisiert. Diese fassen eine oder mehrere Regeln (Rules) zusammen, mit denen beschrieben wird was, wie überwacht wird.
 Mit der Datasources der Rule wird die Mikroagent Methode die regelmäßig Daten liefert bezeichnet.  Über Tests werden die gelieferten Daten der Datasource überprüft und bei einem positiven Test kann eine Aktion (Action) ausgeführt werden.
 Beispielsweise kann eine Alert Nachricht versendet werden. Die Nachrichten der einzelnen Agents können mit dem Hawk Display oder dem HawkWebdisplay angezeigt werden.
 Mit Hilfe des Schedule (Zeitplans / Kalenders) kann festgelegt werden, wann eine Regel gilt. Ein Schedule kann auch verwendet werden um zu unterschiedlichen Zeiten unterschiedliche Aktionen auszuführen. Zum Beispiel soll der Versand einer Warn-E-Mail nur zwischen 06:00 Uhr und 22:00 Uhr stattfinden.
-Hierbei gilt:<br />
+Hierbei gilt:<br>
 <strong>Rulebase → Rule(s) → Test(s) → Action(s)</strong></p>
-
 <h2 id="dislay">Dislay</h2>
-
 <p>TIBCO Hawk Display ist eine Java-Anwendung über die mit Hawk Agents interagiert werden kann. Hawk Events, die ein Agent verschickt, können mit dem Display angezeigt werden. Rulebases, Regeln und Schedules können mit dem Display editiert werden.
 TIBCO Hawk Display läuft unabhängig innerhalb einer Hawk Domain, dass heist dass eine oder mehrere Instanzen vom Hawk Display auf jedem Rechner im Netzwerk ausgeführt werden können, die dann jeweils die gleiche Ansicht der Objekte und Ereignisse anzeigen.</p>
-
-<p>Gestartet wird das Hawk Display im Folder<br />
-<code>cd &lt;TIBCO_HOME&gt;/hawk/&lt;VERSION&gt;/bin/ oder &lt;TIBCO_CONFIG_HOME&gt;/hawk/&lt;VERSION&gt;/bin/</code><br />
+<p>Gestartet wird das Hawk Display im Folder<br>
+<code>cd &lt;TIBCO_HOME&gt;/hawk/&lt;VERSION&gt;/bin/ oder &lt;TIBCO_CONFIG_HOME&gt;/hawk/&lt;VERSION&gt;/bin/</code><br>
 <code>./tibhawkdisplay</code></p>
-
-<p>die Konfigurationsdateien sind <em>tibhawkdisplay.tra</em> und _<TIBCO_CONFIG_HOME>/hawk/<VERSION>/bin/hawkdisplay.cfg_</p>
-
+<p>die Konfigurationsdateien sind <em>tibhawkdisplay.tra</em> und <em>&lt;TIBCO_CONFIG_HOME&gt;/hawk/<!-- raw HTML omitted -->/bin/hawkdisplay.cfg</em></p>
 <h2 id="agent">Agent</h2>
-
-<p>Konfiguriert wird ein Hawk Agent in der Datei _<TIBCO_HOME>/hawk/<VERSION>/bin/hawkagent.cfg_ oder für den Agent einer Domain in der Datei _<TIBCO_HOME>/domain/<DOMAINNAME>/hawkagent.cfg_
+<p>Konfiguriert wird ein Hawk Agent in der Datei <em>&lt;TIBCO_HOME&gt;/hawk/<!-- raw HTML omitted -->/bin/hawkagent.cfg</em> oder für den Agent einer Domain in der Datei <em>&lt;TIBCO_HOME&gt;/domain/<!-- raw HTML omitted -->/hawkagent.cfg</em>
 Es kennel auf einem Host mehrere Hawk Agents mit verschiedenen Konfigurationsdateien gestartet werden. Die Konfigurationsdatei ist ganz gut Dokumentiert, die wichtigsten Parameter sind:</p>
-
 <ul>
 <li>hawkdomain - Name der HawkDomain in der der Agent sich befindet. Dient zum separieren verschiedener Aufgaben. Bsp: technisches Domain Monitoring und Management vs. fachliches/business Monitoring</li>
 <li>cluster - Dient zur Gruppierung verschiedener Agents innerhalb einer Domain, bsp: ProjectA/ProjectB oder BW/BE/AMX. Wird auch im Display zur Gruppierung verwendet.</li>
 <li>agent_name - lesbarer Name des Agents, wird auch im Display so angezeigt</li>
 <li>rd_session|as_session|ems_transport definiert das Medium über der die Hawk Agents miteinander kommunizieren. Es kann nur einer der Parameter aktiv sein.</li>
 </ul>
-
-<p>Gestartet wird der Hawk Agent mit den  Konfigurationsdateien sind <em>tibhawkagent.tra</em> und _<TIBCO_CONFIG_HOME>/hawk/<VERSION>/bin/hawkagent.cfg_</p>
-
-<p><code>cd &lt;TIBCO_HOME&gt;/hawk/&lt;VERSION&gt;/bin/ oder &lt;TIBCO_CONFIG_HOME&gt;/hawk/&lt;VERSION&gt;/bin/</code><br />
+<p>Gestartet wird der Hawk Agent mit den  Konfigurationsdateien sind <em>tibhawkagent.tra</em> und <em>&lt;TIBCO_CONFIG_HOME&gt;/hawk/<!-- raw HTML omitted -->/bin/hawkagent.cfg</em></p>
+<p><code>cd &lt;TIBCO_HOME&gt;/hawk/&lt;VERSION&gt;/bin/ oder &lt;TIBCO_CONFIG_HOME&gt;/hawk/&lt;VERSION&gt;/bin/</code><br>
 <code>./tibhawkagent</code></p>
-
 <h2 id="microagent">MicroAgent</h2>
-
 <p>Der Hawk Agent stellt das Interface zum Hawk Netzwerk her, der MicroAgent stellt alle verfügbaren Methoden, die auf dem Host ausgeführt werden können zur Verfügung.
 Jeder Hawk Agent enthält plattformspezifische und plattformunabhängig Standard-Microagents, die geladen werden wenn der Agent gestartet wird. Daneben gibt es noch MicroAgent Plugins, bsp. für EMS und spezifische MicroAgents, wie HKAM für AMX oder der integrierte MicroAgent der BW Prozesse.
 Plugins werden wie die Standard MicroAgents beim Start des Agents gestartet. Die spezifischen MicroAgents werden eigenständig, bsp. mit dem BW Prozess, gestartet. Das bedeutet, dass Microagents dynamisch hinzugefügt werden können, wenn ein Adapter oder eine Anwendung gestartet wird.</p>
-
-<p>Gestartet wird der Hawk Agent mit den Konfigurationsdateien sind tibhawkhma.tra und <TIBCO_CONFIG_HOME>/hawk/<VERSION>/bin/hawkhma.cfg
+<p>Gestartet wird der Hawk Agent mit den Konfigurationsdateien sind tibhawkhma.tra und &lt;TIBCO_CONFIG_HOME&gt;/hawk/<!-- raw HTML omitted -->/bin/hawkhma.cfg
 <code>cd &lt;TIBCO_HOME&gt;/hawk/&lt;VERSION&gt;/bin/ oder &lt;TIBCO_CONFIG_HOME&gt;/hawk/&lt;VERSION&gt;/bin/</code>
 <code>./starthma</code></p>
-
 <p>Folgende MicroAgents werden per Default mit Hawk gestartet</p>
-
 <ul>
 <li>Self - sammelt die Versionsinformationen für die lokalen Agenten</li>
 <li>Custom - führt über die Befehlszeile Kommandos aus. Als Rückgabewert liefert der MicroAgent Text- oder numerische Ergebnisse des Kommandos.</li>
@@ -195,262 +179,143 @@ Plugins werden wie die Standard MicroAgents beim Start des Agents gestartet. Die
 <li>Rendezvous - Aktivität des Rendezvous Damon.</li>
 <li>RuleBaseEngine - Führt Aktionen auf der Rulebases, wie Load und Unload der Regeln aus.</li>
 </ul>
-
-<p>Im Ordner <TIBCO_HOME>/hawk/<VERSION>/plugin/<PLUGINNAME> finden sich die mit der default Installation mitgelieferten Plugins. Zu jedem Plugin gehört ein JAR File und eine .hma Konfigurationsdatei. Um ein Plugin zu verwenden muss die .hma Datei direkt unterhalb des plugin Ordners der HAWK Agent Instanz kopiert werden. Beispielsweise um in einen Domain Hawk Agent den JVM MicroAgent zu aktivieren muss die Datei hawkvm.hma nach  <TIBCO_HOME>/tra/domain/<DOMAINNAME>/plugin kopiert werden. Je nach Plugin muss die Datei noch angepasst werden. Es kann ein Plugin auch mehrfach installiert werden. Dies ist beispielsweise für die Überwachung mehrerer EMS Instanzen mit dem EMS MicroAgent notwendig.
+<p>Im Ordner &lt;TIBCO_HOME&gt;/hawk/<!-- raw HTML omitted -->/plugin/<!-- raw HTML omitted --> finden sich die mit der default Installation mitgelieferten Plugins. Zu jedem Plugin gehört ein JAR File und eine .hma Konfigurationsdatei. Um ein Plugin zu verwenden muss die .hma Datei direkt unterhalb des plugin Ordners der HAWK Agent Instanz kopiert werden. Beispielsweise um in einen Domain Hawk Agent den JVM MicroAgent zu aktivieren muss die Datei hawkvm.hma nach  &lt;TIBCO_HOME&gt;/tra/domain/<!-- raw HTML omitted -->/plugin kopiert werden. Je nach Plugin muss die Datei noch angepasst werden. Es kann ein Plugin auch mehrfach installiert werden. Dies ist beispielsweise für die Überwachung mehrerer EMS Instanzen mit dem EMS MicroAgent notwendig.
 Jede Microagent enthält einen Satz von Methoden um Informationen zu sammeln und Aktionen auszulösen. Beispielsweise können Microagents eine Anwendung instrumentieren. Unterschieden wird zwischen Invoce und Subscribe der Methode.</p>
-
 <h2 id="rulebases">Rulebases</h2>
-
 <p>Die meisten Überwachungsaufgaben bestehen regelmäßige Überprüfung für einige System-Zustände. Wenn das Problem erkannt wird, wird ein Alarm gesendet oder automatische Korrektur durchgeführt. Beispielsweise wenn ein BW Prozess ausfällt, wird er wieder gestartet. Wenn zu viel Speicherplatz verbraucht wird, werden temporären Dateien gelöscht.</p>
-
 <p>Ein Hawk Agent kann mehrere Rulebases ausführen, die Rulebases müssen aber eindeutige Namen haben. Eine Ruhebase besteht aus mehreren Regeln. Hawk speichert die Rulebases im XML Format als .hrb Datei im Ordner autoconfig.
 Jede Regel hat folgenden Aufbau</p>
-
-<p>Check Datasource<br />
-if Condition 1<br />
-- Action 1<br />
-- Action 2<br />
-if Condition 2<br />
-- Action 3</p>
-
+<p>Check Datasource<br>
+if Condition 1</p>
+<ul>
+<li>Action 1</li>
+<li>Action 2<br>
+if Condition 2</li>
+<li>Action 3</li>
+</ul>
 <h3 id="datasource">Datasource</h3>
-
 <p>Die Datasource einer Regel fragt den aktuellen Zustand einer Hawk Mikroagent Methode in regelmäßigen Abstand von einem Konten ab. Nachdem Informationen empfangen wird, werden eines oder mehrerer Tests ausgeführt, um diesen Zustand zu bewerten.
 Der Intervall in denen die Datenquelle abgefragt wird kann definiert werden.</p>
-
 <h3 id="condition">Condition</h3>
-
 <p>Eine Datasource kann entweder einen Rückgabewert oder mehrere in einer N x M Tabelle zurückliefen.
 In einem einfachen Test kann entweder ein einzelner Wert oder ein Wert per Zeile der
 Rückgabe abgefragt werden. In einem zusammengesetzter Test können mehrere Werte der  mehrere Ausdrücke mit den logischen Operatoren AND, NOT, und OR verknüpft werden.</p>
-
 <h3 id="actions">Actions</h3>
-
 <p>Alert und Notification Messages
 Mit diesen Execute Actions werden ein Alerts innerhalb der Hawk Domain versendet. Die Nachrichten werden in der Hawk-Webkonsole oder dem Display angezeigt. Wichtig ist, dass ein Alert nicht manuell im Display gelöscht wird. Innerhalb der Regel, die den Alert auslöst muss definiert werden, unter welchen Bedingungen eine Clearing Nachricht für diesen Alert gesendet wird. Dies kann eine Zeitspanne oder das eintreten einer neuen Bedingung sein.</p>
-
 <p>Execute
 Mit der Execute Action wird ein Script auf der Machine ausgeführt auf dem der HawkAgent ausgeführt wird.</p>
-
 <p>Method
 Mit dieser Action wird eine andere Mikroagent Methode auf diesem Agent aufgerufen</p>
-
 <p>Email
 Mit dieser Action wird eine Email gesendet. Die Konfiguration des SMTP Servers erfolgt in der hawkagent.cfg</p>
-
 <p>PostCondition
 Eine PostCondition ist eine interne Statusmeldung, ähnlich wie ein Alert. Eine PostCondition kann aber in anderen Regeln verwendet werden. Da jede Regel nur eine einzelne Datenquelle als Eingabe verwendet, können PostConditions als Bindeglied zwischen Regeln mit verschiedenen Datenquellen dienen.
 Die Test Expression in der Regel wäre Beispielsweise</p>
-
 <pre><code>((Process Count == 1) AND (${Posted.TEST} postedConditionExists ))
-</code></pre>
-
-<p>Im Hawk Display werden die in der Rulebase enthaltenen PostConditions automatisch im Compound Test Editor hinzugefügt.</p>
-
+</code></pre><p>Im Hawk Display werden die in der Rulebase enthaltenen PostConditions automatisch im Compound Test Editor hinzugefügt.</p>
 <h2 id="erzeugen-einer-rulebase-bild-für-bild">Erzeugen einer Rulebase Bild für Bild</h2>
-
-
-<figure >
-    
-        <img src="/techdocs/hawk_configure/1.png" alt="1. Selektiere den Hawk Agent wähle Rulebases im Kontextmenü" />
-    
-    
-    <figcaption>
-        <h4>Rulebases konfigurieren</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/hawk_configure/1.png"
+         alt="1. Selektiere den Hawk Agent wähle Rulebases im Kontextmenü"/> <figcaption>
+            <h4>Rulebases konfigurieren</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/hawk_configure/2.png" alt="2. Lege eine neue Rulebase an" />
-    
-    
-    <figcaption>
-        <h4>Neue Rulebase anlegen</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/hawk_configure/2.png"
+         alt="2. Lege eine neue Rulebase an"/> <figcaption>
+            <h4>Neue Rulebase anlegen</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/hawk_configure/3.png" alt="3. Eindeutigen Namen für die Rulebase setzen und eine neue Regel anlegen" />
-    
-    
-    <figcaption>
-        <h4>Neue Regel anlegen</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/hawk_configure/3.png"
+         alt="3. Eindeutigen Namen für die Rulebase setzen und eine neue Regel anlegen"/> <figcaption>
+            <h4>Neue Regel anlegen</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/hawk_configure/4.png" alt="4. Datasource für die Regel festlegen" />
-    
-    
-    <figcaption>
-        <h4>Datasource konfigurieren</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/hawk_configure/4.png"
+         alt="4. Datasource für die Regel festlegen"/> <figcaption>
+            <h4>Datasource konfigurieren</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/hawk_configure/5.png" alt="5. Im Process Microagent alle BWEngines abfragen" />
-    
-    
-    <figcaption>
-        <h4>Process Microagent konfigurieren</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/hawk_configure/5.png"
+         alt="5. Im Process Microagent alle BWEngines abfragen"/> <figcaption>
+            <h4>Process Microagent konfigurieren</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/hawk_configure/6.png" alt="6. Neuen Test anlegen" />
-    
-    
-    <figcaption>
-        <h4>Test konfigurieren</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/hawk_configure/6.png"
+         alt="6. Neuen Test anlegen"/> <figcaption>
+            <h4>Test konfigurieren</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/hawk_configure/7.png" alt="7. Test ob der BWEngineProzess sampleProj-Process_Archive-1.tra läuft." />
-    
-    
-    <figcaption>
-        <h4>Überprüfe ob BWENGINE Process aktiv ist</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/hawk_configure/7.png"
+         alt="7. Test ob der BWEngineProzess sampleProj-Process_Archive-1.tra läuft."/> <figcaption>
+            <h4>Überprüfe ob BWENGINE Process aktiv ist</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/hawk_configure/8.png" alt="8. Neue Action anlegen" />
-    
-    
-    <figcaption>
-        <h4>Action anlegen</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/hawk_configure/8.png"
+         alt="8. Neue Action anlegen"/> <figcaption>
+            <h4>Action anlegen</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/hawk_configure/9.png" alt="9. Send Alert Message “sampleProj-Process_Archive-1.tra” nicht gestartet senden" />
-    
-    
-    <figcaption>
-        <h4>Sende Hawk Alert Nachricht falls Prozess mit dem String ..sampleProj-Process_Archive-1.tra.. nicht gestartet ist</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/hawk_configure/9.png"
+         alt="9. Send Alert Message “sampleProj-Process_Archive-1.tra” nicht gestartet senden"/> <figcaption>
+            <h4>Sende Hawk Alert Nachricht falls Prozess mit dem String ..sampleProj-Process_Archive-1.tra.. nicht gestartet ist</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/hawk_configure/10.png" alt="11. Advanced Test Options" />
-    
-    
-    <figcaption>
-        <h4>Erweiterte Optionen konfigurieren</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/hawk_configure/10.png"
+         alt="11. Advanced Test Options"/> <figcaption>
+            <h4>Erweiterte Optionen konfigurieren</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/hawk_configure/11.png" alt="11. Clear Action konfigurieren" />
-    
-    
-    <figcaption>
-        <h4>Alert löschen, wenn der Prozess wieder gestartet wurde</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/hawk_configure/11.png"
+         alt="11. Clear Action konfigurieren"/> <figcaption>
+            <h4>Alert löschen, wenn der Prozess wieder gestartet wurde</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/hawk_configure/12.png" alt="12. Advanced Test Options" />
-    
-    
-    <figcaption>
-        <h4>Nächste Regel konfigurieren</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/hawk_configure/12.png"
+         alt="12. Advanced Test Options"/> <figcaption>
+            <h4>Nächste Regel konfigurieren</h4>
+        </figcaption>
 </figure>
 
-
-
-<figure >
-    
-        <img src="/techdocs/hawk_configure/13.png" alt="13. Apply Changes" />
-    
-    
-    <figcaption>
-        <h4>Speichern und Regel im Agent aktivieren</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/hawk_configure/13.png"
+         alt="13. Apply Changes"/> <figcaption>
+            <h4>Speichern und Regel im Agent aktivieren</h4>
+        </figcaption>
 </figure>
-
 
 <h2 id="export-der-rulebase">Export der Rulebase</h2>
-
 <p>Vom Hawk Display aus kann die Rulebase als XML Datei exportiert werden:</p>
-
-
-<figure >
-    
-        <img src="/techdocs/hawk_configure/exportRulebase.png" alt="Export Rulebase" />
-    
-    
-    <figcaption>
-        <h4>Export Rulebase</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/hawk_configure/exportRulebase.png"
+         alt="Export Rulebase"/> <figcaption>
+            <h4>Export Rulebase</h4>
+        </figcaption>
 </figure>
 
-
 <h3 id="beispiel-xml-datei">Beispiel XML Datei</h3>
-
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
 &lt;ruleBase&gt;
 	&lt;version&gt;5.1.0&lt;/version&gt;
@@ -557,7 +422,6 @@ Die Test Expression in der Regel wäre Beispielsweise</p>
 	&lt;/rule&gt;
 &lt;/ruleBase&gt;
 </code></pre>
-
             </div>
             <hr style="width:200px" class="avb-opacity">
         	<div id="footer" style="font-size:small;">

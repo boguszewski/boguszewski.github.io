@@ -73,28 +73,28 @@
 		  "@context": "http://schema.org",
 		  "@type": "BlogPosting",
   		   "headline": "TIBCO BW6 build, deploy und start eines EARS",
- 			"url" : "http://alexander.vonboguszewski.name/techdocs/bw6_deployment/",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/bw6_deployment\/",
   			"author": {
     			"@type": "Person",
   				"name" : "Alexander von Boguszewski", 
-  				"url" : "http://alexander.vonboguszewski.name/"
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
   			  },
   			  "publisher": {
     			"@type": "Organization",
   				"name" : "Alexander von Boguszewski Personal Webpage" ,
   				"logo": {
      				 "@type": "ImageObject",
-      				 "url": "http://alexander.vonboguszewski.name/images/bg.png"
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
    				 }
   			  },
   			  "mainEntityOfPage": {
         		 "@type": "WebPage",
-       			 "@id": "http://alexander.vonboguszewski.name/"
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
     		  }
   			
-  			, "dateModified": "2017-08-25T00:00:00&#43;00:00"
-  			, "datePublished": "2017-08-25T00:00:00&#43;00:00"
-  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+  			, "dateModified": "2017-08-25T00:00:00\u002b00:00"
+  			, "datePublished": "2017-08-25T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
 		}
 		</script>
 
@@ -135,27 +135,19 @@
 	  			<hr style="width:200px" class="avb-opacity">
                 <p>Nachdem wir unseren Prozess erstellt haben muss mit dem Designer das EAR File erzeugt werden.
 Dies geht entweder direkt im Designer oder über die Kommandozeile</p>
-
 <pre><code>./bwdesign -data /home/tibco/tibworkspace/sample system:validate
 ./bwdesign -data /home/tibco/tibworkspace/sample system:export -ear sample.app /home/tibco/
-</code></pre>
-
-<p>Anschließend können wir mit dem <code>bwadmin</code> die Applikation deployen und starten:</p>
-
+</code></pre><p>Anschließend können wir mit dem <code>bwadmin</code> die Applikation deployen und starten:</p>
 <pre><code>./bwadmin
 
 upload -d myDBDomain /home/tibco/sample.app_1.0.0.ear
 deploy -d myDBDomain -a myAppspace  sample.app_1.0.0.ear
 start -d myDBDomain -a myAppspace application sample 1.0
-</code></pre>
-
-<p>Die Befehle können dem bwadmin auch über ein Answerfile übergeben werden:</p>
-
+</code></pre><p>Die Befehle können dem bwadmin auch über ein Answerfile übergeben werden:</p>
 <pre><code>printf &quot;upload -d myDBDomain /home/tibco/sample.app_1.0.0.ear\ndeploy -d myDBDomain -a myAppspace  sample.app_1.0.0.ear\nstart -d myDBDomain -a myAppspace application sample 1.0&quot; &gt; bw6setup.txt
 
 ./bwadmin -f /home/tibco/bw6setup.txt
 </code></pre>
-
             </div>
             <hr style="width:200px" class="avb-opacity">
         	<div id="footer" style="font-size:small;">

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Alexander von Boguszewski</title>
@@ -6,10 +6,42 @@
     <description>Recent content in Categories on Alexander von Boguszewski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de-de</language>
-    <lastBuildDate>Sun, 12 Nov 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://alexander.vonboguszewski.name/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Daten Integration</title>
+      <link>http://alexander.vonboguszewski.name/categories/daten-integration/</link>
+      <pubDate>Wed, 17 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/categories/daten-integration/</guid>
+      <description></description>
+    </item>
     
-	<atom:link href="http://alexander.vonboguszewski.name/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Application Integration</title>
+      <link>http://alexander.vonboguszewski.name/categories/application-integration/</link>
+      <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/categories/application-integration/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>Integration</title>
+      <link>http://alexander.vonboguszewski.name/categories/integration/</link>
+      <pubDate>Sun, 19 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/categories/integration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BigData</title>
+      <link>http://alexander.vonboguszewski.name/categories/bigdata/</link>
+      <pubDate>Sun, 11 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/categories/bigdata/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Admin</title>
@@ -17,6 +49,15 @@
       <pubDate>Sun, 12 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>http://alexander.vonboguszewski.name/categories/admin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BW5</title>
+      <link>http://alexander.vonboguszewski.name/categories/bw5/</link>
+      <pubDate>Thu, 29 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/categories/bw5/</guid>
       <description></description>
     </item>
     
@@ -30,38 +71,11 @@
     </item>
     
     <item>
-      <title>Bigdata</title>
-      <link>http://alexander.vonboguszewski.name/categories/bigdata/</link>
-      <pubDate>Sun, 11 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://alexander.vonboguszewski.name/categories/bigdata/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Bw5</title>
-      <link>http://alexander.vonboguszewski.name/categories/bw5/</link>
-      <pubDate>Thu, 29 Dec 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://alexander.vonboguszewski.name/categories/bw5/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Db</title>
+      <title>DB</title>
       <link>http://alexander.vonboguszewski.name/categories/db/</link>
       <pubDate>Mon, 11 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>http://alexander.vonboguszewski.name/categories/db/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Integration</title>
-      <link>http://alexander.vonboguszewski.name/categories/integration/</link>
-      <pubDate>Tue, 23 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://alexander.vonboguszewski.name/categories/integration/</guid>
       <description></description>
     </item>
     

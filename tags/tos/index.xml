@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tos on Alexander von Boguszewski</title>
+    <title>TOS on Alexander von Boguszewski</title>
     <link>http://alexander.vonboguszewski.name/tags/tos/</link>
-    <description>Recent content in Tos on Alexander von Boguszewski</description>
+    <description>Recent content in TOS on Alexander von Boguszewski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de-de</language>
-    <lastBuildDate>Tue, 23 Jan 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://alexander.vonboguszewski.name/tags/tos/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 23 Jan 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://alexander.vonboguszewski.name/tags/tos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Talend Open Studio for ESB auf Mac OS</title>
       <link>http://alexander.vonboguszewski.name/techdocs/tos_install_talend_open_sudio/</link>

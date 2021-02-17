@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html
+   prefix="dct: http://purl.org/dc/terms/
+   		   foaf: http://xmlns.com/foaf/0.1/
+   		   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+   		   xf: http://www.w3.org/2002/xforms
+           xsd: http://www.w3.org/2001/XMLSchema
+           xsi: http://www.w3.org/2001/XMLSchema-instance
+           cc: http://creativecommons.org/ns#"
+   lang="de-de"
+>
+    <title> Wie baut man EXCEL-DASHBOARDS &middot; Alexander von Boguszewski </title>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Alexander von Boguszewski">
+<meta name="robots" content="index,follow">
+<meta name="revisit-after" content="5 days">
+<meta name="description" content="">
+<meta property="og:url" content="http://alexander.vonboguszewski.name/techdocs/excel_dashboards/">
+<meta property="og:title" content="Wie baut man EXCEL-DASHBOARDS">
+<meta property="og:description" content="">
+
+<link rel="stylesheet" href="/css/general.css">
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+	
+	function enc(text) {
+		  var map =  "!\"#$%&'()*+,-";
+			map += "./0123456789:;<=>?";
+			var R = new String()
+			map += "@ABCDEFGHIJKLMNOPQRSTU";
+			map += "VWXYZ[\\]^_`abcdefghijklm";
+			var i, j, c, len;
+			map += "nopqrstuvwxyz{|}~";
+		  	len = map.length;
+		  	for(i = 0; i < text.length; i++) {
+		  	  c = text.charAt(i)
+		  	  j = map.indexOf(c)
+		  	  if (j >= 0) {
+		  	    c = map.charAt((j + len / 2) % len)
+		  	  }
+		  	  R = R + c
+		  	}
+		  	return R;
+		}
+
+		function toggleMe(a,b){
+		  var onDiv=document.getElementById(a);
+			var onLink=document.getElementById(a+"_link");
+			var offDiv=document.getElementById(b);
+			var offLink=document.getElementById(b+"_link");
+		 	if(!onDiv || !offDiv){
+				return true;
+			} else {
+
+			$(offDiv).fadeOut(1500);
+			offLink.style.fontWeight="normal";
+			$(onDiv).fadeIn(1500);
+			onLink.style.fontWeight="bold";
+
+		  	return true;
+			}
+		}
+</script>
+
+ 
+	<script type="application/ld+json">
+		{
+		  "@context": "http://schema.org",
+		  "@type": "BlogPosting",
+  		   "headline": "Wie baut man EXCEL-DASHBOARDS",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/excel_dashboards\/",
+  			"author": {
+    			"@type": "Person",
+  				"name" : "Alexander von Boguszewski", 
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
+  			  },
+  			  "publisher": {
+    			"@type": "Organization",
+  				"name" : "Alexander von Boguszewski Personal Webpage" ,
+  				"logo": {
+     				 "@type": "ImageObject",
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
+   				 }
+  			  },
+  			  "mainEntityOfPage": {
+        		 "@type": "WebPage",
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
+    		  }
+  			
+  			, "dateModified": "2021-02-17T00:00:00\u002b00:00"
+  			, "datePublished": "2021-02-17T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
+		}
+		</script>
+
+		        
+    </head>
+	<body class="avb-light">
+		
+		<nav class="avb-sidebar avb-bar-block avb-small avb-hide-small avb-center">
+		  
+		  <br>
+	      <img src="/images/bg.png" alt="Alexander von Boguszewski" style="width:100%">
+		  <a href="/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;&lt;HOME</p>
+		  </a>
+		  <a href="/techdocs/" class="avb-bar-item avb-button avb-padding-large avb-hover-ambient">
+		    <p>&lt;TechDocs</p>
+		  </a>
+		</nav>
+		
+		<div class="avb-top avb-hide-large avb-hide-medium" id="myNavbar">
+		  <div class="avb-bar avb-light avb-opacity avb-hover-opacity-off avb-center avb-small">
+		  	  
+		    <a href="/" class="avb-bar-item avb-button" style="width:25% !important">&lt;&lt;HOME</a>
+		    <a href="/techdocs/" class="avb-bar-item avb-button" style="width:25% !important">&lt;TechDocs</a>
+		  </div>
+		</div>
+		
+		<div class="avb-padding-large" id="main">
+		  
+		  <header class="avb-container avb-padding-medium avb-center avb-light" id="home">
+		  		<br>
+	  			<p class="avb-large font-weight: bold;">Alexander von Boguszewski</p>
+		  		<h1 class="avb-jumbo font-weight: bold;">Wie baut man EXCEL-DASHBOARDS</h1>
+		    	<p class="avb-text-normal"></p>
+		    </header>
+	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
+	  			<span class="post-date">Feb 17, 2021 </span>
+	  			<hr style="width:200px" class="avb-opacity">
+                <p>Wie baut man EXCEL-DASHBOARDS</p>
+<p>Das Erstellen von Microsoft Excel-Dashboards ist für jeden, der mit Daten arbeitet, eine wichtige Fähigkeit. Excel-Dashboards ermöglichen es Entscheidungsträgern, Daten aus ihrem Betrieb zu bewerten und fundierte Entscheidungen zu treffen.  Ich werde zeigen, wie man als Excel Anfänger interaktive Dashboards auf Basis von Dropdowns erstellt.</p>
+<p>Um einen realistisches Dashboard zu erstellen habe ich mir überlegt anhand der Passagierzählung S-Bahn Hamburg, die uns die Deutsche Bahn in ihrem Open Data Portal bereitstellt (<a href="https://data.deutschebahn.com/dataset/passagierzahlung-s-bahn-hamburg),">https://data.deutschebahn.com/dataset/passagierzahlung-s-bahn-hamburg),</a> ein Dashboard über die wichtigsten Bahnhöfe in Hamburg zu erstellen.</p>
+<p>Nachdem wir die Datei heruntergeladen und geöffnet haben, können wir uns schon einmal die Rohdaten ansehen.
+Wir sehen Datensätze vom Zeitraum von 10.12.2016  bis zum 31.03.2017. Die gelieferten Daten sind nicht weiter behandelte Daten (Rohdaten), auch wurde kein Saldenausgleich vorgenommen worden, das bedeutet das am Ende der Fahrt nicht zwangsläufig die Summe der Ein-Summe der Aussteiger Null ergeben.</p>
+<p>Spalten- oder Tabellenbeschreibung</p>
+<p>Zugnummer
+Station (klar)
+Einsteiger (roh)
+Aussteiger (roh)
+Ist Ankunft mit Datum und Zeit
+Ist Abfahrt mit Datum und Zeit
+DS100 kurz (hier ist vorne das &ldquo;A&rdquo; weggelassen)
+Linie</p>
+<p>Ersteinmal sollten wir die Daten im XLSX Format speichern und eine neue Tabelle für das Dashboard hinzufügen. Die reinen Daten, bzw. das Datentabellenblatt werden wir nicht ändern. Wenn wir aktualisierte Daten im gleichen Format bekommen, können wir so diese Daten direkt neu einfügen und das Dashboard wiederverwenden</p>
+<p>Tabellenblatt in RawData umbenennen</p>
+<figure>
+    <img src="/techdocs/passagier_excel_dashboard/1.png"
+         alt="Rawdaten einlesen"/> <figcaption>
+            <h4>RawData</h4>
+        </figcaption>
+</figure>
+
+<p>Für ein Dashboard benötigen wir alle eindeutigen Bezeichnungen für die Stationen. Hierfür können wir mit der Excel Funktion <a href="https://support.microsoft.com/de-de/office/eindeutig-funktion-c5ab87fd-30a3-4ce9-9d1a-40204fb85e1e">EINDEUTIG</a> eine Liste mit allen eindeutigen Werten erstellen. Da die erste Zeile für den Header verwendet wird und wir nicht wissen wieviele Zeilen neue Rohdaten beinhalten, müssen wir das Ende der Liste dynamisch mit der <a href="https://support.microsoft.com/de-de/office/index-funktion-a5dcf0dd-996d-40a4-a822-b56b061328bd">INDEX</a> und <a href="https://support.microsoft.com/de-de/office/anzahl2-funktion-7dc98875-d5c1-46f1-9a82-53f3219e2509">ANZAHL2</a> ermitteln</p>
+<p>Hier die Formel für die eindeutigen Stationsnamen:</p>
+<pre><code>=EINDEUTIG(RawData!B2:INDEX(RawData!B:B;ANZAHL2(RawData!B:B)))
+</code></pre><figure>
+    <img src="/techdocs/passagier_excel_dashboard/2.png"
+         alt="Eindeutige Stationsnamen mit =EINDEUTIG(RawData!B2:INDEX(RawData!B:B;ANZAHL2(RawData!B:B))) ermitteln"/> <figcaption>
+            <h4>Stationsnamen ermitteln</h4>
+        </figcaption>
+</figure>
+
+<p>Anhand der Stationsnamen können anschließend dann die Ein- und Aussteiger mit <a href="hhttps://support.microsoft.com/de-de/office/summewenn-funktion-169b8c99-c05c-4483-a712-1697a653039b">SUMMEWENN</a> berechnet werden</p>
+<pre><code>=SUMMEWENN(RawData!$B:$B;Dashboard!$B7;RawData!C:C)
+</code></pre><figure>
+    <img src="/techdocs/passagier_excel_dashboard/3.png"/> <figcaption>
+            <h4>Summieren der Ein und Aussteiger</h4>
+        </figcaption>
+</figure>
+
+<p>Da dieses Dashboard aber nur sehr aggregierte Informationen liefert, erstellen wir noch ein detaillierteres Dashboard und fangen mit dem Design an:
+<figure>
+    <img src="/techdocs/passagier_excel_dashboard/4.png"
+         alt="Design Stationen Dashboard"/> <figcaption>
+            <h4>Dashboard</h4>
+        </figcaption>
+</figure>
+</p>
+<p>Um die Daten für die einzelnen Station auswählen zu können, erstellen wir zunächst ein Dropdown zur Datenauswahl
+<figure>
+    <img src="/techdocs/passagier_excel_dashboard/5.png"
+         alt="Stationsauswahl Dropdown erstellen "/> <figcaption>
+            <h4>Dropdown</h4>
+        </figcaption>
+</figure>
+</p>
+<p>Und legen dann die eben erstellte Liste als Quelle fest.
+<figure>
+    <img src="/techdocs/passagier_excel_dashboard/6.png"
+         alt="Stationsauswahl Dropdown Liste auswählen"/> <figcaption>
+            <h4>Dropdown Liste festlegen</h4>
+        </figcaption>
+</figure>
+</p>
+<p>Anschließend können wir in dem Dropdown die Stationsnamen auswählen
+<figure>
+    <img src="/techdocs/passagier_excel_dashboard/7.png"
+         alt="Dropdown"/> <figcaption>
+            <h4>Dropdown anzeigen</h4>
+        </figcaption>
+</figure>
+</p>
+<p>Als erstes Summieren wir alle Ein- und Aussteiger über den gesamten Zeitraum mit <a href="https://support.microsoft.com/de-de/office/summewenns-funktion-c9e748f5-7ea7-455d-9406-611cebce642b">SUMMEWENNS</a>:</p>
+<pre><code>=SUMMEWENNS(RawData!$C:$C;RawData!$B:$B;DashboardStationen!$F$2)```
+
+<figure>
+    <img src="/techdocs/passagier_excel_dashboard/8.png"
+         alt="Alle Einsteiger Summieren"/> <figcaption>
+            <h4>Einsteiger Summieren</h4>
+        </figcaption>
+</figure>
+
+
+
+Dann müssen wir die Ein- und Aussteiger für die Einzelnen Monate summieren. Hier die Formel für die Einsteiger.
+Neben dem Filter auf die im Dropdown ausgewählte Station ```DashboardStationen!$F$2```, filtern wir auch noch auf den in der Zeile 8 angegebenen Monat mit
+```&gt;&quot;&amp;DATUM(JAHR(DashboardStationen!E8)``` und ```&quot;&lt;&quot;&amp;DATUM(JAHR(DashboardStationen!E8);MONAT(DashboardStationen!E8)+1```
+
+
+</code></pre><p>=SUMMEWENNS(RawData!$C:$C;RawData!$B:$B;DashboardStationen!$F$2;RawData!$E:$E;&quot;&gt;&quot;&amp;DATUM(JAHR(DashboardStationen!E8);MONAT(DashboardStationen!E$8););RawData!$E:$E;&quot;&lt;&quot;&amp;DATUM(JAHR(DashboardStationen!E$8);MONAT(DashboardStationen!E$8)+1;))</p>
+<pre><code>
+<figure>
+    <img src="/techdocs/passagier_excel_dashboard/9.png"
+         alt="Summiere anhand des Monats"/> <figcaption>
+            <h4>Summieren per Monat</h4>
+        </figcaption>
+</figure>
+
+
+Über &quot;Einfügen&quot;-&gt;&quot;Sparklines&quot; erstellen wir jetzt noch ein kleines Diagram in einer Zelle um die Änderungen über den Monat zu visualisieren.
+
+<figure>
+    <img src="/techdocs/passagier_excel_dashboard/10.png"
+         alt="Sparkline über die Veränderung innerhalb eines Monats"/> <figcaption>
+            <h4>Sparkline</h4>
+        </figcaption>
+</figure>
+
+
+Als nächstes können wir noch die Linien die die ausgewählte Station anfahren ausgeben. Hier hilft wieder die Funktion [EINDEUTIG](https://support.microsoft.com/de-de/office/eindeutig-funktion-c5ab87fd-30a3-4ce9-9d1a-40204fb85e1e), hier in Kombination mit [FILTER](https://support.microsoft.com/de-de/office/filter-funktion-f4f7cb66-82eb-4767-8f7c-4877ad80c759). Hier selektieren wir alle Linien (RawData!H:H) die an der ausgewählten Station halten (RawData!B:B=DashboardStationen!$F$2), anschließend werden alle eindeutigen Linien ausgegeben. 
+
+</code></pre><p>=EINDEUTIG(FILTER(RawData!H:H;RawData!B:B=DashboardStationen!$F$2))</p>
+<pre><code>
+<figure>
+    <img src="/techdocs/passagier_excel_dashboard/11.png"
+         alt="Alle Linien die am Hauptbahnhof halten"/> <figcaption>
+            <h4>Filter Linien</h4>
+        </figcaption>
+</figure>
+
+
+Anschließend summieren wir wieder mit[SUMMEWENNS](https://support.microsoft.com/de-de/office/summewenns-funktion-c9e748f5-7ea7-455d-9406-611cebce642b)die Einsteiger, diesmal aber mit einem zweiten Kriterium für die Linie:
+
+</code></pre><p>=SUMMEWENNS(RawData!$C:$C;RawData!$B:$B;DashboardStationen!$F$2;RawData!H:H;DashboardStationen!$B15)</p>
+<pre><code>
+Für die einzelnen Monate fügen wir das zusätzliche Kriterium analog hinzu:
+</code></pre><p>=SUMMEWENNS(RawData!$C:$C;RawData!$B:$B;DashboardStationen!$F$2;RawData!$H:$H;DashboardStationen!$B15;RawData!$E:$E;&quot;&gt;&quot;&amp;DATUM(JAHR(DashboardStationen!E$8);MONAT(DashboardStationen!E$8););RawData!$E:$E;&quot;&lt;&quot;&amp;DATUM(JAHR(DashboardStationen!E$8);MONAT(DashboardStationen!E$8)+1;))</p>
+<pre><code>
+Auch hier können wir Sparklines zur Visualisierung hinzufügen.
+
+<figure>
+    <img src="/techdocs/passagier_excel_dashboard/12.png"
+         alt="Summiere anhand des Monats und der Linien"/> <figcaption>
+            <h4>Einsteiger nach Linien</h4>
+        </figcaption>
+</figure>
+
+
+Aussteiger können analog summiert werden.
+
+
+Eine interessante Fragestellung wäre jetzt natürlich auch zu welchen Zeiten die Stationen frequentiert werden. Für die Analyse wäre alles in den Rohdatensätzen da, aber die Daten müssen noch hierfür noch aufbereitet werden da die [SUMMEWENN Funktion](hhttps://support.microsoft.com/de-de/office/summewenn-funktion-169b8c99-c05c-4483-a712-1697a653039b) den kompletten Timestamp für den Vergleich heranzieht, und nicht nur die Stunde. 
+
+Wir können aber in der RawData Tabelle eine neue Spalte einfügen und die Stunde aus dem dtmIstAnkunftDatum extrahieren. 
+
+</code></pre><p>=STUNDE(E2:E610671)</p>
+<pre><code>
+Anschließend können wir wieder mit [SUMMEWENNS](https://support.microsoft.com/de-de/office/summewenns-funktion-c9e748f5-7ea7-455d-9406-611cebce642b) alle Einsteiger einer Station zu einer bestimmten Stunde summieren.  
+
+</code></pre><p>=SUMMEWENNS(RawData!$C:$C;RawData!$B:$B;DashboardStationen!$F$2;RawData!$I:$I;&quot;=&quot;&amp;STUNDE(DashboardStationen!$B37))</p>
+<pre><code>
+Zum Visualisieren müssen wir uns aber etwas anderes überlegen, da Sparklines nur horizontal funktionieren. Wir können Werte nur in Säulen oder einer Linie darstellen. Vertikale Balken können wir aber mittels bedingter Formatierung realisiere, hierfür erstellen wir über &quot;Bedingte Formatierung&quot; -&gt;&quot;Datenbalken&quot; -&gt; &quot;Weitere Regeln&quot; eine neue Formatierungsregel.
+
+<figure>
+    <img src="/techdocs/passagier_excel_dashboard/13.png"
+         alt="Summiere anhand der Uhrzeiten und erstelle eine Grafik mit bedingter Formatierung"/> <figcaption>
+            <h4>Einsteiger nach Uhrzeit</h4>
+        </figcaption>
+</figure>
+
+
+Wenn beim anlegen der Regel &quot;nur Datenbalken anz.&quot; angekreuzt wird, werden die Zahlen ausgeblendet.
+
+<figure>
+    <img src="/techdocs/passagier_excel_dashboard/14.png"
+         alt="Nur Datenbalken"/> <figcaption>
+            <h4>Einsteiger nach Uhrzeit</h4>
+        </figcaption>
+</figure>
+
+
+Das Dashboard sieht nun so aus:
+
+<figure>
+    <img src="/techdocs/passagier_excel_dashboard/15.png"
+         alt="Passagier Dashboard"/> <figcaption>
+            <h4>Finale Dashboard</h4>
+        </figcaption>
+</figure>
+
+
+Mir gefällt die Datapreperation direkt im Excel aber nicht, da diese bei jeder Aktualisierung des Datensatzes erneut erzeugt werden müsste. 
+Möglichkeiten zur Datapreperation mit Talend Pipeline Designer zeige ich in einem der folgenden Beiträge.
+
+
+
+
+</code></pre>
+            </div>
+            <hr style="width:200px" class="avb-opacity">
+        	<div id="footer" style="font-size:small;">
+<span property="dct:title"><a property="cc:attributionName" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Lizensiert unter einer Creative Commons Lizent - Weitergabe unter gleichen Bedingungen</a></span>
+| <a href="/imprint/">Impressum</a>
+</div>
+        </div>
+	</body>
+</html>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Talend on Alexander von Boguszewski</title>
@@ -6,10 +6,26 @@
     <description>Recent content in Talend on Alexander von Boguszewski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de-de</language>
-    <lastBuildDate>Sun, 11 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://alexander.vonboguszewski.name/tags/talend/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Wie baut man EXCEL-DASHBOARDS</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/excel_dashboards/</link>
+      <pubDate>Wed, 17 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/excel_dashboards/</guid>
+      <description>Wie baut man EXCEL-DASHBOARDS
+Das Erstellen von Microsoft Excel-Dashboards ist für jeden, der mit Daten arbeitet, eine wichtige Fähigkeit. Excel-Dashboards ermöglichen es Entscheidungsträgern, Daten aus ihrem Betrieb zu bewerten und fundierte Entscheidungen zu treffen. Ich werde zeigen, wie man als Excel Anfänger interaktive Dashboards auf Basis von Dropdowns erstellt.
+Um einen realistisches Dashboard zu erstellen habe ich mir überlegt anhand der Passagierzählung S-Bahn Hamburg, die uns die Deutsche Bahn in ihrem Open Data Portal bereitstellt (https://data.</description>
+    </item>
     
-	<atom:link href="http://alexander.vonboguszewski.name/tags/talend/index.xml" rel="self" type="application/rss+xml" />
-    
+    <item>
+      <title>Singer.io ETL getting started</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/singerio_gettingstartet/</link>
+      <pubDate>Sun, 19 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/singerio_gettingstartet/</guid>
+      <description>Singer, entwickelt von Talend, ist ein Open-Source-Tool, das die Entwicklung von Ingestion Prozessen erleichtert. Singer wurde so strukturiert ETL Prozesse so, dass Datenein- und Ausgänge zu verbinden, wodurch ETL-Prozesse modular aufgebaut und recht einfacher zu betreiben sind. Bei der Verarbeitung werden die Daten im JSON Format zwischen Quellen und Zielen übertragen, so dass Sie inkompatible Formate kein Problem darstellen sollten. Wie also macht Singer all dies? Im Wesentlichen bricht es ein ETL-Skripte in Taps und Targets auf, die im Folgenden beschrieben werden:</description>
+    </item>
     
     <item>
       <title>Talend Open Studio mit Cloudera Quickstart verbinden</title>

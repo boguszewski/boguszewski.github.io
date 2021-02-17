@@ -73,28 +73,28 @@
 		  "@context": "http://schema.org",
 		  "@type": "BlogPosting",
   		   "headline": "TIBCO BW5 Administration Domain",
- 			"url" : "http://alexander.vonboguszewski.name/techdocs/bw5_create_domain/",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/bw5_create_domain\/",
   			"author": {
     			"@type": "Person",
   				"name" : "Alexander von Boguszewski", 
-  				"url" : "http://alexander.vonboguszewski.name/"
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
   			  },
   			  "publisher": {
     			"@type": "Organization",
   				"name" : "Alexander von Boguszewski Personal Webpage" ,
   				"logo": {
      				 "@type": "ImageObject",
-      				 "url": "http://alexander.vonboguszewski.name/images/bg.png"
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
    				 }
   			  },
   			  "mainEntityOfPage": {
         		 "@type": "WebPage",
-       			 "@id": "http://alexander.vonboguszewski.name/"
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
     		  }
   			
-  			, "dateModified": "2016-04-08T00:00:00&#43;00:00"
-  			, "datePublished": "2016-04-08T00:00:00&#43;00:00"
-  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+  			, "dateModified": "2016-04-08T00:00:00\u002b00:00"
+  			, "datePublished": "2016-04-08T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
 		}
 		</script>
 
@@ -133,75 +133,54 @@
 	  		<div class="avb-content avb-text-normal avb-padding-medium" id="content">
 	  			<span class="post-date">Apr 8, 2016 </span>
 	  			<hr style="width:200px" class="avb-opacity">
-                
-
-<p>Die Administration Domain umfasst eine zentrale Verwaltungs-, Überwachungs- und Deployment-, sowie die verteilte Laufzeit-Umgebung für BW Applikationen.
+                <p>Die Administration Domain umfasst eine zentrale Verwaltungs-, Überwachungs- und Deployment-, sowie die verteilte Laufzeit-Umgebung für BW Applikationen.
 Die Domain verwaltet alle Server (Machines), Benutzer, BW Komponenten und Projekte. Hierbei sind einzelne Maschinen sind nicht auf Domänen beschränkt, sondern können Applikationen von mehreren Domains ausführen.</p>
-
-
-<figure >
-    
-        <img src="/techdocs/bw5_create_domain/domain_overview.jpg" alt="BW5 Domain Overview" />
-    
-    
-    <figcaption>
-        <h4>Schema BW5 Domain</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bw5_create_domain/domain_overview.jpg"
+         alt="BW5 Domain Overview"/> <figcaption>
+            <h4>Schema BW5 Domain</h4>
+        </figcaption>
 </figure>
 
-
 <p>Eine Domain besteht aus folgenden Komponenten</p>
-
 <h3 id="machines">Machines</h3>
-
 <p>Eine oder mehrere Server (Machines) auf denen die BW Engines ausgeführt werden. Im Verzeichnis <code>&lt;TIBCO_HOME&gt;</code> werden alle relevanten Tibco Applikationen installiert.</p>
-
 <h3 id="tibco-administration-server">TIBCO Administration Server</h3>
-
 <p>Innerhalb des Administrators werden die Nutzer, Maschinen, Projekte und deren Deployment Konfigurationen gespeichert.
 Über das Web- Interface des Administrators können die Domain und die SOA Applications erwartet werden. Ausserdem bieten das DomainUtility und AppManage die Möglichkeit die Domain automatisiert zu verwalten.
 Der Administrator stellt über Plugins auch eine Konfigurationsschnittstelle zu EMS und Monitoring über Hawk zu verfügung.</p>
-
 <p>Der Administrator Prozess wird mit
 <code>/&lt;TIBCO_HOME&gt;/administrator/domain/&lt;DOMAIN_NAME&gt;/bin/tibcoadmin_&lt;DOMAIN_NAME</code>
 gestartet.</p>
-
 <p>Jede Domain hat einen primären Administration Server, es können auch sekundäre Administration Server über das DomainUtility hinzugefügt werden.
 Um die einen sekundären Server einzurichten, im DomainUtility unter
 Domain Configuraton -&gt; Add a secondary Server aufrufen</p>
-
 <h3 id="domain-data-store">Domain Data Store</h3>
-
 <p>Im Domain Data Store werden Nutzer, Rollen und Zugangsrechte, sowie
-Informationen zu den Maschinen, Komponenten und Konfigurationen gespeichert. Es gibt zwei Möglichkeiten die Domain-Daten zu Speichern.
-1. Datafiles
-Bei dieser Option waren die Domaindaten in zwei Dateien im Ordner <code>/&lt;TIBCO_HOME&gt;/administrator/domain/&lt;DOMAINNAME&gt;/data</code> gespeichert.
-* <code>AUTH_&lt;DOMAINNAME&gt;</code> beinhaltet alle Daten zu Nutzern und Zugangsrechten.
-* <code>SYS_&lt;DOMAINNAME&gt;</code> beinhaltet alle Daten zu Maschinen und Komponenten.
-2. Datenbank
-Über eine JDBC Connection wird eine Datenbank zur Speicherung der Domain Daten verwendet. Tabellen mit dem Präfix AU beinhalten die Daten zu Nutzern und Zugangsrechten, Tabellen mit dem Präfix AD die Daten zu Maschinen und Komponenten.</p>
-
+Informationen zu den Maschinen, Komponenten und Konfigurationen gespeichert. Es gibt zwei Möglichkeiten die Domain-Daten zu Speichern.</p>
+<ol>
+<li>Datafiles
+Bei dieser Option waren die Domaindaten in zwei Dateien im Ordner <code>/&lt;TIBCO_HOME&gt;/administrator/domain/&lt;DOMAINNAME&gt;/data</code> gespeichert.</li>
+</ol>
+<ul>
+<li><code>AUTH_&lt;DOMAINNAME&gt;</code> beinhaltet alle Daten zu Nutzern und Zugangsrechten.</li>
+<li><code>SYS_&lt;DOMAINNAME&gt;</code> beinhaltet alle Daten zu Maschinen und Komponenten.</li>
+</ul>
+<ol start="2">
+<li>Datenbank
+Über eine JDBC Connection wird eine Datenbank zur Speicherung der Domain Daten verwendet. Tabellen mit dem Präfix AU beinhalten die Daten zu Nutzern und Zugangsrechten, Tabellen mit dem Präfix AD die Daten zu Maschinen und Komponenten.</li>
+</ol>
 <p>Generell ist die Speicherung der Domain Daten in der Datenbank vorteilhafter. Wenn EMS als Data Transport verwendet wird, muss eine Datenbank verwendet werden.</p>
-
 <p>Die Datenbank-Performance ist schon bei mittelgroßen Domains schneller als die Verwendung der Dateien.
 Während eines Deployments werden die Domain Daten mehrfach verändert. Bei dem Datei Store wird bei jeder Änderung die Datei neu geschrieben. Im Vergleich dazu werden im Datenbank Store nur die geänderten Daten geschrieben.</p>
-
 <h3 id="domain-data-transport">Domain Data Transport</h3>
-
 <p>Es kann Tibco Rendezvous oder Tibco EMS als Kommunikationskanal verwendet werden. Über den Domain Data Transport kommunizieren alle Hawk Agents und der Administrator miteinander. Wenn EMS verwendet wird, muss der Domain Data Store in einer Datenbank liegen.
 Der Administrator verwendet das Messaging um mit deployten Serviceinstanzen, Adapter und Prozesse zu kommunizieren. Auf jeder Maschine sind hierfür Tibco HAWK Agents gestartet, die Nachrichten entgegennehmen (Deployment, Start, Stop)
 oder versenden (Monitoring, Info) können. Der EMS Server verwendet hierfür dynamic topics, über den EMS Admin können dies Topics auch überwacht werden. Die Kommunikation kann mit einem eigenen Subscriber auf die Topic “&gt;” mitgeschnitten werden. Die Empfehlung ist es, einen eigenen EMS Server für jede Domain zu verwenden und die Application Payload ebenfalls über einen eigenen EMS Server abzuwickeln.</p>
-
 <p>Der EMS Server wird mit</p>
-
 <p><code>/&lt;TIBCO_HOME&gt;/ems/&lt;VERSION&gt;/bin/tibemsd64 -config “……cfgmgmt/ems/data/tibemsd.conf&quot;</code></p>
-
 <p>gestartet. Wichtig ist es das Konfigurationsverzeichnis anzugeben, da ansonsten im aktuellen Ordner nach deiner tibemsd.conf gesucht wird und falls nicht vorhanden die Datei mit Defaultwerten angelegt wird.</p>
-
 <h3 id="application-data-store">Application Data Store</h3>
-
 <p>Im Application Data Store wird der Status einzelner BW Prozess Instanzen gespeichert
 Die meisten der Informationen, die eine Prozess-Instanz speichert sind Informationen über den
 Prozess-Status, wenn ein Checkpoint erreicht wird. Es werden jedoch einige andere interne
@@ -209,86 +188,58 @@ Informationen von dem Engine gespeichert. Wie beim Domain Data Store kann festge
 Daten im Dateisystem oder der Datenbank (nur wenn die Domain Daten auch in der Datenbank persistiert werden) gespeichert werden. Bei der Speicherung im Dateisystem kann beim Anlegen der Domain mit dem DomainUtility definiert werden ob dies im Administrator oder direkt lokal auf der Maschine geschieht. Die Empfehlung ist lokal (das ist auch der Default bei EMS Transport), das dies zu einem weniger Last (Netzwerkverkehr, CPU und RAM Verbrauch beim Administrator) bedeutet und die Applikation unabhängig vom Administrator laufen kann. Allerdings kann wenn die Datenbank zur Speicherung der Prozessdaten verwendet wird, kann im FR Failover die Prozessinstanz mit den Zustand des letzten Checkpoints auf dem neuen Host  gestartet werden.
 Um den Database Storage verwenden zu können muss die Applikation eine JDBC Connection Resource enthalten.
 Dies muss schon zur Design Time im Tibco Designer angelegt werden.</p>
-
 <p>Konfiguriert werden kann die Datenbank Application Data Store im Tibco Administrator
 Application Management–&gt;Application Name–&gt;Configuration–&gt;Process-Archive.par–Advanced-&gt; Checkpoint Data Repository</p>
-
 <p>Bei einem Local File Store finden sich das Store Verzeichnis unter <code>&lt;TIBCO_HOME&gt;/tra/domain/&lt;DOMAINNAME&gt;/datafiles/</code></p>
-
 <h2 id="anlegen-der-domain">Anlegen der Domain</h2>
-
 <p>Um eine Tibco BW Domain nach einer Installation zu erzeugen, dient das Tool <em>domainutility</em>.
 Dies kann entweder interaktiv über eine GUI und ein CLI Interface bedient werden oder
 mit eine Konfigurationsfile. Ersteres ist selbsterklärend, zweiteres recht einfach.</p>
-
-
-<figure >
-    
-        <img src="/techdocs/bw5_create_domain/createDomainFile.png" alt="BW5 Domain anlegen mit domainutilitycmd -cmdFile /home/tibco/CreateDomain_demoDomain.xml" />
-    
-    
-    <figcaption>
-        <h4>Anlegen BW5 Domain</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bw5_create_domain/createDomainFile.png"
+         alt="BW5 Domain anlegen mit domainutilitycmd -cmdFile /home/tibco/CreateDomain_demoDomain.xml"/> <figcaption>
+            <h4>Anlegen BW5 Domain</h4>
+        </figcaption>
 </figure>
 
-
 <p>Zunächst kopieren das Beispiel für das Anlegen der Domain in unser Home Verzeichnis kopiert und angepasst werden:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cp" data-lang="cp"> vi <span style="color:#f92672">/</span>home<span style="color:#f92672">/</span>tibco<span style="color:#f92672">/</span>CreateDomain_demoDomain.xml<span style="color:#960050;background-color:#1e0010">```</span>
+ 
+</code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>    &lt;EMSParameters&gt;
+        &lt;ServerURL&gt;tcp://localhost:7222&lt;/ServerURL&gt;
+        &lt;Username&gt;admin&lt;/Username&gt;
+        &lt;Password&gt;&lt;/Password&gt;
+    &lt;/EMSParameters&gt;
 
-<p><code>cp /opt/tibco/soa/tra/5.9/template/domainutility/cmdline/CreateDomain.xml  /home/tibco/CreateDomain_demoDomain.xml
- vi /home/tibco/CreateDomain_demoDomain.xml</code></p>
+    &lt;DatabaseConfiguration&gt;
+        &lt;DatabaseUrl&gt;jdbc:oracle:thin:tibDB/tibDB@localhost:1521/XE&lt;/DatabaseUrl&gt;
+        &lt;DatabaseUsername&gt;tibDB&lt;/DatabaseUsername&gt;
+        &lt;DatabasePassword&gt;tibDB&lt;/DatabasePassword&gt;
+        &lt;JdbcDriver&gt;oracle.jdbc.driver.OracleDriver&lt;/JdbcDriver&gt;
+        &lt;DatabaseMinConnections&gt;0&lt;/DatabaseMinConnections&gt;
+        &lt;DatabaseMaxConnections&gt;10&lt;/DatabaseMaxConnections&gt;
+    &lt;/DatabaseConfiguration&gt;
 
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;Task xmlns=&quot;http://www.tibco.com/domainutility/commandline&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
-    &lt;CreateDomain&gt;
-        &lt;DomainName&gt;demoDomain&lt;/DomainName&gt;
-        &lt;AdministratorUsername&gt;admin&lt;/AdministratorUsername&gt;
-        &lt;AdministratorPassword&gt;admin&lt;/AdministratorPassword&gt;
-        &lt;AdminHome&gt;/opt/tibco/soa/administrator/5.9&lt;/AdminHome&gt;
-        &lt;LocalApplicationData&gt;true&lt;/LocalApplicationData&gt;
-
-        &lt;EMSParameters&gt;
-            &lt;ServerURL&gt;tcp://localhost:7222&lt;/ServerURL&gt;
-            &lt;Username&gt;admin&lt;/Username&gt;
-            &lt;Password&gt;&lt;/Password&gt;
-        &lt;/EMSParameters&gt;
-
-        &lt;DatabaseConfiguration&gt;
-            &lt;DatabaseUrl&gt;jdbc:oracle:thin:tibDB/tibDB@localhost:1521/XE&lt;/DatabaseUrl&gt;
-            &lt;DatabaseUsername&gt;tibDB&lt;/DatabaseUsername&gt;
-            &lt;DatabasePassword&gt;tibDB&lt;/DatabasePassword&gt;
-            &lt;JdbcDriver&gt;oracle.jdbc.driver.OracleDriver&lt;/JdbcDriver&gt;
-            &lt;DatabaseMinConnections&gt;0&lt;/DatabaseMinConnections&gt;
-            &lt;DatabaseMaxConnections&gt;10&lt;/DatabaseMaxConnections&gt;
-        &lt;/DatabaseConfiguration&gt;
-
-    &lt;/CreateDomain&gt;
-&lt;/Task&gt;
+&lt;/CreateDomain&gt;
 </code></pre>
-
+<!-- raw HTML omitted -->
 <p>Dann kann die Domain angelegt werden.
- <code>/opt/tibco/soa/tra/5.9/bin/domainutilitycmd -cmdFile /home/tibco/CreateDomain_demoDomain.xml -logFile createDemoDomain.log</code></p>
-
+<code>/opt/tibco/soa/tra/5.9/bin/domainutilitycmd -cmdFile /home/tibco/CreateDomain_demoDomain.xml -logFile createDemoDomain.log</code></p>
 <h2 id="prozesse">Prozesse</h2>
-
 <h3 id="tibco-hawk">TIBCO Hawk</h3>
-
 <p>TIBCO Hawk Domain-Monitoring ermöglicht neben der Überwachung der Systeme auch ein Eingreifen, wie beispielsweise ein Deployment. Jede Maschine der Überwachungsumgebung ist mit Agenten ausgestattet, die über Regeln definierte Ereignisse veröffentlichen und Aktionen auslösen können. Auf diese Weise überwacht sich jede Maschine selbst.
 Die Hawk Installation auf der Maschine besteht aus zwei Komponenten, dem HAWK Agent für die Domain selbst und die Hawk MircoAgents. Der Hawk Agent für die Domain wird mit
 <code>/ &lt;TIBCO_HOME&gt;/tra/domain/&lt;DOMAIN_NAME&gt;/hawkagent_&lt;DOMAIN_NAME&gt;</code>
 gestartet. Im selben Verzeichnis finden sich noch die Ordner autoconfig und plugins.
 In autoconfig finden sich die deployeden Rulebases und in plugins zusätzliche Mircoragents.</p>
-
 <h3 id="tibco-businessworks-engines">TIBCO BusinessWorks Engines</h3>
-
 <p>Jede Applikation die in der Domain deployed und gestartet wurde, wird in einem eigenen BW Engine (Betriebssystem-)Prozess ausgeführt. Jede BW Engine wird in einer eigenen JVM ausgeführt.
 Die BW Engines können zentral über die TRA Datei parametrisiert werden.
 Die TRA Datei findet sich im <code>TIBCO_HOME/bw/5.x/bin/bwengine.tra</code>.
 Hier können Pfade und Default Werte definiert werden, die von einem Deployment überschrieben werden können.
 Beispielsweise kann</p>
-
 <pre><code>tibco.env.HEAP_SIZE=256M
 java.extended.properties -Xms512m -Xmx512m -verbose:gc
 tibco.env.APP_ARGS=
@@ -299,12 +250,9 @@ EnableMemorySavingMode.*=true (for all process flow) // BW Garbage Collection (n
 EnableMemorySavingMode.&lt;processName&gt;=true (for specific process flow) // BW Garbage Collection (not Java) , Default false
 Engine.JobIdBlockSize=1000 // Default 1000, 
 Engine.ShutdownOnStartupError=true // Default false
-</code></pre>
-
-<p>eingestellt werden. Wenn die Default von einem Deployment überschrieben werden, kann dies pro Server
+</code></pre><p>eingestellt werden. Wenn die Default von einem Deployment überschrieben werden, kann dies pro Server
 einzeln eingestellt werden.
 In der Deploymentbeschreibung können die Parameter in der Binding Definition angepasst werden:</p>
-
 <pre><code>                &lt;binding name=&quot;Process Archive&quot;&gt;
                     &lt;machine&gt;eai2&lt;/machine&gt;
                     &lt;product&gt;
@@ -330,42 +278,26 @@ In der Deploymentbeschreibung können die Parameter in der Binding Definition an
                         &lt;timeout&gt;0&lt;/timeout&gt;
                     &lt;/shutdown&gt;
                 &lt;/binding&gt;
-</code></pre>
-
-<p>Aktive Applikationen können unter Linux mit ps -ax | grep bwengine angezeigt werden:</p>
-
+</code></pre><p>Aktive Applikationen können unter Linux mit ps -ax | grep bwengine angezeigt werden:</p>
 <p><code>&lt;TIBCO_HOME&gt;/bw/&lt;VERSION&gt;/bin/bwengine --pid --run --propFile &lt;TIBCO_HOME&gt;tra/domain/&lt;DOMAIN_NAME&gt;/application/&lt;PROJEKTORDNER&gt;/&lt;APPLICAITONNAME&gt;.tra --innerProcess</code></p>
-
 <p>Das Log File finde sich unter
 <code>&lt;TIBCO_HOME&gt;tra/domain/&lt;DOMAIN_NAME&gt;/application/logs</code></p>
-
-
-<figure >
-    
-        <img src="/techdocs/bw5_create_domain/aktive_apps.png" alt="Aktive Services im TIBCO Administrator" />
-    
-    
-    <figcaption>
-        <h4>Aktive Services</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/bw5_create_domain/aktive_apps.png"
+         alt="Aktive Services im TIBCO Administrator"/> <figcaption>
+            <h4>Aktive Services</h4>
+        </figcaption>
 </figure>
 
-
 <h3 id="adapter">Adapter</h3>
-
 <p>Tibco Adapter kapseln den (komplexen) Zugriff auf Systeme und Technologien und bieten einen standardisierten Zugriff auf diese Ressourcen.
 Der Austausch von Informationen von den Adaptern mit BW Prozessen erfolgt über die TIBCO Messaging-Plattform,
 Die Adapter bieten i.d.R. zwei Kommunikations-Pattern an</p>
-
 <ul>
-<li>Publish Subscribe -   Der Adapter erkennt Änderungen im externen System und sendet ein Event in eine Topic, BW Prozesse können darauf hören.</li>
+<li>Publish Subscribe -	Der Adapter erkennt Änderungen im externen System und sendet ein Event in eine Topic, BW Prozesse können darauf hören.</li>
 <li>Request Response - Ein BW Prozess fragt den Zustand des externen Systems direkt an und erhält vom Adapter eine Antwort.</li>
 </ul>
-
 <p>Adapter müssen als eigenständige Prozesse auf dem Server gestartet werden, sind aber über den Domain Data Transport ansprechbar.</p>
-
 <p>.</p>
 
             </div>

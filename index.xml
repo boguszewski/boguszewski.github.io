@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>About on Alexander von Boguszewski</title>
@@ -6,11 +6,7 @@
     <description>Recent content in About on Alexander von Boguszewski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de-de</language>
-    <lastBuildDate>Fri, 01 Jan 2016 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://alexander.vonboguszewski.name/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 01 Jan 2016 00:00:00 +0000</lastBuildDate><atom:link href="http://alexander.vonboguszewski.name/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Saxess Software Design</title>
       <link>http://alexander.vonboguszewski.name/resume/saxess/</link>
@@ -96,6 +92,37 @@ Der übernimmt keine Gewähr für die Vollständigkeit, Richtigkeit oder Aktuali
     </item>
     
     <item>
+      <title>Wie baut man EXCEL-DASHBOARDS</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/excel_dashboards/</link>
+      <pubDate>Wed, 17 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/excel_dashboards/</guid>
+      <description>Wie baut man EXCEL-DASHBOARDS
+Das Erstellen von Microsoft Excel-Dashboards ist für jeden, der mit Daten arbeitet, eine wichtige Fähigkeit. Excel-Dashboards ermöglichen es Entscheidungsträgern, Daten aus ihrem Betrieb zu bewerten und fundierte Entscheidungen zu treffen. Ich werde zeigen, wie man als Excel Anfänger interaktive Dashboards auf Basis von Dropdowns erstellt.
+Um einen realistisches Dashboard zu erstellen habe ich mir überlegt anhand der Passagierzählung S-Bahn Hamburg, die uns die Deutsche Bahn in ihrem Open Data Portal bereitstellt (https://data.</description>
+    </item>
+    
+    <item>
+      <title>Links zu Outlook-E-Mails in MacOS - Application URL outlook://</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/outlook_things/</link>
+      <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/outlook_things/</guid>
+      <description>Wie ich Outlook E-Mails aus Things öffne.
+Things ist ein großartiger Taskmanager mit einer recht guten Integration in die MacOS Board Tools. Ich verwende aber Outlook für meine Arbeits-E-Mail.
+Doch jedes Mal wenn eine E-Mail zu einer neuen Aufgabe führt, find ich den Workflow mit Copy&amp;amp;Paste und dem QuickEntry Panel nicht sonderlich Benutzerfreundlich. Außerdem gibt es keinen weg um auf die ursprüngliche E-Mail zurückzukommen. Aber dies wäre hilfreich. Manchmal sind die Einzelheiten der Aufgabe in der E-Mail zu finden, manchmal habe ich Referenzdokumente an die E-Mail angehängt oder ich muss einfach auf die E-Mail antworten, wenn ich mit der Aufgabe fertig bin.</description>
+    </item>
+    
+    <item>
+      <title>Singer.io ETL getting started</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/singerio_gettingstartet/</link>
+      <pubDate>Sun, 19 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/singerio_gettingstartet/</guid>
+      <description>Singer, entwickelt von Talend, ist ein Open-Source-Tool, das die Entwicklung von Ingestion Prozessen erleichtert. Singer wurde so strukturiert ETL Prozesse so, dass Datenein- und Ausgänge zu verbinden, wodurch ETL-Prozesse modular aufgebaut und recht einfacher zu betreiben sind. Bei der Verarbeitung werden die Daten im JSON Format zwischen Quellen und Zielen übertragen, so dass Sie inkompatible Formate kein Problem darstellen sollten. Wie also macht Singer all dies? Im Wesentlichen bricht es ein ETL-Skripte in Taps und Targets auf, die im Folgenden beschrieben werden:</description>
+    </item>
+    
+    <item>
       <title>Talend Open Studio mit Cloudera Quickstart verbinden</title>
       <link>http://alexander.vonboguszewski.name/techdocs/talend_clouderaqickstart/</link>
       <pubDate>Sun, 11 Mar 2018 00:00:00 +0000</pubDate>
@@ -149,8 +176,8 @@ Was ist Kubernetes? Kubernetes (K8s, griechisch für &amp;ldquo;Steuermann&amp;r
       
       <guid>http://alexander.vonboguszewski.name/techdocs/bw6_deployment/</guid>
       <description>Nachdem wir unseren Prozess erstellt haben muss mit dem Designer das EAR File erzeugt werden. Dies geht entweder direkt im Designer oder über die Kommandozeile
-./bwdesign -data /home/tibco/tibworkspace/sample system:validate ./bwdesign -data /home/tibco/tibworkspace/sample system:export -ear sample.app /home/tibco/  Anschließend können wir mit dem bwadmin die Applikation deployen und starten:
-./bwadmin upload -d myDBDomain /home/tibco/sample.app_1.0.0.ear deploy -d myDBDomain -a myAppspace sample.app_1.0.0.ear start -d myDBDomain -a myAppspace application sample 1.0  Die Befehle können dem bwadmin auch über ein Answerfile übergeben werden:</description>
+./bwdesign -data /home/tibco/tibworkspace/sample system:validate ./bwdesign -data /home/tibco/tibworkspace/sample system:export -ear sample.app /home/tibco/ Anschließend können wir mit dem bwadmin die Applikation deployen und starten:
+./bwadmin upload -d myDBDomain /home/tibco/sample.app_1.0.0.ear deploy -d myDBDomain -a myAppspace sample.app_1.0.0.ear start -d myDBDomain -a myAppspace application sample 1.0 Die Befehle können dem bwadmin auch über ein Answerfile übergeben werden:</description>
     </item>
     
     <item>
@@ -208,7 +235,7 @@ import java.sql.DriverManager; import java.sql.Connection; import java.sql.SQLEx
       
       <guid>http://alexander.vonboguszewski.name/techdocs/bw5_prepare_oracle/</guid>
       <description>Beim Einsatz von TIBCO EMS als Transport für die Administration Domain, muss eine Datenbank als Repository angegeben werden. Bei kleineren Systemen, wie beispielsweise einer lokalen Testinstallation, eignet sich Oracle XE ganz gut. In der XE muss für die Tibco Domain ein Datenbankuser mit den richtigen Rechten angelegt werden, damit die Domain über das DomainUtility ohne Probleme erzeugt werden kann.
-create user TIBCODOM identified by tibcoPass; GRANT CONNECT,RESOURCE,UNLIMITED TABLESPACE TO TIBCODOM ALTER USER TIBCODOM DEFAULT TABLESPACE USERS; ALTER USER TIBCODOM TEMPORARY TABLESPACE TEMP;  </description>
+create user TIBCODOM identified by tibcoPass; GRANT CONNECT,RESOURCE,UNLIMITED TABLESPACE TO TIBCODOM ALTER USER TIBCODOM DEFAULT TABLESPACE USERS; ALTER USER TIBCODOM TEMPORARY TABLESPACE TEMP; </description>
     </item>
     
     <item>
@@ -218,7 +245,7 @@ create user TIBCODOM identified by tibcoPass; GRANT CONNECT,RESOURCE,UNLIMITED T
       
       <guid>http://alexander.vonboguszewski.name/techdocs/bw5_create_domain/</guid>
       <description>Die Administration Domain umfasst eine zentrale Verwaltungs-, Überwachungs- und Deployment-, sowie die verteilte Laufzeit-Umgebung für BW Applikationen. Die Domain verwaltet alle Server (Machines), Benutzer, BW Komponenten und Projekte. Hierbei sind einzelne Maschinen sind nicht auf Domänen beschränkt, sondern können Applikationen von mehreren Domains ausführen.
- Schema BW5 Domain   Eine Domain besteht aus folgenden Komponenten
+  Schema BW5 Domain   Eine Domain besteht aus folgenden Komponenten
 Machines Eine oder mehrere Server (Machines) auf denen die BW Engines ausgeführt werden. Im Verzeichnis &amp;lt;TIBCO_HOME&amp;gt; werden alle relevanten Tibco Applikationen installiert.</description>
     </item>
     
@@ -237,7 +264,7 @@ Machines Eine oder mehrere Server (Machines) auf denen die BW Engines ausgeführ
       <pubDate>Tue, 15 Mar 2016 00:00:00 +0000</pubDate>
       
       <guid>http://alexander.vonboguszewski.name/techdocs/bw5_deployment/</guid>
-      <description>Anlegen einer Applikation Im Tibco Administrator unter Application Management -&amp;gt; New Application auswählen und ein EAR hochladen. Der Application Name lautet beispielsweise &amp;lt;DOMAIN&amp;gt;_MyAPP Um mehrere Applikationen zu gruppieren, können auch Verzeichnisse angelegt werden.   Konfigurieren der Application unter Im Tibco Administrator unter Application Management/&amp;lt;DOMAIN&amp;gt;_MyAPP unter Configuration/MyApp im Tab Advanced die Global Properties anpassen.   Konfiguration BW Prozesse Im Tibco Administrator unter Application Management/&amp;lt;DOMAIN&amp;gt;_MyAPP unter Configuration/MyApp/My Process.par wird der Service konfiguriert.</description>
+      <description>Anlegen einer Applikation Im Tibco Administrator unter Application Management -&amp;gt; New Application auswählen und ein EAR hochladen. Der Application Name lautet beispielsweise &amp;lt;DOMAIN&amp;gt;_MyAPP Um mehrere Applikationen zu gruppieren, können auch Verzeichnisse angelegt werden.     Konfigurieren der Application unter Im Tibco Administrator unter Application Management/&amp;lt;DOMAIN&amp;gt;_MyAPP unter Configuration/MyApp im Tab Advanced die Global Properties anpassen.     Konfiguration BW Prozesse Im Tibco Administrator unter Application Management/&amp;lt;DOMAIN&amp;gt;_MyAPP unter Configuration/MyApp/My Process.</description>
     </item>
     
     <item>
@@ -247,7 +274,7 @@ Machines Eine oder mehrere Server (Machines) auf denen die BW Engines ausgeführ
       
       <guid>http://alexander.vonboguszewski.name/techdocs/bw5_appmanage/</guid>
       <description>Mit AppManage können BW Applikationen in einer TIBCO BW Domain verwaltet werden. Mit AppManage kann unter Anderen ein Deployment über die Kommandozeile vorbereitet und durchgeführt werden, Applikationen gestartet und gestoppt werden. Das Tool findet sich unter /&amp;lt;TIBCO_HOME&amp;gt;/tra/&amp;lt;VERSION&amp;gt;/bin, bei mir unter /opt/tibco/soa/tra/5.9/bin/AppManage
-Als Beispiel möchte ich hier eine BW Applikation deployen und starten. Hierfür habe ich im Designer einen einfachen Prozess entwickelt, der Nachrichten von einer Queue in ein Logfile schreibt.</description>
+Als Beispiel möchte ich hier eine BW Applikation deployen und starten. Hierfür habe ich im Designer einen einfachen Prozess entwickelt, der Nachrichten von einer Queue in ein Logfile schreibt. Also ziemlich einfach.</description>
     </item>
     
     <item>
@@ -259,7 +286,7 @@ Als Beispiel möchte ich hier eine BW Applikation deployen und starten. Hierfür
       <description>Die User einer Tibco BW5 Domain können über die Kommandoziele im- und exportiert werden. Das Tool ExportDomainSecurity im Verzeichnis &amp;lt;TIBCO_HOME&amp;gt;/tra/&amp;lt;VERSION&amp;gt;/bin hilft dabei
 ./ExportDomainSecurity -domain test_avb -allUsers -roleMembership -ACLS -GUID -cred credentials -file /tmp/users
 ausführen um eine Datei mit Nutzern zu exportieren.
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;UserManagement&amp;gt; &amp;lt;user name=&amp;quot;admin&amp;quot;&amp;gt; &amp;lt;password&amp;gt;#!I/BriFOGV5ltDJZCy64lRK+XAdNpkz&amp;lt;/password&amp;gt; &amp;lt;lastModDate&amp;gt;1456953280416&amp;lt;/lastModDate&amp;gt; &amp;lt;GUID&amp;gt;5e0dc204_153392ec103_-7ffb7f000001&amp;lt;/GUID&amp;gt; &amp;lt;userSource&amp;gt;1&amp;lt;/userSource&amp;gt; &amp;lt;/user&amp;gt; &amp;lt;user name=&amp;quot;alex&amp;quot;&amp;gt; &amp;lt;password&amp;gt;#!SVX8NDrBFjBWGxa9voVaF5J7+s/OMv&amp;lt;/password&amp;gt; &amp;lt;lastModDate&amp;gt;1458223714586&amp;lt;/lastModDate&amp;gt; &amp;lt;GUID&amp;gt;3f345044_1537c032d13_-7e2f7f000001&amp;lt;/GUID&amp;gt; &amp;lt;userSource&amp;gt;1&amp;lt;/userSource&amp;gt; &amp;lt;/user&amp;gt; &amp;lt;accessControlList name=&amp;quot;TIBCO Administrator/Application Management/MyApps&amp;quot; op=&amp;quot;Read&amp;quot; type=&amp;quot;Admin&amp;quot;&amp;gt; &amp;lt;user&amp;gt;alex&amp;lt;/user&amp;gt; &amp;lt;/accessControlList&amp;gt; &amp;lt;accessControlList name=&amp;quot;TIBCO Administrator/Application Management/MyApps&amp;quot; op=&amp;quot;Write&amp;quot; type=&amp;quot;Admin&amp;quot;&amp;gt; &amp;lt;user&amp;gt;alex&amp;lt;/user&amp;gt; &amp;lt;/accessControlList&amp;gt; &amp;lt;accessControlList name=&amp;quot;TIBCO Administrator/Application Management/MyApps&amp;quot; op=&amp;quot;Admin&amp;quot; type=&amp;quot;Admin&amp;quot;&amp;gt; &amp;lt;user&amp;gt;alex&amp;lt;/user&amp;gt; &amp;lt;/accessControlList&amp;gt; &amp;lt;accessControlList name=&amp;quot;TIBCO Administrator/Application Management/TIBCO Servers&amp;quot; op=&amp;quot;Read&amp;quot; type=&amp;quot;Admin&amp;quot;&amp;gt; &amp;lt;user&amp;gt;alex&amp;lt;/user&amp;gt; &amp;lt;/accessControlList&amp;gt; &amp;lt;/UserManagement&amp;gt;  </description>
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;UserManagement&amp;gt; &amp;lt;user name=&amp;quot;admin&amp;quot;&amp;gt; &amp;lt;password&amp;gt;#!I/BriFOGV5ltDJZCy64lRK+XAdNpkz&amp;lt;/password&amp;gt; &amp;lt;lastModDate&amp;gt;1456953280416&amp;lt;/lastModDate&amp;gt; &amp;lt;GUID&amp;gt;5e0dc204_153392ec103_-7ffb7f000001&amp;lt;/GUID&amp;gt; &amp;lt;userSource&amp;gt;1&amp;lt;/userSource&amp;gt; &amp;lt;/user&amp;gt; &amp;lt;user name=&amp;quot;alex&amp;quot;&amp;gt; &amp;lt;password&amp;gt;#!SVX8NDrBFjBWGxa9voVaF5J7+s/OMv&amp;lt;/password&amp;gt; &amp;lt;lastModDate&amp;gt;1458223714586&amp;lt;/lastModDate&amp;gt; &amp;lt;GUID&amp;gt;3f345044_1537c032d13_-7e2f7f000001&amp;lt;/GUID&amp;gt; &amp;lt;userSource&amp;gt;1&amp;lt;/userSource&amp;gt; &amp;lt;/user&amp;gt; &amp;lt;accessControlList name=&amp;quot;TIBCO Administrator/Application Management/MyApps&amp;quot; op=&amp;quot;Read&amp;quot; type=&amp;quot;Admin&amp;quot;&amp;gt; &amp;lt;user&amp;gt;alex&amp;lt;/user&amp;gt; &amp;lt;/accessControlList&amp;gt; &amp;lt;accessControlList name=&amp;quot;TIBCO Administrator/Application Management/MyApps&amp;quot; op=&amp;quot;Write&amp;quot; type=&amp;quot;Admin&amp;quot;&amp;gt; &amp;lt;user&amp;gt;alex&amp;lt;/user&amp;gt; &amp;lt;/accessControlList&amp;gt; &amp;lt;accessControlList name=&amp;quot;TIBCO Administrator/Application Management/MyApps&amp;quot; op=&amp;quot;Admin&amp;quot; type=&amp;quot;Admin&amp;quot;&amp;gt; &amp;lt;user&amp;gt;alex&amp;lt;/user&amp;gt; &amp;lt;/accessControlList&amp;gt; &amp;lt;accessControlList name=&amp;quot;TIBCO Administrator/Application Management/TIBCO Servers&amp;quot; op=&amp;quot;Read&amp;quot; type=&amp;quot;Admin&amp;quot;&amp;gt; &amp;lt;user&amp;gt;alex&amp;lt;/user&amp;gt; &amp;lt;/accessControlList&amp;gt; &amp;lt;/UserManagement&amp;gt; </description>
     </item>
     
     <item>
@@ -302,7 +329,7 @@ Mit dem batchExport werden alle Applikationen und die Konfigurationen in das Ver
       <description>Mit SIEVE können Emails serverseitig auf IMAP-Servern verarbeitet werden. Mit der sieveshell können die Skripte auf den Server geladen werden. Es kann immer nur ein Skript aktiviert sein.
 sieveshell –user=hdab –a hdab localhost put myscript.sieve activate myscript.sieve Syntax Kommentare Kommentarzeilen beginnen mit &amp;ldquo;#&amp;rdquo;.
 Zahlen Nur positive Ganzzahlen sind erlaubt. Größen können über &amp;ldquo;K&amp;rdquo; , &amp;ldquo;M&amp;rdquo; und &amp;ldquo;G&amp;rdquo; für Kilobytes, Megabytes und Gigabytes angegeben werden.
-Strings Strings werden durch &amp;ldquo; eingeleitet.</description>
+Strings Strings werden durch &amp;quot; eingeleitet. Das Escapezeichen ist .</description>
     </item>
     
     <item>
@@ -324,7 +351,7 @@ Verteiltes Backup mit einen Backupserver. In diesem Fall wird das Script auf dem
       
       <guid>http://alexander.vonboguszewski.name/techdocs/bw5_add_admin_user/</guid>
       <description>Mit dem Tool ImportDomainSecurity können unter anderem User in einer Tibco Domain angelegt werden. Ein neuer User wird über eine XML Datei beschrieben.
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;UserManagement&amp;gt; &amp;lt;role name=&amp;quot;Role1&amp;quot;&amp;gt; &amp;lt;members&amp;gt; &amp;lt;user&amp;gt;NewUser1&amp;lt;/user&amp;gt; &amp;lt;/members&amp;gt; &amp;lt;/role&amp;gt; &amp;lt;user name=&amp;quot;NewUser1&amp;quot;&amp;gt; &amp;lt;password&amp;gt;#!8LesLHVtT83GQEJZEzE89g==&amp;lt;/password&amp;gt; &amp;lt;userSource&amp;gt;1&amp;lt;/userSource&amp;gt; &amp;lt;/user&amp;gt; &amp;lt;/UserManagement&amp;gt;  Das Passwort muss verschlüsselt in die Datei eingetragen werden. Um das Passwort für den Nutzer verschlüsseln legen wir eine Textdatei mit dem String “pw=#!” angelegt werden. Anschließend kann mit obfuscate ein Passwort eingegeben werden.</description>
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;UserManagement&amp;gt; &amp;lt;role name=&amp;quot;Role1&amp;quot;&amp;gt; &amp;lt;members&amp;gt; &amp;lt;user&amp;gt;NewUser1&amp;lt;/user&amp;gt; &amp;lt;/members&amp;gt; &amp;lt;/role&amp;gt; &amp;lt;user name=&amp;quot;NewUser1&amp;quot;&amp;gt; &amp;lt;password&amp;gt;#!8LesLHVtT83GQEJZEzE89g==&amp;lt;/password&amp;gt; &amp;lt;userSource&amp;gt;1&amp;lt;/userSource&amp;gt; &amp;lt;/user&amp;gt; &amp;lt;/UserManagement&amp;gt; Das Passwort muss verschlüsselt in die Datei eingetragen werden. Um das Passwort für den Nutzer verschlüsseln legen wir eine Textdatei mit dem String “pw=#!” angelegt werden. Anschließend kann mit obfuscate ein Passwort eingegeben werden.</description>
     </item>
     
   </channel>

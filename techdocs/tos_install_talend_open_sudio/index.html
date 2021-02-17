@@ -73,28 +73,28 @@
 		  "@context": "http://schema.org",
 		  "@type": "BlogPosting",
   		   "headline": "Talend Open Studio for ESB auf Mac OS",
- 			"url" : "http://alexander.vonboguszewski.name/techdocs/tos_install_talend_open_sudio/",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/tos_install_talend_open_sudio\/",
   			"author": {
     			"@type": "Person",
   				"name" : "Alexander von Boguszewski", 
-  				"url" : "http://alexander.vonboguszewski.name/"
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
   			  },
   			  "publisher": {
     			"@type": "Organization",
   				"name" : "Alexander von Boguszewski Personal Webpage" ,
   				"logo": {
      				 "@type": "ImageObject",
-      				 "url": "http://alexander.vonboguszewski.name/images/bg.png"
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
    				 }
   			  },
   			  "mainEntityOfPage": {
         		 "@type": "WebPage",
-       			 "@id": "http://alexander.vonboguszewski.name/"
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
     		  }
   			
-  			, "dateModified": "2018-01-23T00:00:00&#43;00:00"
-  			, "datePublished": "2018-01-23T00:00:00&#43;00:00"
-  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+  			, "dateModified": "2018-01-23T00:00:00\u002b00:00"
+  			, "datePublished": "2018-01-23T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
 		}
 		</script>
 
@@ -144,37 +144,23 @@ Natürlich kann ich mehrere Java Versionen installieren und mit  <em>$/usr/libex
 in dem Fall kann ich das Studio aber nur über das Terminal öffnen. Eine etwas elegantere Möglichkeit ist etwas versteckt.
 Ich kann über die Info.plist die Studio Properties anpassen und so eine spezifische JVM auswählen.
 Dazu müssen wir zunächst App Paket öffnen.</p>
-
-
-<figure >
-    
-        <img src="/techdocs/tos_install/1.png" alt="App Paket öffnen" />
-    
-    
-    <figcaption>
-        <h4>Studio Paketinhalt anzeigen</h4>
-        
-    </figcaption>
-    
+<figure>
+    <img src="/techdocs/tos_install/1.png"
+         alt="App Paket öffnen"/> <figcaption>
+            <h4>Studio Paketinhalt anzeigen</h4>
+        </figcaption>
 </figure>
-
 
 <p>Anschließend können wir die Datei <em>Content/Info.plist</em> editieren.
 In der Datei gibt es bereits einen auskommentierten Bereich, der beschreibt was zu tun ist</p>
-
-<pre><code class="language-xml">&lt;!-- to use a specific Java version (instead of the platform's default) uncomment one of the following options,
-	 or add a VM found via $/usr/libexec/java_home -V
-	 &lt;string&gt;-vm&lt;/string&gt;&lt;string&gt;/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Commands/java&lt;/string&gt;
-	 &lt;string&gt;-vm&lt;/string&gt;&lt;string&gt;/Library/Java/JavaVirtualMachines/1.8.0.jdk/Contents/Home/bin/java&lt;/string&gt;
---&gt;
-</code></pre>
-
-<p>Direkt darunter habe ich die Konfiguration für meine JVM eingefügt.</p>
-
-<pre><code class="language-xml">&lt;string&gt;-vm&lt;/string&gt;&lt;string&gt;/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/bin/java&lt;/string&gt;
-</code></pre>
-
-<p>Danach ließ sich das Studio ohne Probleme starten.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;!-- to use a specific Java version (instead of the platform&#39;s default) uncomment one of the following options,
+</span><span style="color:#75715e">	 or add a VM found via $/usr/libexec/java_home -V
+</span><span style="color:#75715e">	 &lt;string&gt;-vm&lt;/string&gt;&lt;string&gt;/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Commands/java&lt;/string&gt;
+</span><span style="color:#75715e">	 &lt;string&gt;-vm&lt;/string&gt;&lt;string&gt;/Library/Java/JavaVirtualMachines/1.8.0.jdk/Contents/Home/bin/java&lt;/string&gt;
+</span><span style="color:#75715e">--&gt;</span>
+</code></pre></div><p>Direkt darunter habe ich die Konfiguration für meine JVM eingefügt.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;string&gt;</span>-vm<span style="color:#f92672">&lt;/string&gt;&lt;string&gt;</span>/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/bin/java<span style="color:#f92672">&lt;/string&gt;</span>
+</code></pre></div><p>Danach ließ sich das Studio ohne Probleme starten.</p>
 
             </div>
             <hr style="width:200px" class="avb-opacity">

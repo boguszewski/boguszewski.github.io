@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Daten Integration on Alexander von Boguszewski</title>
+    <link>http://alexander.vonboguszewski.name/categories/daten-integration/</link>
+    <description>Recent content in Daten Integration on Alexander von Boguszewski</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-de</language>
+    <lastBuildDate>Wed, 17 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://alexander.vonboguszewski.name/categories/daten-integration/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Wie baut man EXCEL-DASHBOARDS</title>
+      <link>http://alexander.vonboguszewski.name/techdocs/excel_dashboards/</link>
+      <pubDate>Wed, 17 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://alexander.vonboguszewski.name/techdocs/excel_dashboards/</guid>
+      <description>Wie baut man EXCEL-DASHBOARDS
+Das Erstellen von Microsoft Excel-Dashboards ist für jeden, der mit Daten arbeitet, eine wichtige Fähigkeit. Excel-Dashboards ermöglichen es Entscheidungsträgern, Daten aus ihrem Betrieb zu bewerten und fundierte Entscheidungen zu treffen. Ich werde zeigen, wie man als Excel Anfänger interaktive Dashboards auf Basis von Dropdowns erstellt.
+Um einen realistisches Dashboard zu erstellen habe ich mir überlegt anhand der Passagierzählung S-Bahn Hamburg, die uns die Deutsche Bahn in ihrem Open Data Portal bereitstellt (https://data.</description>
+    </item>
+    
+  </channel>
+</rss>

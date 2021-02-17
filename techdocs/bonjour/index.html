@@ -73,28 +73,28 @@
 		  "@context": "http://schema.org",
 		  "@type": "BlogPosting",
   		   "headline": "Bonjour auf der Komandozeile",
- 			"url" : "http://alexander.vonboguszewski.name/techdocs/bonjour/",
+ 			"url" : "http:\/\/alexander.vonboguszewski.name\/techdocs\/bonjour\/",
   			"author": {
     			"@type": "Person",
   				"name" : "Alexander von Boguszewski", 
-  				"url" : "http://alexander.vonboguszewski.name/"
+  				"url" : "http:\/\/alexander.vonboguszewski.name\/"
   			  },
   			  "publisher": {
     			"@type": "Organization",
   				"name" : "Alexander von Boguszewski Personal Webpage" ,
   				"logo": {
      				 "@type": "ImageObject",
-      				 "url": "http://alexander.vonboguszewski.name/images/bg.png"
+      				 "url": "http:\/\/alexander.vonboguszewski.name\/images\/bg.png"
    				 }
   			  },
   			  "mainEntityOfPage": {
         		 "@type": "WebPage",
-       			 "@id": "http://alexander.vonboguszewski.name/"
+       			 "@id": "http:\/\/alexander.vonboguszewski.name\/"
     		  }
   			
-  			, "dateModified": "2017-11-12T00:00:00&#43;00:00"
-  			, "datePublished": "2017-11-12T00:00:00&#43;00:00"
-  			, "keywords": "admin,analytics,bigdata,bw5,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,hawk,java,mail,rsync,spotfire,talend,tibco,tos,"
+  			, "dateModified": "2017-11-12T00:00:00\u002b00:00"
+  			, "datePublished": "2017-11-12T00:00:00\u002b00:00"
+  			, "keywords": "admin,analytics,application-integration,bigdata,bw5,daten-integration,db,integration,programming,bw5,bw6,bwce,cmd,datafabric,db,excel,hawk,java,mail,outlook,rsync,singer,spotfire,talend,things,tibco,tos,"
 		}
 		</script>
 
@@ -136,7 +136,6 @@
                 <p>Ich habe den Bonjour Dienst oft verwendet um die Konfig-Website meines AVR zu finden. Seid Safari dieses
 Feature nicht mehr anbietet, muss ich hierfür auf die CMD zurückgreifen.
 Um die per Bojour annoncierte Webseiten im lokalen Netzwerk zu finden (in etwa so wie Safari es konnte) reicht der Befehl</p>
-
 <pre><code>  dns-sd -B 
 Browsing for _http._tcp
 DATE: ---SUN 12 Nov 2017---
@@ -144,33 +143,23 @@ DATE: ---SUN 12 Nov 2017---
 Timestamp     A/R    Flags  if Domain               Service Type         Instance Name
 16:52:12.487  Add        3   8 local.               _http._tcp.          MyAVR
 
-</code></pre>
-
-<p>Mit dem gelieferten Instance Name erhalte ich dann den Hostname</p>
-
+</code></pre><p>Mit dem gelieferten Instance Name erhalte ich dann den Hostname</p>
 <pre><code>dns-sd -L &quot;MyAVR&quot;  _http._tcp.
 Lookup MyAVR._http._tcp..local
 DATE: ---SUN 12 Nov 2017---
 16:53:54.339  ...STARTING...
 16:53:54.507  MyAVR._http._tcp.local. can be reached at MyAVR.local.:80 (interface 8)
 ...
-</code></pre>
-
-<p>Hier finden wir den aktuellen (Bonjour-)Hostnamen der Website an. Mit dem wir die IP Adresse herausfinden können.</p>
-
+</code></pre><p>Hier finden wir den aktuellen (Bonjour-)Hostnamen der Website an. Mit dem wir die IP Adresse herausfinden können.</p>
 <pre><code>
 dns-sd -Gv4v6 MyAVR.local
 DATE: ---SUN 12 Nov 2017---
 17:01:18.291  ...STARTING...
 Timestamp     A/R Flags if Hostname                               Address                                      TTL
 17:01:18.627  Add     3  8 MyAVR.local.                          192.168.1.12                                 120
+</code></pre><p>Um selbst eine Webseite zu annoncieren, die von lokal auf Port 80 gehostet wird</p>
+<pre><code> dns-sd -R &quot;MeinTest&quot; _http._tcp . 80 path=/
 </code></pre>
-
-<p>Um selbst eine Webseite zu annoncieren, die von lokal auf Port 80 gehostet wird</p>
-
-<pre><code>  dns-sd -R &quot;MeinTest&quot; _http._tcp . 80 path=/
-</code></pre>
-
             </div>
             <hr style="width:200px" class="avb-opacity">
         	<div id="footer" style="font-size:small;">
